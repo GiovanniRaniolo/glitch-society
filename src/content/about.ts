@@ -2,7 +2,7 @@ export const aboutContent = {
   hero: {
     badge: "CHI SIAMO",
     title: "Gl!tch Society",
-    subtitle: "Il collettivo che rompe le barriere della formazione tech",
+    subtitle: "",
     description: "Trasformiamo corsi intensivi e eventi spot in competenze deploy-ready e connessioni durature. Web development, creative coding, AI e blockchain: la programmazione accessibile a tutti."
   },
   essence: {
