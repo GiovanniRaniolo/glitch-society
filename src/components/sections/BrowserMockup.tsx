@@ -40,24 +40,19 @@ export const BrowserMockup = () => {
         transition={{ duration: 0.5, delay: 1.5 }}
         className="bg-black p-4 md:p-8 font-mono overflow-hidden rounded-b-lg"
       >
-        {/* Mobile Version */}
+        {/* Mobile Version - Immagine statica */}
         <div className="md:hidden overflow-x-hidden max-w-full">
-          <div className="text-primary text-center">
-            <pre className="text-xs leading-tight whitespace-pre">
-{`  ██████╗ ██╗     ██╗████████╗ ██████╗██╗  ██╗
- ██╔════╝ ██║     ██║╚══██╔══╝██╔════╝██║  ██║
- ██║  ███╗██║     ██║   ██║   ██║     ███████║
- ██║   ██║██║          ██║   ██║     ██╔══██║
- ╚██████╔╝███████╗██╗   ██║   ╚██████╗██║  ██║
-  ╚═════╝ ╚══════╝╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝`}
-            </pre>
-          </div>
-          <div className="text-green-400 mt-4 flex items-center justify-center text-xs">
+          <img 
+            src="/ascii-art.png"
+            alt="GL!TCH Society Terminal" 
+            className="w-full h-auto"
+          />
+          <div className="text-green-400 mt-2 flex items-center text-[10px]">
             <span>user@gl!tch:~$</span>
-            <motion.span
+            <motion.span 
               animate={{ opacity: [1, 0, 1] }}
               transition={{ duration: 1, repeat: Infinity }}
-              className="ml-1 inline-block w-2 h-3 bg-green-400"
+              className="ml-1 inline-block w-1.5 h-3 bg-green-400"
             />
           </div>
         </div>
