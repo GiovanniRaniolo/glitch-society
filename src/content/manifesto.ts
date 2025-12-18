@@ -10,19 +10,19 @@ export const manifestoContent = {
     principles: [
       {
         title: "Accesso Universale",
-        description: "Zero prerequisiti per un apprendimento accelerato che porta chiunque a risultati concreti e connessioni reali."
+        description: "Zero prerequisiti per un apprendimento accelerato che porta a risultati concreti e connessioni reali."
       },
       {
         title: "AI Co-Pilota",
-        description: "L'AI amplifica la creatività umana senza sostituirla – genera codice live, deploy immediati e progetti concreti."
+        description: "L'AI amplifica la creatività umana senza sostituirla. Genera codice live e progetti concreti."
       },
       {
         title: "Eventi Spot",
-        description: "Serate da 3 ore ad alto impatto che uniscono apprendimento e socialità: esplori temi emergenti fianco a fianco."
+        description: "Incontri ad alto impatto che uniscono apprendimento e socialità."
       },
       {
         title: "Ecosistema Aperto",
-        description: "Proponi talk, collabora, crea legami con una community viva e generativa. Hub innovativi diventano epicentri di sperimentazione."
+        description: "Crea legami con una community vivace. Hub innovativi diventano epicentri di sperimentazione."
       }
     ]
   }

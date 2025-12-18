@@ -26,7 +26,7 @@ export const aboutContent = {
       {
         icon: "brain",
         title: "Corsi Intensivi",
-        description: "Percorsi strutturati per acquisire competenze complete, dal coding al deploy."
+        description: "Percorsi per acquisire competenze complete, dal coding al deploy."
       },
       {
         icon: "rocket",
