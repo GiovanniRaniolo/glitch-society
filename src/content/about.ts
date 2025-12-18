@@ -13,7 +13,7 @@ export const aboutContent = {
       { icon: "rocket", text: "Progetti Reali" },
       { icon: "heart", text: "Relazioni Durature" }
     ],
-    tagline: "Focus su output concreti"
+    tagline: ""
   },
   values: {
     title: "Cosa Ci Muove",
