@@ -44,9 +44,11 @@ export const AboutSection = () => {
           <h2 className="text-3xl md:text-5xl font-bold mb-4">
             {aboutContent.hero.title}
           </h2>
-          <p className="text-xl text-primary font-medium mb-4">
-            {aboutContent.hero.subtitle}
-          </p>
+          {aboutContent.hero.subtitle && (
+            <p className="text-xl text-primary font-medium mb-4">
+              {aboutContent.hero.subtitle}
+            </p>
+          )}
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {aboutContent.hero.description}
           </p>
@@ -134,7 +136,7 @@ export const AboutSection = () => {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto"
         >
           {aboutContent.values.items.map((item, idx) => {
             const Icon = iconMap[item.icon];

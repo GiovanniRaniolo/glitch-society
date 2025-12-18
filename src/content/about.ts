@@ -19,24 +19,19 @@ export const aboutContent = {
     title: "Cosa Ci Muove",
     items: [
       {
-        icon: "unlock",
-        title: "Accesso Universale",
-        description: "Zero esperienza richiesta, conoscenza immediata."
+        icon: "code",
+        title: "Codice Live",
+        description: "Impari facendo, con output concreti e deployati dal primo giorno."
       },
       {
         icon: "brain",
         title: "Corsi Intensivi",
-        description: "Percorsi strutturati per acquisire competenze concrete"
+        description: "Percorsi strutturati per acquisire competenze complete, dal coding al deploy."
       },
       {
-        icon: "zap",
-        title: "Eventi Spot",
-        description: "Serate intensive di apprendimento, networking live e progetti."
-      },
-      {
-        icon: "users",
-        title: "Community Viva",
-        description: "Community attiva, supporto reciproco, legami umani al centro."
+        icon: "rocket",
+        title: "Progetti Reali",
+        description: "Niente esercizi finti: costruisci app vere che puoi mostrare e usare."
       }
     ]
   }
