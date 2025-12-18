@@ -20,18 +20,18 @@ export const aboutContent = {
     items: [
       {
         icon: "code",
-        title: "Codice Live",
-        description: "Impari facendo, con output concreti e deployati dal primo giorno."
+        title: "Codice Aperto",
+        description: "La conoscenza circola libera tra chi vuole imparare e chi vuole condividere."
       },
       {
-        icon: "brain",
-        title: "Corsi Intensivi",
-        description: "Percorsi per acquisire competenze complete, dal coding al deploy."
+        icon: "sparkles",
+        title: "Tribe Ibrida",
+        description: "Dev, creativi, maker, newbie: il glitch nasce quando mondi diversi collidono."
       },
       {
-        icon: "rocket",
-        title: "Progetti Reali",
-        description: "Niente esercizi finti: costruisci app vere che puoi mostrare e usare."
+        icon: "zap",
+        title: "Build Together",
+        description: "Hackathon, side project, esperimenti: il codice migliore nasce dalla collaborazione."
       }
     ]
   }

@@ -23,7 +23,8 @@ const iconMap: Record<string, React.ElementType> = {
   users: Users,
   code: Code,
   rocket: Rocket,
-  heart: Heart
+  heart: Heart,
+  sparkles: Sparkles
 };
 
 export const AboutSection = () => {
