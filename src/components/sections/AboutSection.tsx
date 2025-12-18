@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { aboutContent } from "@/content/about";
-import { Unlock, Brain, Zap, Users } from "lucide-react";
+import { Unlock, Brain, Zap, Users, Code, Rocket, Heart, Sparkles } from "lucide-react";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -20,7 +20,10 @@ const iconMap: Record<string, React.ElementType> = {
   unlock: Unlock,
   brain: Brain,
   zap: Zap,
-  users: Users
+  users: Users,
+  code: Code,
+  rocket: Rocket,
+  heart: Heart
 };
 
 export const AboutSection = () => {
@@ -58,13 +61,58 @@ export const AboutSection = () => {
           className="relative mb-16"
         >
           <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-primary/50 to-primary rounded-2xl opacity-30 blur" />
-          <div className="relative bg-gradient-to-br from-card to-secondary/30 border-2 border-primary/30 rounded-2xl p-8 md:p-12 text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              {aboutContent.essence.title}
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              {aboutContent.essence.description}
-            </p>
+          <div className="relative bg-gradient-to-br from-card to-secondary/30 border-2 border-primary/30 rounded-2xl p-8 md:p-12 overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+            
+            <div className="relative z-10">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="flex justify-center mb-6"
+              >
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full">
+                  <Sparkles className="w-4 h-4 text-primary" />
+                  <span className="text-sm font-semibold text-primary">{aboutContent.essence.tagline}</span>
+                </span>
+              </motion.div>
+
+              {/* Title */}
+              <h3 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+                {aboutContent.essence.title}
+              </h3>
+              
+              {/* Description */}
+              <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed text-center mb-10">
+                {aboutContent.essence.description}
+              </p>
+
+              {/* Highlights Grid */}
+              <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+                {aboutContent.essence.highlights.map((highlight, idx) => {
+                  const Icon = iconMap[highlight.icon];
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.1 * idx }}
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      className="flex items-center gap-3 bg-secondary/50 backdrop-blur-sm border border-primary/20 rounded-xl px-5 py-3 hover:border-primary/40 transition-all"
+                    >
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <span className="font-semibold text-foreground">{highlight.text}</span>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </motion.div>
 

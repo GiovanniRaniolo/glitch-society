@@ -14,7 +14,7 @@ export const manifestoContent = {
       },
       {
         title: "AI Co-Pilota",
-        description: "L'AI amplifica la creatività umana senza sostituirla – genera codice live, deploy immediati e portfolio solidi."
+        description: "L'AI amplifica la creatività umana senza sostituirla – genera codice live, deploy immediati e progetti concreti."
       },
       {
         title: "Eventi Spot",

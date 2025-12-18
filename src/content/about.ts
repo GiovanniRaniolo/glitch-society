@@ -7,7 +7,13 @@ export const aboutContent = {
   },
   essence: {
     title: "La Nostra Essenza",
-    description: "Un hub di innovazione autentica dove tecnologie emergenti si fondono con apprendimento accelerato e socialità viva. Focus su output concreti: codice live, portfolio solido, relazioni che durano."
+    description: "Un hub di innovazione autentica dove tecnologie emergenti si fondono con apprendimento accelerato e socialità viva.",
+    highlights: [
+      { icon: "code", text: "Codice Live" },
+      { icon: "rocket", text: "Progetti Reali" },
+      { icon: "heart", text: "Relazioni Durature" }
+    ],
+    tagline: "Focus su output concreti"
   },
   values: {
     title: "Cosa Ci Muove",
@@ -19,8 +25,8 @@ export const aboutContent = {
       },
       {
         icon: "brain",
-        title: "AI Co-Pilota",
-        description: "Acceleratore di workflow creativo che amplifica le tue capacità."
+        title: "Corsi Intensivi",
+        description: "Percorsi strutturati per acquisire competenze complete, dal coding al deploy."
       },
       {
         icon: "zap",
@@ -29,8 +35,8 @@ export const aboutContent = {
       },
       {
         icon: "users",
-        title: "Ecosistema Aperto",
-        description: "Community attiva, collaborazioni generative, legami umani al centro."
+        title: "Community Viva",
+        description: "Community attiva, supporto reciproco, legami umani al centro."
       }
     ]
   }

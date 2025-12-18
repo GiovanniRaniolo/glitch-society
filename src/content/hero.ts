@@ -13,7 +13,7 @@ export const heroContent = {
   },
   stats: [
     { value: "0", label: "Prerequisiti" },
-    { value: "100%", label: "Pratico" },
+    { value: "404", label: "Barriere" },
     { value: "∞", label: "Connessioni" }
   ],
   browserText: "gl!tch@society:~$ ./init_revolution.sh"
