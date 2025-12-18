@@ -3,7 +3,7 @@ export const aboutContent = {
     badge: "CHI SIAMO",
     title: "Gl!tch Society",
     subtitle: "Il collettivo che rompe le barriere della formazione tech",
-    description: "Trasformiamo eventi spot intensivi in competenze deploy-ready e connessioni durature per tutti, democratizzando blockchain, creative coding e hardware hacking."
+    description: "Trasformiamo corsi intensivi e eventi spot in competenze deploy-ready e connessioni durature. Web development, creative coding, AI e blockchain: la programmazione diventa accessibile a tutti."
   },
   essence: {
     title: "La Nostra Essenza",

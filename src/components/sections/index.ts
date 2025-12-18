@@ -6,3 +6,4 @@ export { ManifestoSection } from './ManifestoSection';
 export { AboutSection } from './AboutSection';
 export { CommunitySection } from './CommunitySection';
 export { SectionDivider } from './SectionDivider';
+export { FeaturedCourseSection } from './FeaturedCourseSection';

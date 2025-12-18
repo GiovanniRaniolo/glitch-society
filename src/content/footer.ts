@@ -1,7 +1,7 @@
 export const footerContent = {
   heading: {
-    title: "Da Zero a Developer in 7 Settimane",
-    subtitle: "Formazione intensiva AI-first. Portfolio reale. Autonomia completa."
+    title: "Costruiamo il Futuro, Insieme",
+    subtitle: "Community di innovatori, sviluppatori e creativi. Dove le idee prendono forma."
   },
   social: [
     {

@@ -6,7 +6,8 @@ import {
   ManifestoSection,
   AboutSection,
   CommunitySection,
-  SectionDivider
+  SectionDivider,
+  FeaturedCourseSection
 } from "@/components/sections";
 
 const Index = () => {
@@ -17,6 +18,11 @@ const Index = () => {
       {/* Hero */}
       <HeroSection />
       <BrowserMockup />
+      
+      <SectionDivider />
+      
+      {/* Corso in Evidenza */}
+      <FeaturedCourseSection />
       
       <SectionDivider />
       

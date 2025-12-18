@@ -2,7 +2,7 @@ export const manifestoContent = {
   mission: {
     badge: "LA NOSTRA MISSION",
     title: "Formazione Tech Senza Barriere",
-    description: "Gl!tch Society forma developer autonomi attraverso eventi spot intensivi. Blockchain, creative coding e hardware hacking: competenze tech accessibili a tutti, connesse da socialità autentica."
+    description: "Gl!tch Society forma developer autonomi attraverso corsi strutturati e eventi spot. Coding, AI, creative development e blockchain: competenze tech accessibili a tutti, connesse da socialità autentica."
   },
   manifesto: {
     badge: "IL MANIFESTO",
