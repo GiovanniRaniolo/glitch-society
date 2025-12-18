@@ -2,7 +2,7 @@ export const communityContent = {
   hero: {
     badge: "COMMUNITY",
     title: "Unisciti a GL!TCH",
-    description: "Eventi – talk, corsi. Connessioni autentiche che nascono dal codice."
+    description: "Eventi, talk, corsi. Connessioni autentiche che nascono dal codice."
   },
   telegram: {
     title: "Entra nel Canale",

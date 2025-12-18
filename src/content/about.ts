@@ -3,7 +3,7 @@ export const aboutContent = {
     badge: "CHI SIAMO",
     title: "Gl!tch Society",
     subtitle: "Il collettivo che rompe le barriere della formazione tech",
-    description: "Trasformiamo corsi intensivi e eventi spot in competenze deploy-ready e connessioni durature. Web development, creative coding, AI e blockchain: la programmazione diventa accessibile a tutti."
+    description: "Trasformiamo corsi intensivi e eventi spot in competenze deploy-ready e connessioni durature. Web development, creative coding, AI e blockchain: la programmazione accessibile a tutti."
   },
   essence: {
     title: "La Nostra Essenza",
@@ -21,17 +21,17 @@ export const aboutContent = {
       {
         icon: "unlock",
         title: "Accesso Universale",
-        description: "Zero esperienza richiesta, risultati immediati e prime amicizie tech."
+        description: "Zero esperienza richiesta, conoscenza immediata."
       },
       {
         icon: "brain",
         title: "Corsi Intensivi",
-        description: "Percorsi strutturati per acquisire competenze complete, dal coding al deploy."
+        description: "Percorsi strutturati per acquisire competenze concrete"
       },
       {
         icon: "zap",
         title: "Eventi Spot",
-        description: "Serate intensive di apprendimento e networking live, progetti deployati insieme."
+        description: "Serate intensive di apprendimento, networking live e progetti."
       },
       {
         icon: "users",

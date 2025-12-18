@@ -6,7 +6,7 @@ export const heroContent = {
     part2: "Build the Future"
   },
   subtitle: "Il collettivo che rompe le barriere della formazione tech",
-  description: "Corsi intensivi e eventi spot che trasformano principianti in developer. Web development, creative coding, AI e blockchain: competenze reali, accessibili a tutti.",
+  description: "Corsi intensivi e eventi spot. Web development, creative coding, AI e blockchain: competenze reali, accessibili a tutti.",
   cta: {
     primary: "Esplora gli Eventi",
     secondary: "Unisciti alla Community"
