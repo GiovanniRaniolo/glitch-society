@@ -5,8 +5,8 @@ export const manifestoContent = {
     description: "Gl!tch Society forma developer autonomi attraverso corsi strutturati e eventi spot. Coding, AI, creative development e blockchain: competenze tech accessibili a tutti, connesse da socialità autentica."
   },
   manifesto: {
-    badge: "IL MANIFESTO",
-    title: "Il Nostro Credo",
+    badge: "",
+    title: "",
     principles: [
       {
         title: "Accesso Universale",

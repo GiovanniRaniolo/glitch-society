@@ -47,20 +47,26 @@ export const ManifestoSection = () => {
         </motion.div>
 
         {/* Manifesto Principles */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
-            {manifestoContent.manifesto.badge}
-          </span>
-          <h3 className="text-2xl md:text-4xl font-bold">
-            {manifestoContent.manifesto.title}
-          </h3>
-        </motion.div>
+        {(manifestoContent.manifesto.badge || manifestoContent.manifesto.title) && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            {manifestoContent.manifesto.badge && (
+              <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
+                {manifestoContent.manifesto.badge}
+              </span>
+            )}
+            {manifestoContent.manifesto.title && (
+              <h3 className="text-2xl md:text-4xl font-bold">
+                {manifestoContent.manifesto.title}
+              </h3>
+            )}
+          </motion.div>
+        )}
 
         <motion.div
           variants={staggerContainer}
