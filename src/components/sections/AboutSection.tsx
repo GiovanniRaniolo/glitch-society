@@ -120,7 +120,7 @@ export const AboutSection = () => {
                       >
                         <Icon className="w-8 h-8 text-primary" />
                       </motion.div>
-                      <h4 className="text-lg font-bold mb-2">{item.title}</h4>
+                      <h3 className="text-lg font-bold mb-2">{item.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         {item.description}
                       </p>

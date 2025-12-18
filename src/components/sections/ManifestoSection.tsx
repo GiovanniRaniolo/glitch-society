@@ -93,9 +93,9 @@ export const ManifestoSection = () => {
                       <Icon className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-xl font-bold mb-2 text-foreground">
+                      <h3 className="text-xl font-bold mb-2 text-foreground">
                         {principle.title}
-                      </h4>
+                      </h3>
                       <p className="text-muted-foreground leading-relaxed">
                         {principle.description}
                       </p>
