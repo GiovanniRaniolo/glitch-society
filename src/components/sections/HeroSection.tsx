@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import { heroContent } from "@/content/hero";
-import { Zap, Users, Code2 } from "lucide-react";
+import { motion } from 'framer-motion'
+import { heroContent } from '@/content/hero'
+import { Zap, Users, Code2 } from 'lucide-react'
 
 export const HeroSection = () => {
   return (
@@ -13,7 +13,9 @@ export const HeroSection = () => {
         className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-1.5 mb-8"
       >
         <Zap className="w-4 h-4 text-primary" />
-        <span className="text-sm font-semibold text-primary">{heroContent.badge}</span>
+        <span className="text-sm font-semibold text-primary">
+          {heroContent.badge}
+        </span>
       </motion.div>
 
       {/* Main Title */}
@@ -23,7 +25,7 @@ export const HeroSection = () => {
         transition={{ duration: 0.7, delay: 0.2 }}
         className="text-5xl md:text-7xl font-black mb-6 leading-tight"
       >
-        {heroContent.title.part1}{" "}
+        {heroContent.title.part1}{' '}
         <span className="text-primary relative">
           {heroContent.title.highlight}
           <motion.span
@@ -69,8 +71,12 @@ export const HeroSection = () => {
             whileHover={{ scale: 1.05, y: -5 }}
             className="text-center"
           >
-            <div className="text-4xl md:text-5xl font-black text-primary mb-1">{stat.value}</div>
-            <div className="text-sm text-muted-foreground uppercase tracking-wider">{stat.label}</div>
+            <div className="text-4xl md:text-5xl font-black text-primary mb-1">
+              {stat.value}
+            </div>
+            <div className="text-sm text-muted-foreground uppercase tracking-wider">
+              {stat.label}
+            </div>
           </motion.div>
         ))}
       </motion.div>
@@ -83,7 +89,7 @@ export const HeroSection = () => {
         className="flex flex-col sm:flex-row gap-4 justify-center"
       >
         <motion.a
-          href="#events"
+          href="https://academy.glitchsociety.dev"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 rounded-lg transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-primary/40"
@@ -104,5 +110,5 @@ export const HeroSection = () => {
         </motion.a>
       </motion.div>
     </section>
-  );
-};
+  )
+}
