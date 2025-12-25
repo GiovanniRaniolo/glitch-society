@@ -1,26 +1,43 @@
-import { motion } from "framer-motion";
-import { Calendar, Clock, MapPin, Users, ArrowRight, Sparkles } from "lucide-react";
-import { featuredCourseContent } from "@/content/featuredCourse";
+import { motion } from 'framer-motion'
+import {
+  Calendar,
+  Clock,
+  MapPin,
+  Users,
+  ArrowRight,
+  Sparkles,
+} from 'lucide-react'
+import { featuredCourseContent } from '@/content/featuredCourse'
 
 const iconMap = {
   calendar: Calendar,
   clock: Clock,
   mapPin: MapPin,
-  users: Users
-};
+  users: Users,
+}
 
 export const FeaturedCourseSection = () => {
-  const { badge, title, subtitle, description, details, highlights, technologies, cta, urgency } = featuredCourseContent;
+  const {
+    badge,
+    title,
+    subtitle,
+    description,
+    details,
+    highlights,
+    technologies,
+    cta,
+    urgency,
+  } = featuredCourseContent
 
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
-      
+
       {/* Decorative elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      
+
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,7 +57,7 @@ export const FeaturedCourseSection = () => {
               <Sparkles className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-primary">{badge}</span>
             </motion.div>
-            
+
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               {title}
             </h2>
@@ -70,7 +87,8 @@ export const FeaturedCourseSection = () => {
             {/* Details Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
               {Object.values(details).map((detail, idx) => {
-                const IconComponent = iconMap[detail.icon as keyof typeof iconMap];
+                const IconComponent =
+                  iconMap[detail.icon as keyof typeof iconMap]
                 return (
                   <motion.div
                     key={idx}
@@ -84,12 +102,16 @@ export const FeaturedCourseSection = () => {
                       <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                         <IconComponent className="w-5 h-5 text-primary" />
                       </div>
-                      <span className="text-sm text-muted-foreground">{detail.label}</span>
+                      <span className="text-sm text-muted-foreground">
+                        {detail.label}
+                      </span>
                     </div>
                     <p className="font-bold text-lg mb-1">{detail.value}</p>
-                    <p className="text-sm text-muted-foreground">{detail.subvalue}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {detail.subvalue}
+                    </p>
                   </motion.div>
-                );
+                )
               })}
             </div>
 
@@ -125,8 +147,6 @@ export const FeaturedCourseSection = () => {
             <div className="text-center">
               <motion.a
                 href={cta.url}
-                target="_blank"
-                rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
@@ -142,5 +162,5 @@ export const FeaturedCourseSection = () => {
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
