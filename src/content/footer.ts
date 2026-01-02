@@ -13,7 +13,7 @@ export const footerContent = {
     {
       icon: 'instagram',
       label: 'Instagram',
-      url: 'https://www.instagram.com/glitchacademy_coding?utm_source=qr&igsh=aTVwanljdzVnZzJk',
+      url: 'https://www.instagram.com/glitchsociety_dev',
     },
     {
       icon: 'telegram',
