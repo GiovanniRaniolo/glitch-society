@@ -18,7 +18,7 @@ export const footerContent = {
     {
       icon: 'telegram',
       label: 'Telegram',
-      url: 'https://t.me/glitchacademy',
+      url: 'https://t.me/glitchsociety_dev',
     },
   ],
   legal: [

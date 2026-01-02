@@ -98,7 +98,7 @@ export const HeroSection = () => {
           {heroContent.cta.primary}
         </motion.a>
         <motion.a
-          href="https://t.me/glitchacademy"
+          href="https://t.me/glitchsociety_dev"
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}
