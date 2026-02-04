@@ -9,7 +9,7 @@ export const featuredCourseContent = {
     date: {
       icon: 'calendar',
       label: 'Quando',
-      value: 'Dal 7 Febbraio 2026',
+      value: 'Dal 21 Febbraio 2026',
       subvalue: 'Ogni Sabato • 15:00 - 18:00',
     },
     duration: {
