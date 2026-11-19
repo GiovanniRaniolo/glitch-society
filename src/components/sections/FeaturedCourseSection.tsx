@@ -8,6 +8,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 import { featuredCourseContent } from '@/content/featuredCourse'
+import { SectionHeader } from '@/components/SectionHeader'
 
 const iconMap = {
   calendar: Calendar,
@@ -46,28 +47,14 @@ export const FeaturedCourseSection = () => {
           transition={{ duration: 0.6 }}
           className="max-w-6xl mx-auto"
         >
-          {/* Header */}
-          <div className="text-center mb-12">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-4 py-2 mb-6"
-            >
-              <Sparkles className="w-4 h-4 text-primary" />
-              <span className="text-sm font-medium text-primary">{badge}</span>
-            </motion.div>
-
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              {title}
-            </h2>
-            <p className="text-xl md:text-2xl text-primary font-semibold mb-4">
-              {subtitle}
-            </p>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              {description}
-            </p>
-          </div>
+          <SectionHeader
+            badge={badge}
+            badgeIcon={Sparkles}
+            title={title}
+            subtitle={subtitle}
+            description={description}
+            className="mb-12"
+          />
 
           {/* Main Card */}
           <motion.div

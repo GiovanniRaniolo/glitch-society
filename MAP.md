@@ -14,7 +14,7 @@ Collegamenti: compiti aperti in [TASKS.md](TASKS.md); istruzioni d'avvio in [REA
 | Argomento / parole chiave | Componente | Testi | Note |
 |---|---|---|---|
 | Barra in alto, logo | `sections/Header.tsx` | — | link a `/` |
-| Hero, "Break the Code", stats 0/404/∞, pulsanti | `sections/HeroSection.tsx` | `content/hero.ts` (`heroContent`) | URL scritti a mano → T05 |
+| Hero, "Break the Code", stats 0/404/∞, pulsanti | `sections/HeroSection.tsx` | `content/hero.ts` (`heroContent`) | link pulsanti in `cta.*.url`; pulsante principale → T20 |
 | Finto browser, terminale `init_revolution.sh` | `sections/BrowserMockup.tsx` | `content/hero.ts` (`browserText`) | |
 | Separatore tra sezioni | `sections/SectionDivider.tsx` | — | |
 | Corso in evidenza, date, sede ERETICO, posti, early bird | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`) | scaduto → T03 |
@@ -24,6 +24,13 @@ Collegamenti: compiti aperti in [TASKS.md](TASKS.md); istruzioni d'avvio in [REA
 | Footer, social, email, link legali, copyright | `sections/Footer.tsx` | `content/footer.ts` (`footerContent`) | copyright → T04 |
 
 Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `src/pages/Index.tsx`.
+
+## Componenti comuni (usati da più sezioni)
+
+| Argomento / parole chiave | File | Usato da |
+|---|---|---|
+| Pillola arancione sopra i titoli, badge | `components/Badge.tsx` | `SectionHeader`, Hero |
+| Intestazione di sezione: pillola, titolo, sottotitolo, testo | `components/SectionHeader.tsx` | FeaturedCourse, Manifesto, About, Community |
 
 ## Pagine e rotte
 
@@ -46,8 +53,8 @@ Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/componen
 
 | Link | Dove |
 |---|---|
-| Academy `academy.glitchsociety.dev` | `content/featuredCourse.ts`, `sections/HeroSection.tsx` |
-| Telegram `t.me/glitchsociety_dev` | `content/community.ts`, `content/footer.ts`, `sections/HeroSection.tsx`, `index.html` |
+| Academy `academy.glitchsociety.dev` | `content/featuredCourse.ts`, `content/hero.ts` |
+| Telegram `t.me/glitchsociety_dev` | `content/community.ts`, `content/footer.ts`, `content/hero.ts`, `index.html` |
 | Instagram, Linktree | `content/footer.ts`, `index.html` |
 | Email `glitchacademycrew@...` | `content/footer.ts`, `content/privacy.ts`, `content/cookies.ts` |
 | Lu.ma (iscrizioni, pagamenti) | `content/privacy.ts`, `content/cookies.ts` |

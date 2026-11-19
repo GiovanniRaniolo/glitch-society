@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { communityContent } from "@/content/community";
+import { SectionHeader } from "@/components/SectionHeader";
 import { Send, MessageCircle, Lightbulb, Users, Calendar } from "lucide-react";
 
 const iconMap: Record<string, React.ElementType> = {
@@ -13,24 +14,12 @@ export const CommunitySection = () => {
   return (
     <section className="py-20 bg-gradient-to-b from-background to-secondary/20">
       <div className="container mx-auto px-4 max-w-4xl">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12"
-        >
-          <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
-            {communityContent.hero.badge}
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4">
-            {communityContent.hero.title}
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            {communityContent.hero.description}
-          </p>
-        </motion.div>
+        <SectionHeader
+          badge={communityContent.hero.badge}
+          title={communityContent.hero.title}
+          description={communityContent.hero.description}
+          className="mb-12"
+        />
 
         {/* Telegram Card */}
         <motion.div

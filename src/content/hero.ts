@@ -8,8 +8,14 @@ export const heroContent = {
   subtitle: "Il collettivo che rompe le barriere della formazione tech",
   description: "Corsi intensivi e eventi spot. Web development, creative coding, AI e blockchain: competenze reali, accessibili a tutti.",
   cta: {
-    primary: "Esplora gli Eventi",
-    secondary: "Unisciti alla Community"
+    primary: {
+      label: "Esplora gli Eventi",
+      url: "https://academy.glitchsociety.dev"
+    },
+    secondary: {
+      label: "Unisciti alla Community",
+      url: "https://t.me/glitchsociety_dev"
+    }
   },
   stats: [
     { value: "0", label: "Prerequisiti" },

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { manifestoContent } from "@/content/manifesto";
+import { SectionHeader } from "@/components/SectionHeader";
 import { Unlock, Brain, Zap, Globe } from "lucide-react";
 
 const fadeInUp = {
@@ -28,45 +29,20 @@ export const ManifestoSection = () => {
     <section className="py-20 bg-gradient-to-b from-background via-secondary/10 to-background">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Mission */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
-          <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
-            {manifestoContent.mission.badge}
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            {manifestoContent.mission.title}
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            {manifestoContent.mission.description}
-          </p>
-        </motion.div>
+        <SectionHeader
+          badge={manifestoContent.mission.badge}
+          title={manifestoContent.mission.title}
+          description={manifestoContent.mission.description}
+          className="mb-20"
+        />
 
-        {/* Manifesto Principles */}
-        {(manifestoContent.manifesto.badge || manifestoContent.manifesto.title) && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
-            {manifestoContent.manifesto.badge && (
-              <span className="inline-block px-4 py-1.5 mb-4 text-sm font-semibold text-primary bg-primary/10 rounded-full border border-primary/20">
-                {manifestoContent.manifesto.badge}
-              </span>
-            )}
-            {manifestoContent.manifesto.title && (
-              <h3 className="text-2xl md:text-4xl font-bold">
-                {manifestoContent.manifesto.title}
-              </h3>
-            )}
-          </motion.div>
-        )}
+        {/* Manifesto Principles (intestazione nascosta se badge e titolo sono vuoti) */}
+        <SectionHeader
+          as="h3"
+          badge={manifestoContent.manifesto.badge}
+          title={manifestoContent.manifesto.title}
+          className="mb-12"
+        />
 
         <motion.div
           variants={staggerContainer}

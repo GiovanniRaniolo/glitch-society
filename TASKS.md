@@ -13,7 +13,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-T14 (verifica dopo deploy) → T05 → T22 → T23 → T24 → T25 → T10 → T12 → T26 → T27 → T28
+T14 (verifica dopo deploy) → T23 → T24 → T25 → T10 → T12 → T26 → T27 → T28
 
 ## In attesa dell'utente
 - T03 — dati dell'evento one-shot del 12 dicembre (li fornisce l'utente).
@@ -42,11 +42,6 @@ T14 (verifica dopo deploy) → T05 → T22 → T23 → T24 → T25 → T10 → T
 - **File:** `src/content/privacy.ts`, `src/content/cookies.ts`, `src/content/footer.ts`
 - **Fatto quando:** data = ultima revisione reale dei testi; copyright = anno corrente (o calcolato).
 
-### T05 🟡 Togliere i link scritti a mano nella Hero — agente
-- **Problema:** `HeroSection.tsx` ha gli URL di Academy e Telegram nel codice invece che in `src/content/` (già cambiati in più punti, commit `bb0f319`).
-- **File:** `src/content/hero.ts`, `src/components/sections/HeroSection.tsx`
-- **Fatto quando:** `grep -n "https://" src/components/sections/HeroSection.tsx` è vuoto; link invariati a schermo.
-
 ### T10 ⚪ Allineare nome pacchetto e README — agente
 - **Problema:** `package.json` si chiama `vite_react_shadcn_ts`; il README cita `src/assets/` (inesistente) e descrive "Gl!tch Academy - 7 settimane".
 - **File:** `package.json`, `README.md`
@@ -67,13 +62,8 @@ T14 (verifica dopo deploy) → T05 → T22 → T23 → T24 → T25 → T10 → T
 ### T20 🟠 Pulsante Hero "Esplora gli Eventi" porta al corso — utente
 - **Problema:** l'etichetta parla di eventi, il link apre `academy.glitchsociety.dev` (sito del corso, uguale al pulsante del corso).
 - **Stato:** l'utente ha già un'idea; **non toccare**. Riproporre la domanda quando le altre sistemazioni sono finite.
-- **File:** `src/content/hero.ts`
+- **File:** `src/content/hero.ts` (dopo T05 etichetta e indirizzo stanno entrambi in `cta.primary`)
 - **Fatto quando:** etichetta e destinazione coincidono (decisione scritta sotto).
-
-### T22 🟡 Intestazione di sezione unica (badge + titolo + testo) — agente
-- **Problema:** la "pillola" badge è scritta 6 volte in 3 varianti (padding, peso, bordo diversi); titoli h2 con taglie diverse.
-- **File:** nuovo `src/components/SectionHeader.tsx`; sezioni Hero, FeaturedCourse, Manifesto, About, Community
-- **Fatto quando:** tutte le sezioni usano `SectionHeader`; badge con un solo stile.
 
 ### T23 🟡 Pulsante d'azione unico — agente
 - **Problema:** 4 stili di pulsante (angoli `lg`/`xl`, zoom 1.05/1.02, peso diverso). Link esterni incoerenti: Academy apre nella stessa scheda, Telegram e social in una nuova.
@@ -132,4 +122,6 @@ T14 (verifica dopo deploy) → T05 → T22 → T23 → T24 → T25 → T10 → T
 - 2026-11-19 — **T09** Eliminato `src/App.css` (esempio di Vite, non importato da nessun file); build con file identici a prima.
 - 2026-11-19 — **T19** Pagina 404 rifatta: testi italiani in `content/notFound.ts`, Header e Footer, riga in stile terminale col percorso cercato (va a capo se lungo), pulsante `<Link>` "Torna alla home" (stile del pulsante principale della Hero, da unificare in T23). Tolto il `console.error`. Controllato nel browser: niente errori del sito in console, ritorno alla home senza ricarica, da telefono (375 px) nessuno scorrimento orizzontale.
 - 2026-11-19 — **T06** Tolto il blocco `gallery` da `content/community.ts` (non usato, foto inesistenti). Testi originali, da riusare quando arrivano le foto: titolo "Momenti Glitch"; foto `/gallery/event1-4.jpg` con alt "Hack live session", "Deploy celebration", "Community networking", "Code together". `grep gallery src` vuoto, build passa.
+- 2026-11-19 — **T22** Nuovi `components/Badge.tsx` (pillola, un solo stile) e `components/SectionHeader.tsx` (pillola + titolo + sottotitolo + testo, ogni parte solo se piena). Li usano FeaturedCourse, Manifesto (2 intestazioni), About (2), Community; la Hero usa solo `Badge`, il suo titolo grande resta a parte. Controllato nel browser: le 5 pillole identiche, titoli h2 tutti 48 px su computer e 30 px su telefono, nessuno scorrimento laterale, console senza errori. Piccoli cambi visivi voluti: titolo del corso da 60 a 48 px su schermi grandi; la pillola del corso non fa più il suo piccolo zoom d'entrata (entra con la dissolvenza dell'intestazione); testo sotto i titoli di Manifesto e Essenza un po' più piccolo e stretto (come le altre sezioni). Le pillole "✓" del corso sono un elenco, non intestazioni: non toccate.
+- 2026-11-19 — **T05** Link della Hero spostati in `content/hero.ts`: `cta.primary` e `cta.secondary` ora sono `{ label, url }`. `grep "https://" HeroSection.tsx` vuoto; build e lint passano; nel browser (build di produzione) i due pulsanti hanno gli stessi `href`, `target` e `rel` di prima, console senza errori.
 - 2026-11-19 — **T21** Grafia "GL!TCH Society" in `content/hero.ts`, `about.ts`, `manifesto.ts`, `footer.ts`, `privacy.ts` (titolare), `alt` dei loghi in `Header.tsx`/`Footer.tsx`, README. Badge della Hero e titolo di About restano maiuscoli via CSS (`uppercase`). Nessun "Academy" come nome del marchio. Controllato nel browser: a schermo identico a prima, titolare Privacy = GL!TCH Society.
