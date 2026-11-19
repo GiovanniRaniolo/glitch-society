@@ -27,7 +27,7 @@ export const Footer = () => {
           className="max-w-5xl mx-auto"
         >
           <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img src="/glitch_logo.png" alt="Glitch Society" className="h-10 -ml-2 mb-6 cursor-pointer hover:opacity-80 transition-opacity" />
+            <img src="/glitch_logo.png" alt="GL!TCH Society" className="h-10 -ml-2 mb-6 cursor-pointer hover:opacity-80 transition-opacity" />
           </Link>
           
           {/* Heading + Social */}

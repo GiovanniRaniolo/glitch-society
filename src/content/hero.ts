@@ -1,5 +1,5 @@
 export const heroContent = {
-  badge: "GL!TCH SOCIETY",
+  badge: "GL!TCH Society",
   title: {
     part1: "Break the",
     highlight: "Code",

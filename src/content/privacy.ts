@@ -10,7 +10,7 @@ export const privacyContent: LegalContent = {
       content: [
         {
           type: "contact",
-          name: "GL!TCH ACADEMY",
+          name: "GL!TCH Society",
           vat: "[DA INSERIRE]",
           email: "glitchacademycrew@gmail.com"
         }

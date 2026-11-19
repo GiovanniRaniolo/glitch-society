@@ -13,7 +13,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-T14 (verifica dopo deploy) → T21 → T05 → T22 → T23 → T24 → T25 → T10 → T12 → T26 → T27 → T28
+T14 (verifica dopo deploy) → T05 → T22 → T23 → T24 → T25 → T10 → T12 → T26 → T27 → T28
 
 ## In attesa dell'utente
 - T03 — dati dell'evento one-shot del 12 dicembre (li fornisce l'utente).
@@ -26,7 +26,7 @@ T14 (verifica dopo deploy) → T21 → T05 → T22 → T23 → T24 → T25 → T
 
 ### T02 🟠 Inserire la Partita IVA del titolare — utente, poi agente
 - **Problema:** nella Privacy Policy il titolare ha `vat: "[DA INSERIRE]"`, mostrato così sul sito.
-- **Stato:** l'utente non l'ha ancora fornita; ricordarlo a fine blocchi grandi o sessioni lunghe (vedi "Da attenzionare"). Il nome del titolare diventa "GL!TCH Society" in T21.
+- **Stato:** l'utente non l'ha ancora fornita; ricordarlo a fine blocchi grandi o sessioni lunghe (vedi "Da attenzionare"). Il titolare è già "GL!TCH Society" (T21).
 - **File:** `src/content/privacy.ts`
 - **Fatto quando:** `grep "DA INSERIRE" src` non trova nulla.
 
@@ -51,7 +51,6 @@ T14 (verifica dopo deploy) → T21 → T05 → T22 → T23 → T24 → T25 → T
 - **Problema:** `package.json` si chiama `vite_react_shadcn_ts`; il README cita `src/assets/` (inesistente) e descrive "Gl!tch Academy - 7 settimane".
 - **File:** `package.json`, `README.md`
 - **Fatto quando:** nome `glitch-society`; struttura e descrizione nel README uguali al progetto reale.
-- **Dipende da:** T21 (nome ufficiale).
 
 ### T12 ⚪ Aggiungere sitemap — agente
 - **Problema:** manca `sitemap.xml` (sul sito vero risponde 404).
@@ -70,12 +69,6 @@ T14 (verifica dopo deploy) → T21 → T05 → T22 → T23 → T24 → T25 → T
 - **Stato:** l'utente ha già un'idea; **non toccare**. Riproporre la domanda quando le altre sistemazioni sono finite.
 - **File:** `src/content/hero.ts`
 - **Fatto quando:** etichetta e destinazione coincidono (decisione scritta sotto).
-
-### T21 🟡 Nome del marchio scritto in 6 modi — agente
-- **Problema:** "GL!TCH Society", "Gl!tch Society", "GL!TCH SOCIETY", "Glitch Society", "Glitch Academy" (alt del logo in Header), "GL!TCH ACADEMY" (titolare privacy).
-- **Decisione:** grafia ufficiale **GL!TCH Society**, anche come titolare della Privacy Policy.
-- **File:** `src/content/*`, `Header.tsx`, `Footer.tsx`, `index.html`, `README.md`
-- **Fatto quando:** "GL!TCH Society" ovunque nei testi (maiuscolo intero solo via CSS); nessun "Academy" come nome del marchio (resta solo nell'indirizzo `academy.glitchsociety.dev`).
 
 ### T22 🟡 Intestazione di sezione unica (badge + titolo + testo) — agente
 - **Problema:** la "pillola" badge è scritta 6 volte in 3 varianti (padding, peso, bordo diversi); titoli h2 con taglie diverse.
@@ -124,6 +117,8 @@ T14 (verifica dopo deploy) → T21 → T05 → T22 → T23 → T24 → T25 → T
 - 2026-11-19 — Commit e merge su master li fa l'utente; il deploy (e quindi la verifica di T14) si fa a sviluppo finito.
 - 2026-11-19 — Pagine legali: grassetti e link si scrivono nel testo del contenuto (`**…**`, `[testo](indirizzo)`), letti da `RichText`.
 
+- 2026-11-19 — Nome del marchio (T21): restano volutamente `alternateName: "GLITCH Society"` e la keyword "glitch academy" in `index.html` (servono alle ricerche), "Unisciti a GL!TCH" (forma breve, come il logo), i prompt `gl!tch@society` / `user@gl!tch` (stile terminale) e l'email `glitchacademycrew@` (indirizzo reale).
+
 ## Fatti
 - 2026-11-19 — **T01** Dipendenze installate; `npm run build` passa. Lint non parte → T16; controllo tipi fallisce → T17; vulnerabilità → T18.
 - 2026-11-19 — **T13** `index.html`: canonical, Open Graph, Twitter e JSON-LD ora su `https://glitchsociety.dev` (9 URL); `ascii-art.png` e `glitch_logo.png` rispondono 200 sul dominio vero; build passa. Visibile online dopo il deploy da master.
@@ -137,3 +132,4 @@ T14 (verifica dopo deploy) → T21 → T05 → T22 → T23 → T24 → T25 → T
 - 2026-11-19 — **T09** Eliminato `src/App.css` (esempio di Vite, non importato da nessun file); build con file identici a prima.
 - 2026-11-19 — **T19** Pagina 404 rifatta: testi italiani in `content/notFound.ts`, Header e Footer, riga in stile terminale col percorso cercato (va a capo se lungo), pulsante `<Link>` "Torna alla home" (stile del pulsante principale della Hero, da unificare in T23). Tolto il `console.error`. Controllato nel browser: niente errori del sito in console, ritorno alla home senza ricarica, da telefono (375 px) nessuno scorrimento orizzontale.
 - 2026-11-19 — **T06** Tolto il blocco `gallery` da `content/community.ts` (non usato, foto inesistenti). Testi originali, da riusare quando arrivano le foto: titolo "Momenti Glitch"; foto `/gallery/event1-4.jpg` con alt "Hack live session", "Deploy celebration", "Community networking", "Code together". `grep gallery src` vuoto, build passa.
+- 2026-11-19 — **T21** Grafia "GL!TCH Society" in `content/hero.ts`, `about.ts`, `manifesto.ts`, `footer.ts`, `privacy.ts` (titolare), `alt` dei loghi in `Header.tsx`/`Footer.tsx`, README. Badge della Hero e titolo di About restano maiuscoli via CSS (`uppercase`). Nessun "Academy" come nome del marchio. Controllato nel browser: a schermo identico a prima, titolare Privacy = GL!TCH Society.

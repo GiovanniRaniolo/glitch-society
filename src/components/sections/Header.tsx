@@ -11,7 +11,7 @@ export const Header = () => {
     >
       <div className="container mx-auto px-4">
         <Link to="/">
-          <img src="/glitch_logo.png" alt="Glitch Academy" className="h-8 cursor-pointer hover:opacity-80 transition-opacity" />
+          <img src="/glitch_logo.png" alt="GL!TCH Society" className="h-8 cursor-pointer hover:opacity-80 transition-opacity" />
         </Link>
       </div>
     </motion.header>

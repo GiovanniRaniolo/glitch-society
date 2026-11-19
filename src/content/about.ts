@@ -1,7 +1,7 @@
 export const aboutContent = {
   hero: {
     badge: "CHI SIAMO",
-    title: "GL!TCH SOCIETY",
+    title: "GL!TCH Society",
     subtitle: "",
     description: "Trasformiamo corsi intensivi e eventi spot in competenze deploy-ready e connessioni durature. Web development, creative coding, AI e blockchain: la programmazione accessibile a tutti."
   },

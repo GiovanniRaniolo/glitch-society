@@ -1,6 +1,6 @@
-# Gl!tch Society
+# GL!TCH Society
 
-Landing page del sito **Gl!tch Academy** - Da Zero a Developer in 7 Settimane.
+Landing page del sito **GL!TCH Society** - Da Zero a Developer in 7 Settimane.
 
 ## 🚀 Tech Stack
 
@@ -50,5 +50,5 @@ src/
 
 ## 📄 Licenza
 
-MIT © Gl!tch Academy
+MIT © GL!TCH Society
 
