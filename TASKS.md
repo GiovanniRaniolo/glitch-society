@@ -13,7 +13,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-T35 → T34 → T36 → T37 (rebrand, da fare in una sessione nuova). T14 dopo il deploy. T28 in roadmap, da valutare con il team.
+Rebrand T33–T37 finito. T14 dopo il deploy. T28 in roadmap, da valutare con il team.
 
 ## In attesa dell'utente
 - T03 — dati dell'evento one-shot del 12 dicembre (li fornisce l'utente).
@@ -22,32 +22,6 @@ T35 → T34 → T36 → T37 (rebrand, da fare in una sessione nuova). T14 dopo i
 - ⚠️ **T02 — Partita IVA del titolare** da inserire nella Privacy Policy.
 
 ## Aperti
-
-### T35 🟡 Mission: titolo e testo della visione — agente
-- **Problema:** il titolo della Mission (T33) è provvisorio.
-- **File:** `src/content/manifesto.ts`
-- **Testi:** approvati dall'utente.
-- **Fatto quando:** la Mission mostra titolo e testo approvati; build e lint passano.
-
-### T34 🟡 Hero: descrizione sull'impatto e "Con chi costruiamo" — agente
-- **Problema:** la descrizione e il riquadro Essenza della Hero parlano solo di community e formazione.
-- **Decisione:** la descrizione parla di istituzioni, imprese e persone; le 3 schede dell'Essenza diventano Istituzioni, Imprese, Persone.
-- **File:** `src/content/hero.ts`, `src/components/icons.ts`
-- **Testi:** approvati dall'utente; prima chiedere all'utente se cambiare anche il sottotitolo della Hero.
-- **Fatto quando:** nel browser la Hero mostra i testi nuovi; testi tolti annotati qui sotto "Fatti"; build e lint passano.
-
-### T36 🟡 Nuova sezione Etica dopo la Mission — agente
-- **Problema:** il sito non dice come usiamo l'AI in modo responsabile.
-- **Decisione:** sezione nuova dopo la Mission, in forma "Sempre / Mai" (3 voci ciascuno), non un elenco di articoli.
-- **File:** `src/content/ethics.ts` (nuovo), `src/components/sections/EthicsSection.tsx` (nuovo), `src/components/sections/index.ts`, `src/pages/Index.tsx`, `MAP.md`
-- **Testi:** approvati dall'utente.
-- **Fatto quando:** nel browser la sezione compare tra Mission e Corso, testi solo nel file di contenuto, a 375 px nessuno scorrimento laterale, console senza errori; build e lint passano.
-
-### T37 🟡 Contatto per le aziende nella colonna Consulenza — agente
-- **Problema:** chi cerca una consulenza non ha un modo di scriverci (oggi solo Telegram e Academy).
-- **Decisione:** pulsante "Raccontaci il tuo progetto" → email `glitchacademycrew@gmail.com` (provvisoria).
-- **File:** `src/content/manifesto.ts`, `src/components/sections/ManifestoSection.tsx`, forse `src/components/CtaLink.tsx` (oggi apre `mailto:` in nuova scheda).
-- **Fatto quando:** il pulsante apre il programma di posta con l'indirizzo giusto, nella stessa scheda; build e lint passano.
 
 ### T02 🟠 Inserire la Partita IVA del titolare — utente, poi agente
 - **Problema:** nella Privacy Policy il titolare ha `vat: "[DA INSERIRE]"`, mostrato così sul sito.
@@ -96,6 +70,10 @@ T35 → T34 → T36 → T37 (rebrand, da fare in una sessione nuova). T14 dopo i
 - 2026-11-19 — **Rinviate:** due possibili aggiunte alla sezione Etica (dettagli negli appunti locali).
 
 ## Fatti
+- 2026-11-19 — **T37** Pulsante **"Raccontaci il tuo progetto"** (icona busta) sotto le schede della colonna Consulenza: apre il programma di posta verso `glitchacademycrew@gmail.com` (indirizzo provvisorio), nella stessa scheda. Testo, indirizzo e icona in `content/manifesto.ts` (`columns[].cta`, facoltativo: la colonna Formazione non lo ha). `CtaLink` ora apre in nuova scheda solo i link web (`http…`); `mailto:` e `tel:` restano nella stessa scheda. Icona `mail` aggiunta in `components/icons.ts`. Controllato nel browser (build di produzione): indirizzo giusto, nessuna nuova scheda; gli altri pulsanti (Telegram, Corso) aprono ancora in nuova scheda, "Prossimo Evento" scorre alla sezione; a 375 px pulsante dentro lo schermo, nessuno scorrimento laterale; console senza errori. Build e lint passano. Il clic vero non è stato provato (aprirebbe Mail sul computer). Quando ci sarà un indirizzo dedicato si cambia solo `url` nel contenuto.
+- 2026-11-19 — **T36** Nuova sezione **"Il nostro codice etico"** (pillola ETICA) tra Mission e Corso. Due finestre in stile terminale affiancate: **Sempre** (righe verdi con +) e **Mai** (righe rosse con −), tre voci ciascuna, testi approvati. Testi solo in `content/ethics.ts` (nuovo; colore e segno scelti da `tone`, lo stile sta nel componente); componente nuovo `sections/EthicsSection.tsx`; aggiunta in `sections/index.ts` e `pages/Index.tsx` con un separatore. Controllato nel browser (build di produzione): ordine Mission → Etica → Corso; a 1280 px finestre affiancate e alte uguali; a 375 px una sotto l'altra, nessuno scorrimento laterale; console senza errori. Build e lint passano.
+- 2026-11-19 — **T34** Hero riorientata su istituzioni, imprese e persone (testi approvati dall'utente). Sottotitolo: "Il collettivo che rompe le barriere tra le persone e l'intelligenza artificiale" (scelto dall'utente tra 3 proposte). Descrizione nuova sull'impatto. Il riquadro "La Nostra Essenza" ora è **"Con chi costruiamo"**, con le schede **Imprese**, **Persone**, **Istituzioni** (ordine scelto dall'utente dopo la revisione a schermo; stesso ordine nella descrizione: "Aiutiamo imprese, persone e istituzioni…"). 2 icone nuove in `components/icons.ts` (`landmark`, `building`); `users` c'era già. Testi tutti in `content/hero.ts`. Controllato nel browser (build di produzione): testi nuovi presenti e vecchi spariti, ogni scheda con la sua icona, un solo h1; a 375 px schede una sotto l'altra e nessuno scorrimento laterale; console senza errori. Build e lint passano. **Testi tolti**, da riusare se servono: sottotitolo "Il collettivo che rompe le barriere della formazione tech"; descrizione "Trasformiamo corsi intensivi e eventi spot in competenze deploy-ready e connessioni durature. Web development, creative coding, AI e blockchain: la programmazione accessibile a tutti."; titolo "La Nostra Essenza" con testo "Un hub di innovazione autentica dove tecnologie emergenti si fondono con apprendimento accelerato e socialità viva."; schede "Codice Aperto" (icona code) "La conoscenza circola libera tra chi vuole imparare e chi vuole condividere.", "Tribe Ibrida" (sparkles) "Dev, creativi, maker, newbie: il glitch nasce quando mondi diversi collidono.", "Build Together" (zap) "Hackathon, side project, esperimenti: il codice migliore nasce dalla collaborazione."
+- 2026-11-19 — **T35** Mission: titolo "Persone al centro, AI al fianco." e testo della visione approvato (in `content/manifesto.ts`, `mission`). Controllato nel browser (build di produzione): titolo e testo nuovi, vecchio titolo sparito, console senza errori. Build e lint passano. **Testi tolti**, da riusare se servono: titolo provvisorio "L'AI al Servizio di Aziende e Persone"; descrizione "GL!TCH Society porta l'AI dove serve: nelle aziende, con soluzioni su misura per i loro processi, e nelle persone, con formazione pratica e accessibile a tutti."
 - 2026-11-19 — **T33** "La nostra mission" ora ha due colonne: **Consulenza AI per le Aziende** (a sinistra: Analisi dei Processi, Soluzioni su Misura, Integrazione Graduale, Team Autonomo) e **Formazione Tech Senza Barriere** (a destra, testi e schede di prima). Titolo comune nuovo "L'AI al Servizio di Aziende e Persone" con descrizione che le unisce. Testi tutti in `content/manifesto.ts` (`columns`; l'ordine nel file è l'ordine a schermo); tolti i campi vuoti `manifesto.badge/title`. 5 icone nuove in `components/icons.ts` (briefcase, graduationCap, search, puzzle, workflow). Controllato nel browser (build di produzione): a 1440 px le schede delle due colonne sono allineate; a 375 px colonne una sotto l'altra, nessuno scorrimento laterale; console senza errori. Build e lint passano. **Testi tolti**, da riusare se servono: titolo della mission "Formazione Tech Senza Barriere" (ora titolo della colonna Formazione).
 - 2026-11-19 — **T04** Privacy Policy: "Ultimo aggiornamento" da Novembre 2025 a **Novembre 2026** (oggi è cambiato il titolare, T21). Cookie Policy: resta **Novembre 2025**, perché il testo non è cambiato da allora (solo grassetti e link, T15) ed è ancora vero: il sito non usa cookie, statistiche né archivi nel browser (controllato nel codice). Copyright nel footer ora calcolato: mostra sempre l'anno corrente (`content/footer.ts`). Build e lint passano; nel sito costruito ci sono "Novembre 2026", "Novembre 2025" e il calcolo dell'anno. Quando arriva la P.IVA (T02) la data della Privacy va aggiornata al mese di quel cambio.
 - 2026-11-19 — **T20** Pulsante principale della Hero: "Esplora gli Eventi" → "Prossimo Evento"; non apre più `academy.glitchsociety.dev` ma porta alla sezione del corso/evento nella stessa pagina (`#next-event`). L'id della sezione sta in `content/featuredCourse.ts` (`anchor`), letto sia dalla sezione sia da `content/hero.ts`, così non possono andare fuori sincrono. `CtaLink` ora gestisce anche i link `#…`: stessa scheda, scorrimento morbido (di colpo per chi ha chiesto meno animazioni), indirizzo aggiornato con `#next-event`. Controllato nel browser (build di produzione): clic → la sezione arriva in cima allo schermo, stessa scheda, console senza errori; gli altri 3 pulsanti esterni aprono ancora in nuova scheda. Build e lint passano. L'icona del pulsante è ancora quella del codice (`</>`).

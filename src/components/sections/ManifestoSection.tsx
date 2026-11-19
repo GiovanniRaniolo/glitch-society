@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { manifestoContent } from "@/content/manifesto";
 import { SectionHeader } from "@/components/SectionHeader";
 import { getIcon } from "@/components/icons";
+import { CtaLink } from "@/components/CtaLink";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -92,6 +93,21 @@ export const ManifestoSection = () => {
                     );
                   })}
                 </motion.div>
+
+                {/* Pulsante della colonna, se c'è (T37: contatto per le aziende) */}
+                {column.cta && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mt-8 text-center"
+                  >
+                    <CtaLink href={column.cta.url} icon={getIcon(column.cta.icon) ?? undefined}>
+                      {column.cta.label}
+                    </CtaLink>
+                  </motion.div>
+                )}
               </div>
             );
           })}

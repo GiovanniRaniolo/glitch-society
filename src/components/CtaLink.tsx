@@ -39,8 +39,9 @@ const scrollToSection = (event: React.MouseEvent, href: string) => {
 
 // Pulsante d'azione unico del sito.
 // Link esterno (http…) → nuova scheda; link interno (/…) → navigazione senza ricaricare;
-// link a una sezione della stessa pagina (#id) → scorrimento morbido, stessa scheda.
-// Usato da Hero, FeaturedCourse, Community, pagina 404.
+// link a una sezione della stessa pagina (#id) → scorrimento morbido, stessa scheda;
+// altri link (mailto:, tel:) → stessa scheda, apre il programma di posta o del telefono (T37).
+// Usato da Hero, Manifesto, FeaturedCourse, Community, pagina 404.
 export const CtaLink = ({
   href,
   children,
@@ -79,14 +80,22 @@ export const CtaLink = ({
     )
   }
 
+  if (/^https?:\/\//.test(href)) {
+    return (
+      <motion.a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+        {...animation}
+      >
+        {content}
+      </motion.a>
+    )
+  }
+
   return (
-    <motion.a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={className}
-      {...animation}
-    >
+    <motion.a href={href} className={className} {...animation}>
       {content}
     </motion.a>
   )

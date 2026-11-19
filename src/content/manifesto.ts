@@ -2,12 +2,13 @@
 // Usati da: components/sections/ManifestoSection.tsx. Icone: nomi in components/icons.ts.
 // Due colonne (T33): Consulenza e Formazione.
 // L'ordine di `columns` è l'ordine a schermo (prima colonna = sinistra, o in alto su telefono).
+// `cta` (facoltativo): pulsante sotto le schede della colonna.
 
 export const manifestoContent = {
   mission: {
     badge: "LA NOSTRA MISSION",
-    title: "L'AI al Servizio di Aziende e Persone",
-    description: "GL!TCH Society porta l'AI dove serve: nelle aziende, con soluzioni su misura per i loro processi, e nelle persone, con formazione pratica e accessibile a tutti."
+    title: "Persone al centro, AI al fianco.",
+    description: "Usiamo l'AI per dare alle persone più strumenti, non per toglierle di mezzo: dati più chiari, scelte più consapevoli, decisioni che restano umane."
   },
   columns: [
     {
@@ -35,7 +36,13 @@ export const manifestoContent = {
           title: "Team Autonomo",
           description: "Accompagniamo le persone nell'uso dei nuovi strumenti, così l'AI resta in azienda anche dopo di noi."
         }
-      ]
+      ],
+      // Pulsante sotto le schede (T37). Email provvisoria: quando ci sarà un indirizzo dedicato si cambia solo qui.
+      cta: {
+        label: "Raccontaci il tuo progetto",
+        url: "mailto:glitchacademycrew@gmail.com",
+        icon: "mail"
+      }
     },
     {
       icon: "graduationCap",

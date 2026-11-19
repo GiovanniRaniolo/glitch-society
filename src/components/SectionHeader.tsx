@@ -21,7 +21,7 @@ const titleSize = {
 
 // Intestazione comune delle sezioni: pillola + titolo + sottotitolo + testo.
 // Ogni parte compare solo se il testo non è vuoto.
-// Usata da FeaturedCourse, Manifesto, Community, EssenceCard (Hero).
+// Usata da FeaturedCourse, Manifesto, Ethics, Community, EssenceCard (Hero).
 export const SectionHeader = ({
   badge,
   badgeIcon,

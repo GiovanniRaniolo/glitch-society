@@ -15,10 +15,11 @@ Collegamenti: compiti aperti in [TASKS.md](TASKS.md); istruzioni d'avvio in [REA
 |---|---|---|---|
 | Barra in alto, logo | `sections/Header.tsx` | — | link a `/` |
 | Hero, "Break the Code", sottotitolo, descrizione, pulsanti | `sections/HeroSection.tsx` | `content/hero.ts` (`heroContent`) | link pulsanti in `cta.*.url`; "Prossimo Evento" → `#next-event` (T20) |
-| La nostra essenza, valori (Codice Aperto, Tribe Ibrida, Build Together), ex "Chi siamo" | `sections/EssenceCard.tsx` (dentro la Hero) | `content/hero.ts` (`heroContent.essence`) | sezione Chi siamo unita alla Hero (T29) |
+| Con chi costruiamo (Istituzioni, Imprese, Persone), ex "La nostra essenza", ex "Chi siamo" | `sections/EssenceCard.tsx` (dentro la Hero) | `content/hero.ts` (`heroContent.essence`) | unita alla Hero (T29); testi nuovi (T34) |
 | Finto browser, terminale `init_revolution.sh` | `sections/BrowserMockup.tsx` | `content/hero.ts` (`browserText`) | |
 | Separatore tra sezioni | `sections/SectionDivider.tsx` | — | |
-| Manifesto, mission, principi, colonne Consulenza e Formazione | `sections/ManifestoSection.tsx` | `content/manifesto.ts` (`manifestoContent`, `columns`) | prima del Corso (T32); due colonne (T33) |
+| Manifesto, mission, principi, colonne Consulenza e Formazione, "Raccontaci il tuo progetto" | `sections/ManifestoSection.tsx` | `content/manifesto.ts` (`manifestoContent`, `columns`) | prima del Corso (T32); due colonne (T33) |
+| Etica, codice etico, Sempre / Mai, finestre terminale | `sections/EthicsSection.tsx` | `content/ethics.ts` (`ethicsContent`, `blocks`, `tone`) | dopo la Mission (T36) |
 | Corso in evidenza, prossimo evento, `#next-event`, date, sede ERETICO, posti, early bird | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`, id in `anchor`) | scaduto → T03 |
 | Community, Telegram | `sections/CommunitySection.tsx` | `content/community.ts` (`communityContent`) | galleria tolta (T06) |
 | Footer, social, email, link legali, copyright | `sections/Footer.tsx` | `content/footer.ts` (`footerContent`) | copyright = anno corrente, calcolato (T04) |
@@ -30,8 +31,8 @@ Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `sr
 | Argomento / parole chiave | File | Usato da |
 |---|---|---|
 | Pillola arancione sopra i titoli, badge | `components/Badge.tsx` | `SectionHeader` (tolto dalla Hero in T30, riusabile) |
-| Intestazione di sezione: pillola, titolo, sottotitolo, testo | `components/SectionHeader.tsx` | FeaturedCourse, Manifesto, Community, EssenceCard |
-| Pulsante d’azione, CTA, link esterno in nuova scheda, link `#sezione` con scorrimento morbido | `components/CtaLink.tsx` | Hero, FeaturedCourse, Community, `pages/NotFound.tsx` |
+| Intestazione di sezione: pillola, titolo, sottotitolo, testo | `components/SectionHeader.tsx` | FeaturedCourse, Manifesto, Ethics, Community, EssenceCard |
+| Pulsante d’azione, CTA, link esterno in nuova scheda, link `#sezione` con scorrimento morbido | `components/CtaLink.tsx` (web → nuova scheda; `/`, `#`, `mailto:` → stessa scheda) | Hero, Manifesto, FeaturedCourse, Community, `pages/NotFound.tsx` |
 | Titolo della scheda, canonical, noindex della 404 | `components/PageMeta.tsx` (dati in `content/site.ts`) | tutte le pagine in `src/pages/` |
 | Logo (webp leggero + png di riserva) | `components/Logo.tsx` | Header, Footer |
 | Icone scelte nei testi (campo `icon`), `icons`, `getIcon`, nome icona nuovo | `components/icons.ts` | FeaturedCourse, Manifesto (schede e colonne), EssenceCard, Community, Footer |
@@ -60,7 +61,7 @@ Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/componen
 | Academy `academy.glitchsociety.dev` | `content/featuredCourse.ts` |
 | Telegram `t.me/glitchsociety_dev` | `content/community.ts`, `content/footer.ts`, `content/hero.ts`, `index.html` |
 | Instagram, Linktree | `content/footer.ts`, `index.html` |
-| Email `glitchacademycrew@...` | `content/footer.ts`, `content/privacy.ts`, `content/cookies.ts` |
+| Email `glitchacademycrew@...` | `content/footer.ts`, `content/privacy.ts`, `content/cookies.ts`, `content/manifesto.ts` (pulsante Consulenza, T37) |
 | Lu.ma (iscrizioni, pagamenti) | `content/privacy.ts`, `content/cookies.ts` |
 
 Se cambia un link, aggiornare **tutte** le righe della tabella.

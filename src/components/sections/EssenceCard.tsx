@@ -3,7 +3,7 @@ import { heroContent } from "@/content/hero";
 import { SectionHeader } from "@/components/SectionHeader";
 import { getIcon } from "@/components/icons";
 
-// Riquadro "La nostra essenza" con le schede dei valori.
+// Riquadro "Con chi costruiamo" (ex "La nostra essenza") con le schede Istituzioni, Imprese, Persone (T34).
 // Prima stava nella sezione "Chi siamo"; ora è dentro la Hero (T29).
 // Testi in content/hero.ts (heroContent.essence).
 

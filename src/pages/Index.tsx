@@ -4,6 +4,7 @@ import {
   HeroSection,
   BrowserMockup,
   ManifestoSection,
+  EthicsSection,
   CommunitySection,
   SectionDivider,
   FeaturedCourseSection
@@ -24,6 +25,11 @@ const Index = () => {
       
       {/* Manifesto (La nostra mission) */}
       <ManifestoSection />
+
+      <SectionDivider />
+
+      {/* Etica (codice etico, T36) */}
+      <EthicsSection />
 
       <SectionDivider />
 

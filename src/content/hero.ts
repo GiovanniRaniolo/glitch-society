@@ -6,28 +6,29 @@ export const heroContent = {
     highlight: "Code",
     part2: "Build the Future"
   },
-  subtitle: "Il collettivo che rompe le barriere della formazione tech",
-  // Testo che prima stava in "Chi siamo" (T29)
-  description: "Trasformiamo corsi intensivi e eventi spot in competenze deploy-ready e connessioni durature. Web development, creative coding, AI e blockchain: la programmazione accessibile a tutti.",
-  // Riquadro "La nostra essenza", prima in "Chi siamo" (T29)
+  subtitle: "Il collettivo che rompe le barriere tra le persone e l'intelligenza artificiale",
+  // Descrizione sull'impatto (T34); prima era il testo di "Chi siamo" (T29)
+  description: "Aiutiamo imprese, persone e istituzioni a capire l'intelligenza artificiale e a portarla nei loro processi, produttivi e decisionali. In modo etico, aperto e su misura.",
+  // Riquadro "Con chi costruiamo" (T34), ex "La nostra essenza" di "Chi siamo" (T29).
+  // L'ordine di `values` è l'ordine a schermo (scelto dall'utente: Imprese, Persone, Istituzioni).
   essence: {
-    title: "La Nostra Essenza",
-    description: "Un hub di innovazione autentica dove tecnologie emergenti si fondono con apprendimento accelerato e socialità viva.",
+    title: "Con chi costruiamo",
+    description: "Tre mondi diversi, un solo obiettivo: usare l'AI per lavorare e vivere meglio.",
     values: [
       {
-        icon: "code",
-        title: "Codice Aperto",
-        description: "La conoscenza circola libera tra chi vuole imparare e chi vuole condividere."
+        icon: "building",
+        title: "Imprese",
+        description: "Studiamo i vostri processi e inseriamo l'AI dove fa la differenza: meno lavoro ripetitivo, decisioni basate sui dati, strumenti che restano vostri."
       },
       {
-        icon: "sparkles",
-        title: "Tribe Ibrida",
-        description: "Dev, creativi, maker, newbie: il glitch nasce quando mondi diversi collidono."
+        icon: "users",
+        title: "Persone",
+        description: "Spieghiamo l'AI in parole semplici, con corsi ed eventi aperti a tutti: per usarla con consapevolezza, non subirla."
       },
       {
-        icon: "zap",
-        title: "Build Together",
-        description: "Hackathon, side project, esperimenti: il codice migliore nasce dalla collaborazione."
+        icon: "landmark",
+        title: "Istituzioni",
+        description: "Portiamo l'AI negli enti pubblici per accorciare i tempi delle pratiche e rendere i servizi più semplici da usare, con ogni passaggio ricostruibile."
       }
     ]
   },
