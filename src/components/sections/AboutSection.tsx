@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
 import { aboutContent } from "@/content/about";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Unlock, Brain, Zap, Users, Code, Rocket, Heart, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
+import { getIcon } from "@/components/icons";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } }
 };
 
 const staggerContainer = {
@@ -15,17 +15,6 @@ const staggerContainer = {
       staggerChildren: 0.1
     }
   }
-};
-
-const iconMap: Record<string, React.ElementType> = {
-  unlock: Unlock,
-  brain: Brain,
-  zap: Zap,
-  users: Users,
-  code: Code,
-  rocket: Rocket,
-  heart: Heart,
-  sparkles: Sparkles
 };
 
 export const AboutSection = () => {
@@ -75,7 +64,7 @@ export const AboutSection = () => {
                 className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto"
               >
                 {aboutContent.values.items.map((item, idx) => {
-                  const Icon = iconMap[item.icon];
+                  const Icon = getIcon(item.icon);
                   return (
                     <motion.div
                       key={idx}
@@ -83,12 +72,14 @@ export const AboutSection = () => {
                       whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.2 } }}
                       className="bg-card/80 backdrop-blur-sm border border-primary/20 rounded-xl p-6 text-center hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
                     >
-                      <motion.div
-                        whileHover={{ rotate: [0, -10, 10, 0], transition: { duration: 0.5 } }}
-                        className="inline-flex p-4 rounded-full bg-primary/10 border border-primary/30 mb-4"
-                      >
-                        <Icon className="w-8 h-8 text-primary" />
-                      </motion.div>
+                      {Icon && (
+                        <motion.div
+                          whileHover={{ rotate: [0, -10, 10, 0], transition: { duration: 0.5 } }}
+                          className="inline-flex p-4 rounded-full bg-primary/10 border border-primary/30 mb-4"
+                        >
+                          <Icon className="w-8 h-8 text-primary" />
+                        </motion.div>
+                      )}
                       <h3 className="text-lg font-bold mb-2">{item.title}</h3>
                       <p className="text-sm text-muted-foreground leading-relaxed">
                         {item.description}

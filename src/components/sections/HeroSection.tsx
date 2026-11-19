@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { heroContent } from '@/content/hero'
 import { Badge } from '@/components/Badge'
+import { CtaLink } from '@/components/CtaLink'
 import { Zap, Users, Code2 } from 'lucide-react'
 
 export const HeroSection = () => {
@@ -88,26 +89,12 @@ export const HeroSection = () => {
         transition={{ duration: 0.6, delay: 0.7 }}
         className="flex flex-col sm:flex-row gap-4 justify-center"
       >
-        <motion.a
-          href={heroContent.cta.primary.url}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 rounded-lg transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-primary/40"
-        >
-          <Code2 className="w-5 h-5" />
+        <CtaLink href={heroContent.cta.primary.url} icon={Code2}>
           {heroContent.cta.primary.label}
-        </motion.a>
-        <motion.a
-          href={heroContent.cta.secondary.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="inline-flex items-center justify-center gap-2 bg-secondary hover:bg-secondary/80 text-foreground font-semibold px-8 py-4 rounded-lg border border-primary/20 hover:border-primary/40 transition-all duration-300"
-        >
-          <Users className="w-5 h-5" />
+        </CtaLink>
+        <CtaLink href={heroContent.cta.secondary.url} icon={Users} variant="secondary">
           {heroContent.cta.secondary.label}
-        </motion.a>
+        </CtaLink>
       </motion.div>
     </section>
   )

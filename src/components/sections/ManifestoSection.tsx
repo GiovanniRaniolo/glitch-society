@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import { manifestoContent } from "@/content/manifesto";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Unlock, Brain, Zap, Globe } from "lucide-react";
+import { getIcon } from "@/components/icons";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5 } }
 };
 
 const staggerContainer = {
@@ -15,13 +14,6 @@ const staggerContainer = {
       staggerChildren: 0.15
     }
   }
-};
-
-const iconMap: Record<number, React.ElementType> = {
-  0: Unlock,
-  1: Brain,
-  2: Zap,
-  3: Globe
 };
 
 export const ManifestoSection = () => {
@@ -52,7 +44,7 @@ export const ManifestoSection = () => {
           className="grid md:grid-cols-2 gap-6"
         >
           {manifestoContent.manifesto.principles.map((principle, idx) => {
-            const Icon = iconMap[idx];
+            const Icon = getIcon(principle.icon);
             return (
               <motion.div
                 key={idx}
@@ -65,9 +57,11 @@ export const ManifestoSection = () => {
                 
                 <div className="relative bg-card border border-primary/20 rounded-xl p-6 hover:border-primary/40 transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-primary/10 border border-primary/30">
-                      <Icon className="w-6 h-6 text-primary" />
-                    </div>
+                    {Icon && (
+                      <div className="p-3 rounded-lg bg-primary/10 border border-primary/30">
+                        <Icon className="w-6 h-6 text-primary" />
+                      </div>
+                    )}
                     <div className="flex-1">
                       <h3 className="text-xl font-bold mb-2 text-foreground">
                         {principle.title}

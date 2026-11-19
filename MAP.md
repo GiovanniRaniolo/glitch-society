@@ -31,6 +31,8 @@ Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `sr
 |---|---|---|
 | Pillola arancione sopra i titoli, badge | `components/Badge.tsx` | `SectionHeader`, Hero |
 | Intestazione di sezione: pillola, titolo, sottotitolo, testo | `components/SectionHeader.tsx` | FeaturedCourse, Manifesto, About, Community |
+| Pulsante d'azione, CTA, link esterno in nuova scheda | `components/CtaLink.tsx` | Hero, FeaturedCourse, Community, `pages/NotFound.tsx` |
+| Icone scelte nei testi (campo `icon`), `icons`, `getIcon`, nome icona nuovo | `components/icons.ts` | FeaturedCourse, Manifesto, About, Community, Footer |
 
 ## Pagine e rotte
 

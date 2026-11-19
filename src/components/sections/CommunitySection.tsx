@@ -1,14 +1,9 @@
 import { motion } from "framer-motion";
 import { communityContent } from "@/content/community";
 import { SectionHeader } from "@/components/SectionHeader";
-import { Send, MessageCircle, Lightbulb, Users, Calendar } from "lucide-react";
-
-const iconMap: Record<string, React.ElementType> = {
-  messageCircle: MessageCircle,
-  lightbulb: Lightbulb,
-  users: Users,
-  calendar: Calendar
-};
+import { CtaLink } from "@/components/CtaLink";
+import { Send } from "lucide-react";
+import { getIcon } from "@/components/icons";
 
 export const CommunitySection = () => {
   return (
@@ -54,7 +49,7 @@ export const CommunitySection = () => {
             {/* Features Grid */}
             <div className="grid sm:grid-cols-2 gap-4 mb-8">
               {communityContent.telegram.features.map((feature, idx) => {
-                const Icon = iconMap[feature.icon];
+                const Icon = getIcon(feature.icon);
                 return (
                   <motion.div
                     key={idx}
@@ -64,7 +59,7 @@ export const CommunitySection = () => {
                     transition={{ duration: 0.4, delay: 0.3 + idx * 0.1 }}
                     className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 border border-border"
                   >
-                    <Icon className="w-5 h-5 text-primary flex-shrink-0" />
+                    {Icon && <Icon className="w-5 h-5 text-primary flex-shrink-0" />}
                     <span className="text-sm text-foreground">{feature.text}</span>
                   </motion.div>
                 );
@@ -73,17 +68,9 @@ export const CommunitySection = () => {
 
             {/* CTA */}
             <div className="text-center">
-              <motion.a
-                href={communityContent.telegram.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="inline-flex items-center justify-center gap-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
-              >
-                <Send className="w-5 h-5" />
+              <CtaLink href={communityContent.telegram.url} icon={Send} variant="telegram">
                 {communityContent.telegram.cta}
-              </motion.a>
+              </CtaLink>
               <p className="mt-4 text-sm text-muted-foreground italic">
                 {communityContent.telegram.tagline}
               </p>

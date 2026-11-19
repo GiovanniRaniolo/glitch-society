@@ -1,21 +1,9 @@
 import { motion } from 'framer-motion'
-import {
-  Calendar,
-  Clock,
-  MapPin,
-  Users,
-  ArrowRight,
-  Sparkles,
-} from 'lucide-react'
+import { ArrowRight, Sparkles } from 'lucide-react'
 import { featuredCourseContent } from '@/content/featuredCourse'
 import { SectionHeader } from '@/components/SectionHeader'
-
-const iconMap = {
-  calendar: Calendar,
-  clock: Clock,
-  mapPin: MapPin,
-  users: Users,
-}
+import { CtaLink } from '@/components/CtaLink'
+import { getIcon } from '@/components/icons'
 
 export const FeaturedCourseSection = () => {
   const {
@@ -74,8 +62,7 @@ export const FeaturedCourseSection = () => {
             {/* Details Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
               {Object.values(details).map((detail, idx) => {
-                const IconComponent =
-                  iconMap[detail.icon as keyof typeof iconMap]
+                const IconComponent = getIcon(detail.icon)
                 return (
                   <motion.div
                     key={idx}
@@ -86,9 +73,11 @@ export const FeaturedCourseSection = () => {
                     className="bg-secondary/50 rounded-2xl p-5 border border-border hover:border-primary/30 transition-colors"
                   >
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-                        <IconComponent className="w-5 h-5 text-primary" />
-                      </div>
+                      {IconComponent && (
+                        <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
+                          <IconComponent className="w-5 h-5 text-primary" />
+                        </div>
+                      )}
                       <span className="text-sm text-muted-foreground">
                         {detail.label}
                       </span>
@@ -132,15 +121,9 @@ export const FeaturedCourseSection = () => {
 
             {/* CTA */}
             <div className="text-center">
-              <motion.a
-                href={cta.url}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-colors shadow-lg shadow-primary/25"
-              >
+              <CtaLink href={cta.url} icon={ArrowRight} iconEnd>
                 {cta.primary}
-                <ArrowRight className="w-5 h-5" />
-              </motion.a>
+              </CtaLink>
               <p className="text-muted-foreground text-sm mt-4">
                 {urgency.text}
               </p>

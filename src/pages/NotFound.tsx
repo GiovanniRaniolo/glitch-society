@@ -1,8 +1,9 @@
 // Pagina 404: mostrata per ogni rotta inesistente (rotta "*" in App.tsx).
 // Testi: content/notFound.ts.
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Home } from "lucide-react";
+import { CtaLink } from "@/components/CtaLink";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
 import { notFoundContent } from "@/content/notFound";
@@ -32,13 +33,9 @@ const NotFound = () => {
             <p className="text-muted-foreground">{notFoundContent.terminal.error}</p>
           </div>
 
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-4 rounded-lg transition-all duration-300 shadow-lg shadow-primary/25 hover:shadow-primary/40"
-          >
-            <Home className="w-5 h-5" />
+          <CtaLink href="/" icon={Home}>
             {notFoundContent.cta}
-          </Link>
+          </CtaLink>
         </motion.div>
       </section>
 

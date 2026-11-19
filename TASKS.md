@@ -13,7 +13,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-T14 (verifica dopo deploy) → T23 → T24 → T25 → T10 → T12 → T26 → T27 → T28
+T14 (verifica dopo deploy) → T10 → T12 → T26 → T27 → T28
 
 ## In attesa dell'utente
 - T03 — dati dell'evento one-shot del 12 dicembre (li fornisce l'utente).
@@ -65,21 +65,6 @@ T14 (verifica dopo deploy) → T23 → T24 → T25 → T10 → T12 → T26 → T
 - **File:** `src/content/hero.ts` (dopo T05 etichetta e indirizzo stanno entrambi in `cta.primary`)
 - **Fatto quando:** etichetta e destinazione coincidono (decisione scritta sotto).
 
-### T23 🟡 Pulsante d'azione unico — agente
-- **Problema:** 4 stili di pulsante (angoli `lg`/`xl`, zoom 1.05/1.02, peso diverso). Link esterni incoerenti: Academy apre nella stessa scheda, Telegram e social in una nuova.
-- **File:** nuovo `src/components/CtaLink.tsx`; `HeroSection.tsx`, `FeaturedCourseSection.tsx`, `CommunitySection.tsx`, `pages/NotFound.tsx`
-- **Fatto quando:** i pulsanti usano `CtaLink`; ogni link esterno apre in nuova scheda con `rel="noopener noreferrer"`.
-
-### T24 🟡 Mappa icone unica, icone scelte nel contenuto — agente
-- **Problema:** 4 mappe icone diverse (FeaturedCourse, Manifesto, About, Community, Footer). Manifesto sceglie l'icona **per posizione**: aggiungere un 5° principio fa crashare la pagina (icona `undefined`); un nome icona sbagliato nel contenuto fa lo stesso.
-- **File:** nuovo `src/components/icons.ts`; sezioni sopra; `src/content/manifesto.ts`
-- **Fatto quando:** una sola mappa; ogni elemento del contenuto ha `icon`; icona mancante → nessun crash.
-
-### T25 ⚪ Animazioni: durata ignorata in Manifesto e About — agente
-- **Problema:** nelle varianti `fadeInUp` la chiave `transition` sta allo stesso livello di `initial`/`animate`, quindi framer-motion la tratta come variante e la ignora.
-- **File:** `ManifestoSection.tsx`, `AboutSection.tsx`
-- **Fatto quando:** `transition` dentro `animate`; build passa.
-
 ### T26 ⚪ Logo: usare il formato leggero — agente
 - **Problema:** Header e Footer caricano `glitch_logo.png` (32 KB, 850×227); `glitch_logo.webp` (4 KB) è inutilizzato.
 - **File:** `Header.tsx`, `Footer.tsx`
@@ -110,6 +95,8 @@ T14 (verifica dopo deploy) → T23 → T24 → T25 → T10 → T12 → T26 → T
 - 2026-11-19 — Nome del marchio (T21): restano volutamente `alternateName: "GLITCH Society"` e la keyword "glitch academy" in `index.html` (servono alle ricerche), "Unisciti a GL!TCH" (forma breve, come il logo), i prompt `gl!tch@society` / `user@gl!tch` (stile terminale) e l'email `glitchacademycrew@` (indirizzo reale).
 
 ## Fatti
+- 2026-11-19 — **T25** In `ManifestoSection.tsx` e `AboutSection.tsx` la durata (0,5 s) ora sta dentro `animate` di `fadeInUp`, quindi viene usata. Controllato nel browser misurando la dissolvenza: ogni scheda passa da invisibile a piena in ~0,5 s, una dopo l'altra (0,15 s di scarto nel Manifesto, 0,1 s in About); console senza errori. Build e lint passano. Cambio visivo minimo: entrata delle schede un po' più lenta e regolare di prima.
+- 2026-11-19 — **T24** Nuovo `components/icons.ts`: una sola mappa delle icone scelte nei testi (`icons`) e `getIcon(nome)`, che con nome mancante o sbagliato restituisce `null` (in sviluppo avvisa in console). Tolte le 5 mappe locali da FeaturedCourse, Manifesto, About, Community, Footer. I principi del Manifesto ora hanno `icon` nel contenuto (prima l'icona dipendeva dalla posizione). Senza icona: la scheda mostra solo il testo; nel Footer il cerchio mostra l'iniziale del social. Controllato nel browser: icone identiche a prima in ogni sezione; prova temporanea con 5° principio senza icona e nomi sbagliati (About, Footer) → pagina intera, nessun errore, solo l'avviso; testi di prova poi tolti. Build e lint passano. Le icone fisse dei componenti (frecce, pulsanti, pillole) restano importate direttamente.
 - 2026-11-19 — **T01** Dipendenze installate; `npm run build` passa. Lint non parte → T16; controllo tipi fallisce → T17; vulnerabilità → T18.
 - 2026-11-19 — **T13** `index.html`: canonical, Open Graph, Twitter e JSON-LD ora su `https://glitchsociety.dev` (9 URL); `ascii-art.png` e `glitch_logo.png` rispondono 200 sul dominio vero; build passa. Visibile online dopo il deploy da master.
 - 2026-11-19 — **T11** `theme-color` in `index.html` = `#FF6A38`.
@@ -122,6 +109,7 @@ T14 (verifica dopo deploy) → T23 → T24 → T25 → T10 → T12 → T26 → T
 - 2026-11-19 — **T09** Eliminato `src/App.css` (esempio di Vite, non importato da nessun file); build con file identici a prima.
 - 2026-11-19 — **T19** Pagina 404 rifatta: testi italiani in `content/notFound.ts`, Header e Footer, riga in stile terminale col percorso cercato (va a capo se lungo), pulsante `<Link>` "Torna alla home" (stile del pulsante principale della Hero, da unificare in T23). Tolto il `console.error`. Controllato nel browser: niente errori del sito in console, ritorno alla home senza ricarica, da telefono (375 px) nessuno scorrimento orizzontale.
 - 2026-11-19 — **T06** Tolto il blocco `gallery` da `content/community.ts` (non usato, foto inesistenti). Testi originali, da riusare quando arrivano le foto: titolo "Momenti Glitch"; foto `/gallery/event1-4.jpg` con alt "Hack live session", "Deploy celebration", "Community networking", "Code together". `grep gallery src` vuoto, build passa.
+- 2026-11-19 — **T23** Nuovo `components/CtaLink.tsx`: un solo pulsante con 3 colori (`primary` arancione, `secondary` grigio, `telegram` blu); forma, misure e zoom uguali per tutti. Link esterno → nuova scheda con `rel="noopener noreferrer"`; link interno → nessuna ricarica. Lo usano Hero (2), Corso, Community, 404. Controllato nel browser: i 5 pulsanti hanno stessi angoli, peso e misure; i 4 esterni aprono in nuova scheda; "Torna alla home" porta a `/` senza ricaricare; console senza errori. Cambi visivi voluti: pulsante del corso con testo un po' più piccolo e angoli meno tondi (come gli altri); i due link Academy ora aprono in nuova scheda; il pulsante della 404 ha lo zoom al passaggio del mouse. Footer e pagine legali erano già a posto (nuova scheda), non toccati.
 - 2026-11-19 — **T22** Nuovi `components/Badge.tsx` (pillola, un solo stile) e `components/SectionHeader.tsx` (pillola + titolo + sottotitolo + testo, ogni parte solo se piena). Li usano FeaturedCourse, Manifesto (2 intestazioni), About (2), Community; la Hero usa solo `Badge`, il suo titolo grande resta a parte. Controllato nel browser: le 5 pillole identiche, titoli h2 tutti 48 px su computer e 30 px su telefono, nessuno scorrimento laterale, console senza errori. Piccoli cambi visivi voluti: titolo del corso da 60 a 48 px su schermi grandi; la pillola del corso non fa più il suo piccolo zoom d'entrata (entra con la dissolvenza dell'intestazione); testo sotto i titoli di Manifesto e Essenza un po' più piccolo e stretto (come le altre sezioni). Le pillole "✓" del corso sono un elenco, non intestazioni: non toccate.
 - 2026-11-19 — **T05** Link della Hero spostati in `content/hero.ts`: `cta.primary` e `cta.secondary` ora sono `{ label, url }`. `grep "https://" HeroSection.tsx` vuoto; build e lint passano; nel browser (build di produzione) i due pulsanti hanno gli stessi `href`, `target` e `rel` di prima, console senza errori.
 - 2026-11-19 — **T21** Grafia "GL!TCH Society" in `content/hero.ts`, `about.ts`, `manifesto.ts`, `footer.ts`, `privacy.ts` (titolare), `alt` dei loghi in `Header.tsx`/`Footer.tsx`, README. Badge della Hero e titolo di About restano maiuscoli via CSS (`uppercase`). Nessun "Academy" come nome del marchio. Controllato nel browser: a schermo identico a prima, titolare Privacy = GL!TCH Society.

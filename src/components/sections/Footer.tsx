@@ -1,13 +1,8 @@
 import { motion } from "framer-motion";
-import { Link2, Instagram, Send, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { footerContent } from "@/content/footer";
 import { Link } from "react-router-dom";
-
-const iconMap = {
-  linktree: Link2,
-  instagram: Instagram,
-  telegram: Send
-};
+import { getIcon } from "@/components/icons";
 
 export const Footer = () => {
   return (
@@ -46,7 +41,7 @@ export const Footer = () => {
               className="flex gap-4 md:mt-0"
             >
               {footerContent.social.map((social, idx) => {
-                const IconComponent = iconMap[social.icon as keyof typeof iconMap];
+                const IconComponent = getIcon(social.icon);
                 return (
                   <motion.a
                     key={idx}
@@ -58,7 +53,8 @@ export const Footer = () => {
                     whileTap={{ scale: 0.95 }}
                     className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors"
                   >
-                    <IconComponent className="w-5 h-5" />
+                    {/* senza icona: iniziale del nome, il link resta cliccabile */}
+                    {IconComponent ? <IconComponent className="w-5 h-5" /> : <span className="text-sm font-bold">{social.label.charAt(0)}</span>}
                   </motion.a>
                 );
               })}
