@@ -36,6 +36,11 @@ Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `sr
 
 Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/components/ScrollToTop.tsx`.
 
+## Dominio e hosting
+- Sito pubblicato: `https://glitchsociety.dev` su **Vercel** (deploy da `master`).
+- Tutti gli indirizzi assoluti (metadati, sitemap, canonical) usano `glitchsociety.dev` (T13).
+- Regole di routing Vercel: `vercel.json` (da creare → T14).
+
 ## Link esterni (dove sono scritti)
 
 | Link | Dove |
