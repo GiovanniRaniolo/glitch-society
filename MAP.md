@@ -75,6 +75,9 @@ Se cambia un link, aggiornare **tutte** le righe della tabella.
 - Titolo e canonical **per pagina** (cambiano quando si cambia pagina): `components/PageMeta.tsx`; nome, dominio, titolo home: `content/site.ts` (tenerli uguali a `index.html`)
 - Robot: `public/robots.txt` (cita la sitemap); elenco pagine per i motori: `public/sitemap.xml` (aggiornarlo se si aggiunge una pagina in `src/App.tsx`)
 
+## Appunti locali (fuori da git)
+- `private/` (in `.gitignore`, resta solo su questo computer)
+
 ## Configurazione e strumenti
 - Dipendenze e script (`dev`, `build` = controllo tipi + vite, `lint`, `preview`): `package.json` (nome `glitch-society`) → T28 (React Router v7)
 - Build e alias `@` → `src/`: `vite.config.ts`
