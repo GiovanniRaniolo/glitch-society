@@ -13,7 +13,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-T14 (verifica dopo deploy) → T08 → T18 → T09 → T19 → T06 → T21 → T05 → T22 → T23 → T24 → T25 → T10 → T12 → T26 → T27
+T14 (verifica dopo deploy) → T21 → T05 → T22 → T23 → T24 → T25 → T10 → T12 → T26 → T27 → T28
 
 ## In attesa dell'utente
 - T03 — dati dell'evento one-shot del 12 dicembre (li fornisce l'utente).
@@ -47,21 +47,6 @@ T14 (verifica dopo deploy) → T08 → T18 → T09 → T19 → T06 → T21 → T
 - **File:** `src/content/hero.ts`, `src/components/sections/HeroSection.tsx`
 - **Fatto quando:** `grep -n "https://" src/components/sections/HeroSection.tsx` è vuoto; link invariati a schermo.
 
-### T06 ⚪ Togliere la galleria "Momenti Glitch" — agente
-- **Problema:** `community.ts` cita 4 foto in `/gallery/`; la cartella non esiste e la sezione non le usa.
-- **Decisione:** togliere per ora; si rimette quando ci saranno le foto.
-- **File:** `src/content/community.ts`
-- **Fatto quando:** `grep -rn "gallery" src` è vuoto; build passa.
-
-### T08 🟡 Rimuovere dipendenze npm non usate — agente
-- **Problema:** librerie installate ma non usate (Radix, `@tanstack/react-query`, `recharts`, `next-themes`, `zod`, `react-hook-form`…) e doppio plugin `@vitejs/plugin-react-swc`.
-- **File:** `package.json`, `package-lock.json`
-- **Fatto quando:** ogni dipendenza è importata da `src/` o da un file di config; build passa.
-- **Blocca:** T18. (T07 fatto: `ui/` non c'è più, quindi Radix & co. non sono più importati da nessuna parte.)
-
-### T09 ⚪ Eliminare `src/App.css` non usato — agente
-- **File:** `src/App.css` · **Fatto quando:** file rimosso, build passa.
-
 ### T10 ⚪ Allineare nome pacchetto e README — agente
 - **Problema:** `package.json` si chiama `vite_react_shadcn_ts`; il README cita `src/assets/` (inesistente) e descrive "Gl!tch Academy - 7 settimane".
 - **File:** `package.json`, `README.md`
@@ -79,17 +64,6 @@ T14 (verifica dopo deploy) → T08 → T18 → T09 → T19 → T06 → T21 → T
 - **File:** `vercel.json` (nuovo)
 - **Stato (2026-11-19):** `vercel.json` creato con riscrittura di tutte le rotte su `/index.html` (i file statici in `public/` hanno la precedenza). Manca solo la verifica col curl **dopo il deploy da master**.
 - **Fatto quando:** dopo il deploy, `curl -o /dev/null -w "%{http_code}" https://glitchsociety.dev/privacy-policy` = 200 (idem cookie-policy).
-
-### T18 🟠 Vulnerabilità npm — agente
-- **Problema:** `npm audit` 22 avvisi (10 in produzione, 9 alti: `@remix-run/router` di react-router, `zod`, `lodash`, `nanoid`, `postcss`…).
-- **File:** `package.json`, `package-lock.json`
-- **Fatto quando:** `npm audit --omit=dev` = 0 alti; build passa.
-- **Dipende da:** T08 (molte spariscono togliendo le librerie inutili).
-
-### T19 🟠 Pagina 404 fuori stile — agente
-- **Problema:** testo in inglese ("Oops! Page not found"), senza Header/Footer, `console.error` in produzione, link con `<a>` (ricarica).
-- **File:** `src/pages/NotFound.tsx`, nuovo `src/content/notFound.ts`
-- **Fatto quando:** testi italiani da `content/`, Header e Footer presenti, nessun `console.error`, link `<Link>`.
 
 ### T20 🟠 Pulsante Hero "Esplora gli Eventi" porta al corso — utente
 - **Problema:** l'etichetta parla di eventi, il link apre `academy.glitchsociety.dev` (sito del corso, uguale al pulsante del corso).
@@ -110,7 +84,7 @@ T14 (verifica dopo deploy) → T08 → T18 → T09 → T19 → T06 → T21 → T
 
 ### T23 🟡 Pulsante d'azione unico — agente
 - **Problema:** 4 stili di pulsante (angoli `lg`/`xl`, zoom 1.05/1.02, peso diverso). Link esterni incoerenti: Academy apre nella stessa scheda, Telegram e social in una nuova.
-- **File:** nuovo `src/components/CtaLink.tsx`; `HeroSection.tsx`, `FeaturedCourseSection.tsx`, `CommunitySection.tsx`
+- **File:** nuovo `src/components/CtaLink.tsx`; `HeroSection.tsx`, `FeaturedCourseSection.tsx`, `CommunitySection.tsx`, `pages/NotFound.tsx`
 - **Fatto quando:** i pulsanti usano `CtaLink`; ogni link esterno apre in nuova scheda con `rel="noopener noreferrer"`.
 
 ### T24 🟡 Mappa icone unica, icone scelte nel contenuto — agente
@@ -134,6 +108,11 @@ T14 (verifica dopo deploy) → T08 → T18 → T09 → T19 → T06 → T21 → T
 - **Fatto quando:** Privacy, Cookie e 404 hanno titolo proprio; canonical corretto per pagina.
 - **Dipende da:** T13.
 
+### T28 ⚪ Passare a React Router v7 — agente
+- **Problema:** dopo T18 restano 2 avvisi medi di `react-router` (redirect con barra rovesciata in `<Link>`/`useNavigate`); la correzione esiste solo nella v7 (salto di versione maggiore). Oggi non sfruttabile: i link del sito sono fissi, nessun percorso viene dall'utente.
+- **File:** `package.json`, `package-lock.json`, `src/App.tsx`, file che importano `react-router-dom`
+- **Fatto quando:** `npm audit` = 0 avvisi; Home, Privacy, Cookie e 404 si aprono e i link interni non ricaricano la pagina.
+
 ## Decisioni prese sui compiti
 - 2026-11-19 — Il dominio del sito è `glitchsociety.dev` (Vercel): tutti gli indirizzi assoluti usano questo (T13).
 - 2026-11-19 — Nome ufficiale: **GL!TCH Society**; è anche il titolare in Privacy Policy (non "GL!TCH Academy").
@@ -153,3 +132,8 @@ T14 (verifica dopo deploy) → T08 → T18 → T09 → T19 → T06 → T21 → T
 - 2026-11-19 — **T16** `eslint.config.js` usa `reactHooks.configs['recommended-latest']`; `tailwind.config.ts` importa `tailwindcss-animate` invece di `require` (CSS generato identico). `npm run lint` = 0 errori (dopo T07).
 - 2026-11-19 — **T07** Rimossa `src/components/ui/` (49 file, nessuno importato). `tailwind.config.ts`: tolti colori `sidebar`, animazioni `accordion`, percorsi inesistenti; `content` = `index.html` + `src/`. CSS da 67 a 22 kB; controllato che nessuna classe tolta sia usata dal sito; home a schermo invariata, console senza errori.
 - 2026-11-19 — **T17** Script `build` = `tsc -b && vite build`; `tsc` 0 errori; provato che un errore di tipo blocca la build.
+- 2026-11-19 — **T08** Tolti 18 pacchetti di produzione (tutti i Radix, `@hookform/resolvers`, `@tanstack/react-query`, `class-variance-authority`, `clsx`, `cmdk`, `date-fns`, `embla-carousel-react`, `input-otp`, `next-themes`, `react-day-picker`, `react-hook-form`, `react-resizable-panels`, `recharts`, `sonner`, `tailwind-merge`, `vaul`, `zod`) e 2 di sviluppo (`@tailwindcss/typography`, `@vitejs/plugin-react-swc`). Restano 6 di produzione, tutti importati. Build con file identici a prima (stesso hash), lint 0 errori; avvisi audit in produzione da 10 a 8.
+- 2026-11-19 — **T18** `npm audit fix` (senza `--force`; solo lockfile, versioni in `package.json` invariate) + `npm update typescript-eslint`. Avvisi da 19 a 2 medi (0 alti, anche in produzione): restano quelli di `react-router` → T28. Aggiornati tra gli altri react-router-dom 6.30.6, vite 7.3.8, postcss 8.5.33. Build, tipi e lint passano; nel browser (build di produzione) Home, Privacy, Cookie e 404 ok, navigazione interna senza ricarica.
+- 2026-11-19 — **T09** Eliminato `src/App.css` (esempio di Vite, non importato da nessun file); build con file identici a prima.
+- 2026-11-19 — **T19** Pagina 404 rifatta: testi italiani in `content/notFound.ts`, Header e Footer, riga in stile terminale col percorso cercato (va a capo se lungo), pulsante `<Link>` "Torna alla home" (stile del pulsante principale della Hero, da unificare in T23). Tolto il `console.error`. Controllato nel browser: niente errori del sito in console, ritorno alla home senza ricarica, da telefono (375 px) nessuno scorrimento orizzontale.
+- 2026-11-19 — **T06** Tolto il blocco `gallery` da `content/community.ts` (non usato, foto inesistenti). Testi originali, da riusare quando arrivano le foto: titolo "Momenti Glitch"; foto `/gallery/event1-4.jpg` con alt "Hack live session", "Deploy celebration", "Community networking", "Code together". `grep gallery src` vuoto, build passa.

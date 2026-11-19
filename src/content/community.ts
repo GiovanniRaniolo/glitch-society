@@ -20,13 +20,4 @@ export const communityContent = {
     url: 'https://t.me/glitchsociety_dev',
     tagline: "Hai un'idea glitch? Entra e proponila alla community!",
   },
-  gallery: {
-    title: 'Momenti Glitch',
-    images: [
-      { src: '/gallery/event1.jpg', alt: 'Hack live session' },
-      { src: '/gallery/event2.jpg', alt: 'Deploy celebration' },
-      { src: '/gallery/event3.jpg', alt: 'Community networking' },
-      { src: '/gallery/event4.jpg', alt: 'Code together' },
-    ],
-  },
 }

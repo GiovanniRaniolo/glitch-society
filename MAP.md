@@ -20,7 +20,7 @@ Collegamenti: compiti aperti in [TASKS.md](TASKS.md); istruzioni d'avvio in [REA
 | Corso in evidenza, date, sede ERETICO, posti, early bird | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`) | scaduto → T03 |
 | Manifesto, mission, principi | `sections/ManifestoSection.tsx` | `content/manifesto.ts` (`manifestoContent`) | |
 | Chi siamo, essenza, valori | `sections/AboutSection.tsx` | `content/about.ts` (`aboutContent`) | |
-| Community, Telegram, galleria | `sections/CommunitySection.tsx` | `content/community.ts` (`communityContent`) | galleria non usata → T06 |
+| Community, Telegram | `sections/CommunitySection.tsx` | `content/community.ts` (`communityContent`) | galleria tolta (T06) |
 | Footer, social, email, link legali, copyright | `sections/Footer.tsx` | `content/footer.ts` (`footerContent`) | copyright → T04 |
 
 Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `src/pages/Index.tsx`.
@@ -32,7 +32,7 @@ Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `sr
 | `/` | `src/pages/Index.tsx` | vedi tabella sopra |
 | `/privacy-policy` | `src/pages/PrivacyPolicy.tsx` → `components/LegalPage.tsx` | `content/privacy.ts` (P.IVA → T02) |
 | `/cookie-policy` | `src/pages/CookiePolicy.tsx` → `components/LegalPage.tsx` | `content/cookies.ts` |
-| `*` (404) | `src/pages/NotFound.tsx` | testo nel componente |
+| `*` (404) | `src/pages/NotFound.tsx` | `content/notFound.ts` (`notFoundContent`) |
 
 Pagine legali: un solo componente `src/components/LegalPage.tsx`; tipi e formato dei testi (`**grassetto**`, `[link](indirizzo)`) in `src/content/legalTypes.ts`, letti da `src/components/RichText.tsx`.
 Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/components/ScrollToTop.tsx`.
@@ -64,8 +64,7 @@ Se cambia un link, aggiornare **tutte** le righe della tabella.
 - Robot: `public/robots.txt`; sitemap mancante → T12
 
 ## Configurazione e strumenti
-- Dipendenze e script (`dev`, `build` = controllo tipi + vite, `lint`, `preview`): `package.json` → T08, T10
+- Dipendenze e script (`dev`, `build` = controllo tipi + vite, `lint`, `preview`): `package.json` → T10 (nome), T28 (React Router v7)
 - Build e alias `@` → `src/`: `vite.config.ts`
 - TypeScript: `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`
 - Lint: `eslint.config.js`; PostCSS: `postcss.config.js`
-- File non usato: `src/App.css` → T09
