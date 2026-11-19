@@ -13,7 +13,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-T14 (verifica dopo deploy, insieme alla sitemap). T28 in roadmap, da valutare con il team.
+T35 → T34 → T36 → T37 (rebrand, da fare in una sessione nuova). T14 dopo il deploy. T28 in roadmap, da valutare con il team.
 
 ## In attesa dell'utente
 - T03 — dati dell'evento one-shot del 12 dicembre (li fornisce l'utente).
@@ -22,6 +22,32 @@ T14 (verifica dopo deploy, insieme alla sitemap). T28 in roadmap, da valutare co
 - ⚠️ **T02 — Partita IVA del titolare** da inserire nella Privacy Policy.
 
 ## Aperti
+
+### T35 🟡 Mission: titolo e testo della visione — agente
+- **Problema:** il titolo della Mission (T33) è provvisorio.
+- **File:** `src/content/manifesto.ts`
+- **Testi:** approvati dall'utente.
+- **Fatto quando:** la Mission mostra titolo e testo approvati; build e lint passano.
+
+### T34 🟡 Hero: descrizione sull'impatto e "Con chi costruiamo" — agente
+- **Problema:** la descrizione e il riquadro Essenza della Hero parlano solo di community e formazione.
+- **Decisione:** la descrizione parla di istituzioni, imprese e persone; le 3 schede dell'Essenza diventano Istituzioni, Imprese, Persone.
+- **File:** `src/content/hero.ts`, `src/components/icons.ts`
+- **Testi:** approvati dall'utente; prima chiedere all'utente se cambiare anche il sottotitolo della Hero.
+- **Fatto quando:** nel browser la Hero mostra i testi nuovi; testi tolti annotati qui sotto "Fatti"; build e lint passano.
+
+### T36 🟡 Nuova sezione Etica dopo la Mission — agente
+- **Problema:** il sito non dice come usiamo l'AI in modo responsabile.
+- **Decisione:** sezione nuova dopo la Mission, in forma "Sempre / Mai" (3 voci ciascuno), non un elenco di articoli.
+- **File:** `src/content/ethics.ts` (nuovo), `src/components/sections/EthicsSection.tsx` (nuovo), `src/components/sections/index.ts`, `src/pages/Index.tsx`, `MAP.md`
+- **Testi:** approvati dall'utente.
+- **Fatto quando:** nel browser la sezione compare tra Mission e Corso, testi solo nel file di contenuto, a 375 px nessuno scorrimento laterale, console senza errori; build e lint passano.
+
+### T37 🟡 Contatto per le aziende nella colonna Consulenza — agente
+- **Problema:** chi cerca una consulenza non ha un modo di scriverci (oggi solo Telegram e Academy).
+- **Decisione:** pulsante "Raccontaci il tuo progetto" → email `glitchacademycrew@gmail.com` (provvisoria).
+- **File:** `src/content/manifesto.ts`, `src/components/sections/ManifestoSection.tsx`, forse `src/components/CtaLink.tsx` (oggi apre `mailto:` in nuova scheda).
+- **Fatto quando:** il pulsante apre il programma di posta con l'indirizzo giusto, nella stessa scheda; build e lint passano.
 
 ### T02 🟠 Inserire la Partita IVA del titolare — utente, poi agente
 - **Problema:** nella Privacy Policy il titolare ha `vat: "[DA INSERIRE]"`, mostrato così sul sito.
@@ -65,6 +91,9 @@ T14 (verifica dopo deploy, insieme alla sitemap). T28 in roadmap, da valutare co
 - 2026-11-19 — Nome del marchio (T21): restano volutamente `alternateName: "GLITCH Society"` e la keyword "glitch academy" in `index.html` (servono alle ricerche), "Unisciti a GL!TCH" (forma breve, come il logo), i prompt `gl!tch@society` / `user@gl!tch` (stile terminale) e l'email `glitchacademycrew@` (indirizzo reale).
 
 - 2026-11-19 — Rebrand: il sito si sposta dalla sola formazione alla consulenza AI per le aziende. Stesse sezioni, contenuti riorientati.
+- 2026-11-19 — Rebrand, decisioni dell'utente: sezione Etica nuova dopo la Mission; visione "Persone al centro, AI al fianco."; schede dell'Essenza → Istituzioni, Imprese, Persone; contatto aziende provvisorio `glitchacademycrew@gmail.com`.
+- 2026-11-19 — Sezione Etica in forma "Sempre / Mai".
+- 2026-11-19 — **Rinviate:** due possibili aggiunte alla sezione Etica (dettagli negli appunti locali).
 
 ## Fatti
 - 2026-11-19 — **T33** "La nostra mission" ora ha due colonne: **Consulenza AI per le Aziende** (a sinistra: Analisi dei Processi, Soluzioni su Misura, Integrazione Graduale, Team Autonomo) e **Formazione Tech Senza Barriere** (a destra, testi e schede di prima). Titolo comune nuovo "L'AI al Servizio di Aziende e Persone" con descrizione che le unisce. Testi tutti in `content/manifesto.ts` (`columns`; l'ordine nel file è l'ordine a schermo); tolti i campi vuoti `manifesto.badge/title`. 5 icone nuove in `components/icons.ts` (briefcase, graduationCap, search, puzzle, workflow). Controllato nel browser (build di produzione): a 1440 px le schede delle due colonne sono allineate; a 375 px colonne una sotto l'altra, nessuno scorrimento laterale; console senza errori. Build e lint passano. **Testi tolti**, da riusare se servono: titolo della mission "Formazione Tech Senza Barriere" (ora titolo della colonna Formazione).
