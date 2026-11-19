@@ -13,10 +13,12 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-Rebrand T33–T37 finito. T14 dopo il deploy. T28 in roadmap, da valutare con il team.
+**Primo compito: T03** (sezione del corso → evento del 12 dicembre), appena l'utente fornisce i testi. Rebrand T33–T37 e ritocchi T38–T44 finiti. T14 dopo il deploy, insieme all'utente. T28 in roadmap, da valutare con il team.
 
 ## In attesa dell'utente
-- T03 — dati dell'evento one-shot del 12 dicembre (li fornisce l'utente).
+- T03 — contenuti e testi dell'evento del 12 dicembre (luogo e data ci sono, il resto no).
+- T02 — Partita IVA (l'utente farà sapere).
+- T14 — deploy su master fatto dall'utente, poi verifica insieme.
 
 ## Da attenzionare (ricordarlo all'utente a fine blocchi grandi o sessioni lunghe)
 - ⚠️ **T02 — Partita IVA del titolare** da inserire nella Privacy Policy.
@@ -25,13 +27,14 @@ Rebrand T33–T37 finito. T14 dopo il deploy. T28 in roadmap, da valutare con il
 
 ### T02 🟠 Inserire la Partita IVA del titolare — utente, poi agente
 - **Problema:** nella Privacy Policy il titolare ha `vat: "[DA INSERIRE]"`, mostrato così sul sito.
-- **Stato:** l'utente non l'ha ancora fornita; ricordarlo a fine blocchi grandi o sessioni lunghe (vedi "Da attenzionare"). Il titolare è già "GL!TCH Society" (T21).
+- **Stato:** l'utente non l'ha ancora fornita e farà sapere (2026-11-19); ricordarlo a fine blocchi grandi o sessioni lunghe (vedi "Da attenzionare"). Il titolare è già "GL!TCH Society" (T21).
 - **File:** `src/content/privacy.ts`
 - **Fatto quando:** `grep "DA INSERIRE" src` non trova nulla.
 
 ### T03 🟠 Sezione corso → evento one-shot del 12 dicembre — utente, poi agente
 - **Problema:** "Corso in partenza" annuncia il 21/02/2026 con "Early bird attivo" e "Ultimi posti": scaduto.
 - **Decisione:** la sezione resta; diventerà l'incontro one-shot del 12 dicembre. I dati arrivano dall'utente più avanti.
+- **Stato (2026-11-19):** primo compito della roadmap. L'utente ha **luogo e data**; mancano ancora **contenuti e testi** (programma, descrizione e gli altri testi della sezione). Si parte quando li fornisce.
 - **File:** `src/content/featuredCourse.ts`, `src/components/sections/FeaturedCourseSection.tsx`
 - **Fatto quando:** la sezione mostra i dati dell'evento forniti dall'utente; nessun riferimento al corso di febbraio.
 - **Nota:** da controllare a schermo da telefono: il bollino "EARLY BIRD" (posizione assoluta in alto a destra) potrebbe coprire la prima scheda dei dettagli.
@@ -39,7 +42,7 @@ Rebrand T33–T37 finito. T14 dopo il deploy. T28 in roadmap, da valutare con il
 ### T14 🔴 Privacy e Cookie Policy danno 404 se aperte direttamente — agente
 - **Problema:** su Vercel manca la regola che rimanda tutte le rotte a `index.html`. `/privacy-policy` e `/cookie-policy` funzionano solo cliccando dal footer; link diretto, ricarica o Google → 404 (verificato 2026-11-19).
 - **File:** `vercel.json` (nuovo)
-- **Stato (2026-11-19):** `vercel.json` creato con riscrittura di tutte le rotte su `/index.html` (i file statici in `public/` hanno la precedenza). Manca solo la verifica col curl **dopo il deploy da master**.
+- **Stato (2026-11-19):** `vercel.json` creato con riscrittura di tutte le rotte su `/index.html` (i file statici in `public/` hanno la precedenza). Manca solo la verifica col curl **dopo il deploy da master**, da fare insieme all'utente (confermato il 2026-11-19).
 - **Fatto quando:** dopo il deploy, `curl -o /dev/null -w "%{http_code}" https://glitchsociety.dev/privacy-policy` = 200 (idem cookie-policy).
 - **Nello stesso controllo (T12):** `curl -s https://glitchsociety.dev/sitemap.xml` deve mostrare l'XML (non la pagina del sito) e `robots.txt` deve avere la riga `Sitemap:`.
 
@@ -68,7 +71,7 @@ Rebrand T33–T37 finito. T14 dopo il deploy. T28 in roadmap, da valutare con il
 - 2026-11-19 — Rebrand, decisioni dell'utente: sezione Etica nuova dopo la Mission; visione "Persone al centro, AI al fianco."; schede dell'Essenza → Istituzioni, Imprese, Persone; contatto aziende provvisorio `glitchacademycrew@gmail.com`.
 - 2026-11-19 — Sezione Etica in forma "Sempre / Mai".
 - 2026-11-19 — **Rinviate:** due possibili aggiunte alla sezione Etica (dettagli negli appunti locali).
-- 2026-11-19 — Canale Telegram: non è ancora deciso se resta. I testi della community non devono invitare le aziende a proporre progetti nel canale (T40).
+- 2026-11-19 — **Canale Telegram: resta** (decisione dell'utente). Lo popolano sviluppatori invitati dal team, vicini a GL!TCH ma non membri, che si scambiano informazioni e opinioni: chi si avvicina trova già una community formata. I testi della community non devono comunque invitare le aziende a proporre progetti nel canale (T40).
 
 ## Fatti
 - 2026-11-19 — **T44** Footer, decisioni dell'utente. (1) Frase sotto il titolo: **"Consulenza e formazione sull'AI per imprese, persone e istituzioni. Dove le idee diventano strumenti."** (proposta A; scartate B "Un collettivo di sviluppatori, creativi e consulenti che porta l'AI nelle aziende e tra le persone." e C "Imprese, persone e istituzioni: costruiamo insieme l'AI che serve davvero."). (2) Titolo "Costruiamo il Futuro, Insieme" resta. (3) Email di contatto scritta una volta sola in `content/site.ts` (`contactEmail`): la leggono il pulsante "Raccontaci il tuo progetto" (`content/manifesto.ts`), il link "scrivici direttamente" e il footer; le pagine legali tengono il loro indirizzo del titolare. (4) Footer largo come le sezioni (`max-w-6xl` sul contenitore, `sections/Footer.tsx`): bordi allineati al pixel con le sezioni sopra. Controllato nel browser (build di produzione): frase nuova, i 3 link email con lo stesso indirizzo, nessuno scorrimento laterale anche a 375 px; console senza errori. Build e lint passano. **Testo tolto**: "Community di innovatori, sviluppatori e creativi. Dove le idee prendono forma."
