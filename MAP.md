@@ -22,7 +22,7 @@ Collegamenti: compiti aperti in [TASKS.md](TASKS.md); istruzioni d'avvio in [REA
 | Etica, codice etico, Sempre / Mai, finestre terminale | `sections/EthicsSection.tsx` | `content/ethics.ts` (`ethicsContent`, `blocks`, `tone`) | dopo la Mission (T36) |
 | Corso in evidenza, prossimo evento, `#next-event`, date, sede ERETICO, posti, early bird | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`, id in `anchor`) | scaduto → T03 |
 | Community, Telegram | `sections/CommunitySection.tsx` | `content/community.ts` (`communityContent`) | galleria tolta (T06) |
-| Footer, social, email, link legali, copyright | `sections/Footer.tsx` | `content/footer.ts` (`footerContent`) | copyright = anno corrente, calcolato (T04) |
+| Footer, social, email, link legali, copyright | `sections/Footer.tsx` | `content/footer.ts` (`footerContent`) | copyright = anno corrente, calcolato (T04); email da `content/site.ts` (T44) |
 
 Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `src/pages/Index.tsx`.
 
@@ -61,7 +61,8 @@ Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/componen
 | Academy `academy.glitchsociety.dev` | `content/featuredCourse.ts` |
 | Telegram `t.me/glitchsociety_dev` | `content/community.ts`, `content/footer.ts`, `content/hero.ts`, `index.html` |
 | Instagram, Linktree | `content/footer.ts`, `index.html` |
-| Email `glitchacademycrew@...` | `content/footer.ts`, `content/privacy.ts`, `content/cookies.ts`, `content/manifesto.ts` (pulsante "Raccontaci il tuo progetto", T37; lo stesso indirizzo è riusato dal link "scrivici direttamente" in `content/community.ts`, T43) |
+| Email di contatto `glitchacademycrew@...` (pulsante "Raccontaci il tuo progetto", link "scrivici direttamente", footer) | **solo** `content/site.ts` (`contactEmail`, T44) |
+| Email del titolare nelle pagine legali | `content/privacy.ts`, `content/cookies.ts` |
 | Lu.ma (iscrizioni, pagamenti) | `content/privacy.ts`, `content/cookies.ts` |
 
 Se cambia un link, aggiornare **tutte** le righe della tabella.
@@ -73,7 +74,7 @@ Se cambia un link, aggiornare **tutte** le righe della tabella.
 
 ## SEO e condivisione
 - Titolo, descrizione, keyword, Open Graph, Twitter, JSON-LD, `theme-color`: `index.html` (`theme-color` arancione `#FF6A38`)
-- Titolo e canonical **per pagina** (cambiano quando si cambia pagina): `components/PageMeta.tsx`; nome, dominio, titolo home: `content/site.ts` (tenerli uguali a `index.html`)
+- Titolo e canonical **per pagina** (cambiano quando si cambia pagina): `components/PageMeta.tsx`; nome, dominio, titolo home: `content/site.ts` (tenerli uguali a `index.html`); lì anche l'email di contatto (`contactEmail`)
 - Robot: `public/robots.txt` (cita la sitemap); elenco pagine per i motori: `public/sitemap.xml` (aggiornarlo se si aggiunge una pagina in `src/App.tsx`)
 
 ## Appunti locali (fuori da git)

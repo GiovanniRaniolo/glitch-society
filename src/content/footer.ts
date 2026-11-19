@@ -1,8 +1,10 @@
+import { siteContent } from "./site";
+
 export const footerContent = {
   heading: {
     title: 'Costruiamo il Futuro, Insieme',
     subtitle:
-      'Community di innovatori, sviluppatori e creativi. Dove le idee prendono forma.',
+      "Consulenza e formazione sull'AI per imprese, persone e istituzioni. Dove le idee diventano strumenti.",
   },
   social: [
     {
@@ -27,6 +29,6 @@ export const footerContent = {
   ],
   bottom: {
     copyright: `© ${new Date().getFullYear()} GL!TCH Society. Tutti i diritti riservati.`,
-    email: 'glitchacademycrew@gmail.com',
+    email: siteContent.contactEmail, // stesso indirizzo del pulsante "Raccontaci il tuo progetto" (T44)
   },
 }

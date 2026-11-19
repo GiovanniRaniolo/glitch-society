@@ -14,13 +14,13 @@ export const Footer = () => {
       transition={{ duration: 0.8 }}
       className="border-t border-border py-16"
     >
-      <div className="container mx-auto px-4">
+      {/* Stessa larghezza delle sezioni sopra (T44) */}
+      <div className="container mx-auto px-4 max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="max-w-5xl mx-auto"
         >
           <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             <Logo className="h-10 -ml-2 mb-6 cursor-pointer hover:opacity-80 transition-opacity" />

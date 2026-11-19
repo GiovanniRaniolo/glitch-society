@@ -1,3 +1,5 @@
+import { siteContent } from "./site";
+
 // Testi della sezione "La nostra mission" (Manifesto).
 // Usati da: components/sections/ManifestoSection.tsx. Icone: nomi in components/icons.ts.
 // Due colonne (T33): Consulenza e Formazione.
@@ -66,11 +68,10 @@ export const manifestoContent = {
       ]
     }
   ],
-  // Pulsante sotto le due colonne (T37, al centro da T38).
-  // Email provvisoria: quando ci sarà un indirizzo dedicato si cambia solo qui.
+  // Pulsante sotto le due colonne (T37, al centro da T38). Email in content/site.ts (T44).
   cta: {
     label: "Raccontaci il tuo progetto",
-    url: "mailto:glitchacademycrew@gmail.com",
+    url: `mailto:${siteContent.contactEmail}`,
     icon: "mail"
   }
 };
