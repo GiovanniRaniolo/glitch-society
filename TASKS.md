@@ -13,7 +13,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-T14 (verifica dopo deploy, insieme alla sitemap) → T28 (più grosso: farlo in una sessione nuova)
+T14 (verifica dopo deploy, insieme alla sitemap). T28 in roadmap, da valutare con il team.
 
 ## In attesa dell'utente
 - T03 — dati dell'evento one-shot del 12 dicembre (li fornisce l'utente).
@@ -36,11 +36,6 @@ T14 (verifica dopo deploy, insieme alla sitemap) → T28 (più grosso: farlo in 
 - **Fatto quando:** la sezione mostra i dati dell'evento forniti dall'utente; nessun riferimento al corso di febbraio.
 - **Nota:** da controllare a schermo da telefono: il bollino "EARLY BIRD" (posizione assoluta in alto a destra) potrebbe coprire la prima scheda dei dettagli.
 
-### T04 ⚪ Aggiornare date legali e copyright — agente
-- **Problema:** Privacy e Cookie Policy dicono "Novembre 2025"; copyright fermo al 2025.
-- **File:** `src/content/privacy.ts`, `src/content/cookies.ts`, `src/content/footer.ts`
-- **Fatto quando:** data = ultima revisione reale dei testi; copyright = anno corrente (o calcolato).
-
 ### T14 🔴 Privacy e Cookie Policy danno 404 se aperte direttamente — agente
 - **Problema:** su Vercel manca la regola che rimanda tutte le rotte a `index.html`. `/privacy-policy` e `/cookie-policy` funzionano solo cliccando dal footer; link diretto, ricarica o Google → 404 (verificato 2026-11-19).
 - **File:** `vercel.json` (nuovo)
@@ -48,7 +43,8 @@ T14 (verifica dopo deploy, insieme alla sitemap) → T28 (più grosso: farlo in 
 - **Fatto quando:** dopo il deploy, `curl -o /dev/null -w "%{http_code}" https://glitchsociety.dev/privacy-policy` = 200 (idem cookie-policy).
 - **Nello stesso controllo (T12):** `curl -s https://glitchsociety.dev/sitemap.xml` deve mostrare l'XML (non la pagina del sito) e `robots.txt` deve avere la riga `Sitemap:`.
 
-### T28 ⚪ Passare a React Router v7 — agente
+### T28 ⚪ Passare a React Router v7
+- **Stato (2026-11-19):** in roadmap; da rivedere con il team prima di farlo.
 - **Problema:** dopo T18 restano 2 avvisi medi di `react-router` (redirect con barra rovesciata in `<Link>`/`useNavigate`); la correzione esiste solo nella v7 (salto di versione maggiore). Oggi non sfruttabile: i link del sito sono fissi, nessun percorso viene dall'utente.
 - **File:** `package.json`, `package-lock.json`, `src/App.tsx`, file che importano `react-router-dom`
 - **Fatto quando:** `npm audit` = 0 avvisi; Home, Privacy, Cookie e 404 si aprono e i link interni non ricaricano la pagina.
@@ -68,7 +64,9 @@ T14 (verifica dopo deploy, insieme alla sitemap) → T28 (più grosso: farlo in 
 
 - 2026-11-19 — Nome del marchio (T21): restano volutamente `alternateName: "GLITCH Society"` e la keyword "glitch academy" in `index.html` (servono alle ricerche), "Unisciti a GL!TCH" (forma breve, come il logo), i prompt `gl!tch@society` / `user@gl!tch` (stile terminale) e l'email `glitchacademycrew@` (indirizzo reale).
 
+
 ## Fatti
+- 2026-11-19 — **T04** Privacy Policy: "Ultimo aggiornamento" da Novembre 2025 a **Novembre 2026** (oggi è cambiato il titolare, T21). Cookie Policy: resta **Novembre 2025**, perché il testo non è cambiato da allora (solo grassetti e link, T15) ed è ancora vero: il sito non usa cookie, statistiche né archivi nel browser (controllato nel codice). Copyright nel footer ora calcolato: mostra sempre l'anno corrente (`content/footer.ts`). Build e lint passano; nel sito costruito ci sono "Novembre 2026", "Novembre 2025" e il calcolo dell'anno. Quando arriva la P.IVA (T02) la data della Privacy va aggiornata al mese di quel cambio.
 - 2026-11-19 — **T20** Pulsante principale della Hero: "Esplora gli Eventi" → "Prossimo Evento"; non apre più `academy.glitchsociety.dev` ma porta alla sezione del corso/evento nella stessa pagina (`#next-event`). L'id della sezione sta in `content/featuredCourse.ts` (`anchor`), letto sia dalla sezione sia da `content/hero.ts`, così non possono andare fuori sincrono. `CtaLink` ora gestisce anche i link `#…`: stessa scheda, scorrimento morbido (di colpo per chi ha chiesto meno animazioni), indirizzo aggiornato con `#next-event`. Controllato nel browser (build di produzione): clic → la sezione arriva in cima allo schermo, stessa scheda, console senza errori; gli altri 3 pulsanti esterni aprono ancora in nuova scheda. Build e lint passano. L'icona del pulsante è ancora quella del codice (`</>`).
 - 2026-11-19 — **T32** Invertite in `pages/Index.tsx` le sezioni Corso e Manifesto (richiesta dell'utente). Ordine della home ora: Hero (con Essenza) + terminale → Manifesto ("La nostra mission") → Corso → Community → Footer. Controllato nel browser (build di produzione): titoli nell'ordine giusto, console senza errori. Build e lint passano.
 - 2026-11-19 — **T31** Tolti dalla Hero i tre numeri (richiesta dell'utente). Testi originali, da riusare se servono: "0 Prerequisiti", "404 Barriere", "∞ Connessioni" (campo `stats` in `content/hero.ts`, tolto). Ora sotto il riquadro Essenza vengono subito i due pulsanti. Controllato nel browser (build di produzione): numeri spariti, pulsanti presenti, console senza errori. Build e lint passano.

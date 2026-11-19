@@ -2,7 +2,7 @@ import type { LegalContent } from "./legalTypes";
 
 export const privacyContent: LegalContent = {
   title: "Privacy Policy",
-  lastUpdate: "Novembre 2025",
+  lastUpdate: "Novembre 2026",
   sections: [
     {
       id: 1,

@@ -26,7 +26,7 @@ export const footerContent = {
     { label: 'Cookie Policy', url: '/cookie-policy' },
   ],
   bottom: {
-    copyright: '© 2025 GL!TCH Society. Tutti i diritti riservati.',
+    copyright: `© ${new Date().getFullYear()} GL!TCH Society. Tutti i diritti riservati.`,
     email: 'glitchacademycrew@gmail.com',
   },
 }
