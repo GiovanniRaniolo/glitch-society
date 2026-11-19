@@ -7,6 +7,7 @@ import { getIcon } from '@/components/icons'
 
 export const FeaturedCourseSection = () => {
   const {
+    anchor,
     badge,
     title,
     subtitle,
@@ -19,7 +20,7 @@ export const FeaturedCourseSection = () => {
   } = featuredCourseContent
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section id={anchor} className="py-24 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10" />
 

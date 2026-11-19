@@ -3,6 +3,7 @@ import { Mail } from "lucide-react";
 import { footerContent } from "@/content/footer";
 import { Link } from "react-router-dom";
 import { getIcon } from "@/components/icons";
+import { Logo } from "@/components/Logo";
 
 export const Footer = () => {
   return (
@@ -22,7 +23,7 @@ export const Footer = () => {
           className="max-w-5xl mx-auto"
         >
           <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <img src="/glitch_logo.png" alt="GL!TCH Society" className="h-10 -ml-2 mb-6 cursor-pointer hover:opacity-80 transition-opacity" />
+            <Logo className="h-10 -ml-2 mb-6 cursor-pointer hover:opacity-80 transition-opacity" />
           </Link>
           
           {/* Heading + Social */}

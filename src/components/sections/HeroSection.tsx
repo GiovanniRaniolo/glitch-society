@@ -1,24 +1,12 @@
 import { motion } from 'framer-motion'
 import { heroContent } from '@/content/hero'
-import { Badge } from '@/components/Badge'
 import { CtaLink } from '@/components/CtaLink'
-import { Zap, Users, Code2 } from 'lucide-react'
+import { EssenceCard } from './EssenceCard'
+import { Users, Code2 } from 'lucide-react'
 
 export const HeroSection = () => {
   return (
-    <section className="container mx-auto px-4 py-20 text-center">
-      {/* Badge */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="mb-8"
-      >
-        <Badge icon={Zap} className="uppercase">
-          {heroContent.badge}
-        </Badge>
-      </motion.div>
-
+    <section className="container mx-auto px-4 pt-12 pb-20 text-center">
       {/* Main Title */}
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
@@ -54,33 +42,13 @@ export const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="text-lg text-muted-foreground/80 mb-10 max-w-2xl mx-auto leading-relaxed"
+        className="text-lg text-muted-foreground/80 mb-10 max-w-4xl mx-auto leading-relaxed"
       >
         {heroContent.description}
       </motion.p>
 
-      {/* Stats */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="flex flex-wrap justify-center gap-8 mb-12"
-      >
-        {heroContent.stats.map((stat, idx) => (
-          <motion.div
-            key={idx}
-            whileHover={{ scale: 1.05, y: -5 }}
-            className="text-center"
-          >
-            <div className="text-4xl md:text-5xl font-black text-primary mb-1">
-              {stat.value}
-            </div>
-            <div className="text-sm text-muted-foreground uppercase tracking-wider">
-              {stat.label}
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+      {/* La nostra essenza (prima in "Chi siamo", T29) */}
+      <EssenceCard className="mb-16" />
 
       {/* CTA Buttons */}
       <motion.div

@@ -14,12 +14,12 @@ Collegamenti: compiti aperti in [TASKS.md](TASKS.md); istruzioni d'avvio in [REA
 | Argomento / parole chiave | Componente | Testi | Note |
 |---|---|---|---|
 | Barra in alto, logo | `sections/Header.tsx` | — | link a `/` |
-| Hero, "Break the Code", stats 0/404/∞, pulsanti | `sections/HeroSection.tsx` | `content/hero.ts` (`heroContent`) | link pulsanti in `cta.*.url`; pulsante principale → T20 |
+| Hero, "Break the Code", sottotitolo, descrizione, pulsanti | `sections/HeroSection.tsx` | `content/hero.ts` (`heroContent`) | link pulsanti in `cta.*.url`; "Prossimo Evento" → `#next-event` (T20) |
+| La nostra essenza, valori (Codice Aperto, Tribe Ibrida, Build Together), ex "Chi siamo" | `sections/EssenceCard.tsx` (dentro la Hero) | `content/hero.ts` (`heroContent.essence`) | sezione Chi siamo unita alla Hero (T29) |
 | Finto browser, terminale `init_revolution.sh` | `sections/BrowserMockup.tsx` | `content/hero.ts` (`browserText`) | |
 | Separatore tra sezioni | `sections/SectionDivider.tsx` | — | |
-| Corso in evidenza, date, sede ERETICO, posti, early bird | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`) | scaduto → T03 |
-| Manifesto, mission, principi | `sections/ManifestoSection.tsx` | `content/manifesto.ts` (`manifestoContent`) | |
-| Chi siamo, essenza, valori | `sections/AboutSection.tsx` | `content/about.ts` (`aboutContent`) | |
+| Manifesto, mission, principi | `sections/ManifestoSection.tsx` | `content/manifesto.ts` (`manifestoContent`) | prima del Corso (T32) |
+| Corso in evidenza, prossimo evento, `#next-event`, date, sede ERETICO, posti, early bird | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`, id in `anchor`) | scaduto → T03 |
 | Community, Telegram | `sections/CommunitySection.tsx` | `content/community.ts` (`communityContent`) | galleria tolta (T06) |
 | Footer, social, email, link legali, copyright | `sections/Footer.tsx` | `content/footer.ts` (`footerContent`) | copyright → T04 |
 
@@ -29,10 +29,12 @@ Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `sr
 
 | Argomento / parole chiave | File | Usato da |
 |---|---|---|
-| Pillola arancione sopra i titoli, badge | `components/Badge.tsx` | `SectionHeader`, Hero |
-| Intestazione di sezione: pillola, titolo, sottotitolo, testo | `components/SectionHeader.tsx` | FeaturedCourse, Manifesto, About, Community |
-| Pulsante d'azione, CTA, link esterno in nuova scheda | `components/CtaLink.tsx` | Hero, FeaturedCourse, Community, `pages/NotFound.tsx` |
-| Icone scelte nei testi (campo `icon`), `icons`, `getIcon`, nome icona nuovo | `components/icons.ts` | FeaturedCourse, Manifesto, About, Community, Footer |
+| Pillola arancione sopra i titoli, badge | `components/Badge.tsx` | `SectionHeader` (tolto dalla Hero in T30, riusabile) |
+| Intestazione di sezione: pillola, titolo, sottotitolo, testo | `components/SectionHeader.tsx` | FeaturedCourse, Manifesto, Community, EssenceCard |
+| Pulsante d’azione, CTA, link esterno in nuova scheda, link `#sezione` con scorrimento morbido | `components/CtaLink.tsx` | Hero, FeaturedCourse, Community, `pages/NotFound.tsx` |
+| Titolo della scheda, canonical, noindex della 404 | `components/PageMeta.tsx` (dati in `content/site.ts`) | tutte le pagine in `src/pages/` |
+| Logo (webp leggero + png di riserva) | `components/Logo.tsx` | Header, Footer |
+| Icone scelte nei testi (campo `icon`), `icons`, `getIcon`, nome icona nuovo | `components/icons.ts` | FeaturedCourse, Manifesto, EssenceCard, Community, Footer |
 
 ## Pagine e rotte
 
@@ -55,7 +57,7 @@ Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/componen
 
 | Link | Dove |
 |---|---|
-| Academy `academy.glitchsociety.dev` | `content/featuredCourse.ts`, `content/hero.ts` |
+| Academy `academy.glitchsociety.dev` | `content/featuredCourse.ts` |
 | Telegram `t.me/glitchsociety_dev` | `content/community.ts`, `content/footer.ts`, `content/hero.ts`, `index.html` |
 | Instagram, Linktree | `content/footer.ts`, `index.html` |
 | Email `glitchacademycrew@...` | `content/footer.ts`, `content/privacy.ts`, `content/cookies.ts` |
@@ -66,14 +68,15 @@ Se cambia un link, aggiornare **tutte** le righe della tabella.
 ## Stile e grafica
 - Colori, variabili CSS (`--primary`, `--background`…): `src/index.css`
 - Tema Tailwind, font, animazioni: `tailwind.config.ts`
-- Logo, favicon, immagine social: `public/` (`glitch_logo.*`, `favicon.png`, `ascii-art.png`)
+- Logo, favicon, immagine social: `public/` (`glitch_logo-425.webp` usato dal sito, `glitch_logo.png` riserva e metadati, `favicon.png`, `ascii-art.png`)
 
 ## SEO e condivisione
 - Titolo, descrizione, keyword, Open Graph, Twitter, JSON-LD, `theme-color`: `index.html` (`theme-color` arancione `#FF6A38`)
-- Robot: `public/robots.txt`; sitemap mancante → T12
+- Titolo e canonical **per pagina** (cambiano quando si cambia pagina): `components/PageMeta.tsx`; nome, dominio, titolo home: `content/site.ts` (tenerli uguali a `index.html`)
+- Robot: `public/robots.txt` (cita la sitemap); elenco pagine per i motori: `public/sitemap.xml` (aggiornarlo se si aggiunge una pagina in `src/App.tsx`)
 
 ## Configurazione e strumenti
-- Dipendenze e script (`dev`, `build` = controllo tipi + vite, `lint`, `preview`): `package.json` → T10 (nome), T28 (React Router v7)
+- Dipendenze e script (`dev`, `build` = controllo tipi + vite, `lint`, `preview`): `package.json` (nome `glitch-society`) → T28 (React Router v7)
 - Build e alias `@` → `src/`: `vite.config.ts`
 - TypeScript: `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`
 - Lint: `eslint.config.js`; PostCSS: `postcss.config.js`

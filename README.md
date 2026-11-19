@@ -1,6 +1,9 @@
 # GL!TCH Society
 
-Landing page del sito **GL!TCH Society** - Da Zero a Developer in 7 Settimane.
+Sito di **GL!TCH Society**: community di formazione tech con corsi ed eventi su coding, AI, creative development e blockchain.
+Online su [glitchsociety.dev](https://glitchsociety.dev) (Vercel, pubblicato dal ramo `master`).
+
+Per orientarsi: [MAP.md](MAP.md) porta da un argomento al file giusto; [TASKS.md](TASKS.md) è l'elenco dei compiti.
 
 ## 🚀 Tech Stack
 
@@ -9,7 +12,7 @@ Landing page del sito **GL!TCH Society** - Da Zero a Developer in 7 Settimane.
 - **Tailwind CSS** - Styling
 - **Framer Motion** - Animazioni
 - **React Router** - Routing
-- **Shadcn/ui** - Componenti UI
+- **Lucide** - Icone
 
 ## 📦 Installazione
 
@@ -32,23 +35,25 @@ npm run dev
 | Comando | Descrizione |
 |---------|-------------|
 | `npm run dev` | Avvia il server di sviluppo |
-| `npm run build` | Build per produzione |
+| `npm run build` | Controllo dei tipi + build per produzione |
+| `npm run build:dev` | Build in modalità sviluppo (senza controllo dei tipi) |
 | `npm run preview` | Preview della build |
 | `npm run lint` | Esegue ESLint |
 
 ## 📁 Struttura
 
 ```
+public/               # Logo, favicon, immagine social, robots.txt
 src/
-├── components/
-│   ├── sections/     # Sezioni della landing page
-│   └── ui/           # Componenti UI riutilizzabili
-├── content/          # Contenuti testuali
-├── pages/            # Pagine dell'applicazione
-└── assets/           # Asset statici
+├── components/       # Componenti comuni (pulsanti, intestazioni, icone, pagine legali)
+│   └── sections/     # Sezioni della home (Hero, Corso, Manifesto, Community, Footer)
+├── content/          # Testi del sito: per cambiare un testo si tocca solo qui
+├── pages/            # Pagine: home, Privacy, Cookie, 404
+├── App.tsx           # Rotte
+└── index.css         # Colori e stili globali
+vercel.json           # Regole di routing su Vercel
 ```
 
 ## 📄 Licenza
 
 MIT © GL!TCH Society
-

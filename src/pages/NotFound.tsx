@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Home } from "lucide-react";
 import { CtaLink } from "@/components/CtaLink";
+import { PageMeta } from "@/components/PageMeta";
 import { Header } from "@/components/sections/Header";
 import { Footer } from "@/components/sections/Footer";
 import { notFoundContent } from "@/content/notFound";
@@ -13,6 +14,7 @@ const NotFound = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <PageMeta title={notFoundContent.title} noindex />
       <Header />
 
       <section className="flex-1 container mx-auto px-4 py-20 max-w-2xl text-center">

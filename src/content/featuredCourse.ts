@@ -1,4 +1,6 @@
 export const featuredCourseContent = {
+  // Nome della sezione nella pagina: il pulsante "Prossimo Evento" della Hero porta qui (#next-event)
+  anchor: 'next-event',
   badge: 'CORSO IN PARTENZA',
   title: 'Full-Stack AI Development',
   subtitle: 'Da Zero Coding a Primo MVP Deployato',

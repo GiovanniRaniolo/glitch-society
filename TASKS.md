@@ -13,11 +13,10 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-T14 (verifica dopo deploy) → T10 → T12 → T26 → T27 → T28
+T14 (verifica dopo deploy, insieme alla sitemap) → T28 (più grosso: farlo in una sessione nuova)
 
 ## In attesa dell'utente
 - T03 — dati dell'evento one-shot del 12 dicembre (li fornisce l'utente).
-- T20 — comportamento del pulsante Hero: **riproporre la domanda quando tutte le sistemazioni sono finite.**
 
 ## Da attenzionare (ricordarlo all'utente a fine blocchi grandi o sessioni lunghe)
 - ⚠️ **T02 — Partita IVA del titolare** da inserire nella Privacy Policy.
@@ -42,39 +41,12 @@ T14 (verifica dopo deploy) → T10 → T12 → T26 → T27 → T28
 - **File:** `src/content/privacy.ts`, `src/content/cookies.ts`, `src/content/footer.ts`
 - **Fatto quando:** data = ultima revisione reale dei testi; copyright = anno corrente (o calcolato).
 
-### T10 ⚪ Allineare nome pacchetto e README — agente
-- **Problema:** `package.json` si chiama `vite_react_shadcn_ts`; il README cita `src/assets/` (inesistente) e descrive "Gl!tch Academy - 7 settimane".
-- **File:** `package.json`, `README.md`
-- **Fatto quando:** nome `glitch-society`; struttura e descrizione nel README uguali al progetto reale.
-
-### T12 ⚪ Aggiungere sitemap — agente
-- **Problema:** manca `sitemap.xml` (sul sito vero risponde 404).
-- **File:** `public/sitemap.xml`, `public/robots.txt`
-- **Fatto quando:** sitemap con le 3 pagine sul dominio corretto; `robots.txt` la cita con `Sitemap:`.
-- **Dipende da:** T13.
-
 ### T14 🔴 Privacy e Cookie Policy danno 404 se aperte direttamente — agente
 - **Problema:** su Vercel manca la regola che rimanda tutte le rotte a `index.html`. `/privacy-policy` e `/cookie-policy` funzionano solo cliccando dal footer; link diretto, ricarica o Google → 404 (verificato 2026-11-19).
 - **File:** `vercel.json` (nuovo)
 - **Stato (2026-11-19):** `vercel.json` creato con riscrittura di tutte le rotte su `/index.html` (i file statici in `public/` hanno la precedenza). Manca solo la verifica col curl **dopo il deploy da master**.
 - **Fatto quando:** dopo il deploy, `curl -o /dev/null -w "%{http_code}" https://glitchsociety.dev/privacy-policy` = 200 (idem cookie-policy).
-
-### T20 🟠 Pulsante Hero "Esplora gli Eventi" porta al corso — utente
-- **Problema:** l'etichetta parla di eventi, il link apre `academy.glitchsociety.dev` (sito del corso, uguale al pulsante del corso).
-- **Stato:** l'utente ha già un'idea; **non toccare**. Riproporre la domanda quando le altre sistemazioni sono finite.
-- **File:** `src/content/hero.ts` (dopo T05 etichetta e indirizzo stanno entrambi in `cta.primary`)
-- **Fatto quando:** etichetta e destinazione coincidono (decisione scritta sotto).
-
-### T26 ⚪ Logo: usare il formato leggero — agente
-- **Problema:** Header e Footer caricano `glitch_logo.png` (32 KB, 850×227); `glitch_logo.webp` (4 KB) è inutilizzato.
-- **File:** `Header.tsx`, `Footer.tsx`
-- **Fatto quando:** logo servito in webp (con png di riserva), dimensioni `width`/`height` indicate.
-
-### T27 ⚪ Titolo e canonical per ogni pagina — agente
-- **Problema:** tutte le pagine hanno titolo e canonical della home.
-- **File:** `src/pages/*`
-- **Fatto quando:** Privacy, Cookie e 404 hanno titolo proprio; canonical corretto per pagina.
-- **Dipende da:** T13.
+- **Nello stesso controllo (T12):** `curl -s https://glitchsociety.dev/sitemap.xml` deve mostrare l'XML (non la pagina del sito) e `robots.txt` deve avere la riga `Sitemap:`.
 
 ### T28 ⚪ Passare a React Router v7 — agente
 - **Problema:** dopo T18 restano 2 avvisi medi di `react-router` (redirect con barra rovesciata in `<Link>`/`useNavigate`); la correzione esiste solo nella v7 (salto di versione maggiore). Oggi non sfruttabile: i link del sito sono fissi, nessun percorso viene dall'utente.
@@ -88,6 +60,8 @@ T14 (verifica dopo deploy) → T10 → T12 → T26 → T27 → T28
 - 2026-11-19 — Galleria "Momenti Glitch": tolta per ora (niente foto).
 - 2026-11-19 — Sezione corso: resta, diventerà l'evento one-shot del 12 dicembre (dati dall'utente).
 - 2026-11-19 — Pulsante Hero (T20): rinviato; riproporre la domanda a fine sistemazioni.
+- 2026-11-19 — Pulsante Hero (T20), decisione dell'utente: diventa "Prossimo Evento" e porta alla sezione del corso/evento nella stessa pagina, non più all'Academy.
+- 2026-11-19 — Riorganizzazione home (T29–T32), decisioni dell'utente: "Chi siamo" unito alla Hero; tolti dalla Hero pillola "GL!TCH Society" e numeri 0/404/∞; Manifesto prima del Corso. Le pillole delle altre sezioni restano ("le altre chip vanno bene").
 - 2026-11-19 — P.IVA (T02): non ancora fornita; ricordarla solo a fine blocchi grandi o sessioni lunghe (correzione dell'utente: non a ogni resoconto).
 - 2026-11-19 — Commit e merge su master li fa l'utente; il deploy (e quindi la verifica di T14) si fa a sviluppo finito.
 - 2026-11-19 — Pagine legali: grassetti e link si scrivono nel testo del contenuto (`**…**`, `[testo](indirizzo)`), letti da `RichText`.
@@ -95,6 +69,15 @@ T14 (verifica dopo deploy) → T10 → T12 → T26 → T27 → T28
 - 2026-11-19 — Nome del marchio (T21): restano volutamente `alternateName: "GLITCH Society"` e la keyword "glitch academy" in `index.html` (servono alle ricerche), "Unisciti a GL!TCH" (forma breve, come il logo), i prompt `gl!tch@society` / `user@gl!tch` (stile terminale) e l'email `glitchacademycrew@` (indirizzo reale).
 
 ## Fatti
+- 2026-11-19 — **T20** Pulsante principale della Hero: "Esplora gli Eventi" → "Prossimo Evento"; non apre più `academy.glitchsociety.dev` ma porta alla sezione del corso/evento nella stessa pagina (`#next-event`). L'id della sezione sta in `content/featuredCourse.ts` (`anchor`), letto sia dalla sezione sia da `content/hero.ts`, così non possono andare fuori sincrono. `CtaLink` ora gestisce anche i link `#…`: stessa scheda, scorrimento morbido (di colpo per chi ha chiesto meno animazioni), indirizzo aggiornato con `#next-event`. Controllato nel browser (build di produzione): clic → la sezione arriva in cima allo schermo, stessa scheda, console senza errori; gli altri 3 pulsanti esterni aprono ancora in nuova scheda. Build e lint passano. L'icona del pulsante è ancora quella del codice (`</>`).
+- 2026-11-19 — **T32** Invertite in `pages/Index.tsx` le sezioni Corso e Manifesto (richiesta dell'utente). Ordine della home ora: Hero (con Essenza) + terminale → Manifesto ("La nostra mission") → Corso → Community → Footer. Controllato nel browser (build di produzione): titoli nell'ordine giusto, console senza errori. Build e lint passano.
+- 2026-11-19 — **T31** Tolti dalla Hero i tre numeri (richiesta dell'utente). Testi originali, da riusare se servono: "0 Prerequisiti", "404 Barriere", "∞ Connessioni" (campo `stats` in `content/hero.ts`, tolto). Ora sotto il riquadro Essenza vengono subito i due pulsanti. Controllato nel browser (build di produzione): numeri spariti, pulsanti presenti, console senza errori. Build e lint passano.
+- 2026-11-19 — **T30** Tolta dalla Hero la pillola arancione "GL!TCH Society" (richiesta dell'utente: non serviva e lasciava troppo spazio tra la barra del logo e il titolo). Tolto anche il campo `badge` da `content/hero.ts`. Il componente `components/Badge.tsx` resta (lo usa `SectionHeader`, riusabile altrove). Controllato nel browser (build di produzione, 1440 px): spazio tra barra e titolo da ~145 a 80 px, console senza errori. Build e lint passano. Poi, su richiesta dell'utente ("ancora meno padding"), spazio sopra la Hero da `py-20` a `pt-12 pb-20`: tra barra e titolo ora 48 px (sotto la Hero invariato).
+- 2026-11-19 — **T29** Riorganizzazione della home, primo passo (richiesta dell'utente: "vediamo come viene"). La sezione "Chi siamo" non c'è più: il suo testo è ora la descrizione della Hero e il riquadro "La nostra essenza" con le 3 schede (Codice Aperto, Tribe Ibrida, Build Together) sta nella Hero, sotto la descrizione e prima di numeri e pulsanti. Nuovo `sections/EssenceCard.tsx` (testi in `content/hero.ts`, `heroContent.essence`); eliminati `AboutSection.tsx` e `content/about.ts` (recuperabili da git). Ordine ora: Hero (con Essenza) + terminale → Corso → Manifesto → Community → Footer. Controllato nel browser (build di produzione): un solo h1, nessun "Chi siamo", console senza errori, a 375 px nessuno scorrimento laterale. Build e lint passano. **Testi tolti dalla pagina**, da riusare se servono: vecchia descrizione della Hero "Corsi intensivi e eventi spot. Web development, creative coding, AI e blockchain: competenze reali, accessibili a tutti."; pillola "CHI SIAMO" e titolo "GL!TCH Society" di Chi siamo; testi che erano già nel file ma non comparivano: titolo "Cosa Ci Muove" e frasi brevi "Codice Live / Progetti Reali / Relazioni Durature" (icone code, rocket, heart). Nota: tra 640 e 1024 px (tablet) le 3 schede vanno su 2 colonne e la terza resta da sola, come succedeva già in Chi siamo. Dopo la revisione dell'utente ("testo troppo stretto"): descrizione della Hero allargata da `max-w-2xl` a `max-w-4xl` (896 px), ora su 2 righe invece di 3 a schermo grande.
+- 2026-11-19 — **T27** Nuovo `components/PageMeta.tsx`, messo in ogni pagina: titolo della scheda ("Privacy Policy | GL!TCH Society", "Cookie Policy | …", "Pagina non trovata | …", home invariata) e canonical sull'indirizzo della pagina. La 404 non ha canonical e ha `robots` = `noindex, follow` (una pagina d'errore non va nei risultati di Google). Nome, dominio e titolo della home in `content/site.ts` (gli stessi valori restano anche in `index.html`). Controllato nel browser (build di produzione): ogni pagina aperta direttamente e raggiunta cliccando (404 → home → Privacy → Cookie → indietro) ha titolo, canonical e robots giusti, sempre un solo canonical, nessuna ricarica, console senza errori. Build e lint passano. Limite: i valori cambiano quando parte il sito nel browser; Google li legge (esegue il JavaScript), le anteprime social (`og:*`) restano quelle della home.
+- 2026-11-19 — **T26** Nuovo `components/Logo.tsx` (webp con png di riserva, `width`/`height` 850×227), usato da Header e Footer. Il vecchio `glitch_logo.webp` era solo 270×72 (sfocato su schermi densi, nel footer servono almeno 80 px d'altezza): creato `public/glitch_logo-425.webp` dal png originale, 425×114 senza perdita di qualità, 7,7 KB invece di 32 KB. Controllato nel browser (build di produzione, schermo 2x): scaricato solo il webp (8 KB, il png no), logo 32 px in alto e 40 px nel footer come prima, margini del footer invariati, nitido. Build e lint passano. `glitch_logo.png` resta (riserva + metadati in `index.html`); `glitch_logo.webp` piccolo resta inutilizzato in `public/` (non cancellato: potrebbe essere linkato altrove).
+- 2026-11-19 — **T12** Nuovo `public/sitemap.xml` con home, `/privacy-policy`, `/cookie-policy` su `https://glitchsociety.dev` (solo indirizzi, niente date: meglio nessuna data che una inventata). `public/robots.txt` termina con `Sitemap: https://glitchsociety.dev/sitemap.xml`. XML valido; build di produzione servita in locale: `/sitemap.xml` = 200 come XML, `robots.txt` con la riga nuova. Verifica online insieme a T14 dopo il deploy.
+- 2026-11-19 — **T10** Nome del pacchetto `glitch-society` in `package.json` e `package-lock.json` (lockfile coerente: `npm install --package-lock-only` cambia solo quelle 2 righe). README rifatto sul progetto reale: descrizione della community (non più "7 settimane"), dominio glitchsociety.dev, link a MAP e TASKS, tolti shadcn/ui, `ui/` e `assets/`, aggiunti Lucide, `build:dev`, `public/`, `vercel.json`. Build e lint passano.
 - 2026-11-19 — **T25** In `ManifestoSection.tsx` e `AboutSection.tsx` la durata (0,5 s) ora sta dentro `animate` di `fadeInUp`, quindi viene usata. Controllato nel browser misurando la dissolvenza: ogni scheda passa da invisibile a piena in ~0,5 s, una dopo l'altra (0,15 s di scarto nel Manifesto, 0,1 s in About); console senza errori. Build e lint passano. Cambio visivo minimo: entrata delle schede un po' più lenta e regolare di prima.
 - 2026-11-19 — **T24** Nuovo `components/icons.ts`: una sola mappa delle icone scelte nei testi (`icons`) e `getIcon(nome)`, che con nome mancante o sbagliato restituisce `null` (in sviluppo avvisa in console). Tolte le 5 mappe locali da FeaturedCourse, Manifesto, About, Community, Footer. I principi del Manifesto ora hanno `icon` nel contenuto (prima l'icona dipendeva dalla posizione). Senza icona: la scheda mostra solo il testo; nel Footer il cerchio mostra l'iniziale del social. Controllato nel browser: icone identiche a prima in ogni sezione; prova temporanea con 5° principio senza icona e nomi sbagliati (About, Footer) → pagina intera, nessun errore, solo l'avviso; testi di prova poi tolti. Build e lint passano. Le icone fisse dei componenti (frecce, pulsanti, pillole) restano importate direttamente.
 - 2026-11-19 — **T01** Dipendenze installate; `npm run build` passa. Lint non parte → T16; controllo tipi fallisce → T17; vulnerabilità → T18.

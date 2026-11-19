@@ -1,6 +1,6 @@
 // Mappa unica delle icone scelte nei testi (src/content/*: campo `icon`).
 // Chi la aggiorna: chi usa nel contenuto un nome d'icona nuovo (aggiungerlo qui).
-// Usata da: FeaturedCourse, Manifesto, About, Community, Footer (vedi MAP.md).
+// Usata da: FeaturedCourse, Manifesto, EssenceCard, Community, Footer (vedi MAP.md).
 // Le icone fisse dei componenti (frecce, pulsanti) si importano direttamente da lucide-react.
 import {
   Brain,

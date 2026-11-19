@@ -26,8 +26,20 @@ const baseClass =
 
 const MotionLink = motion.create(Link)
 
+// Scorre con morbidezza fino alla sezione con quell'id (stessa pagina).
+// Chi ha chiesto meno animazioni al sistema ci arriva di colpo.
+const scrollToSection = (event: React.MouseEvent, href: string) => {
+  const target = document.getElementById(href.slice(1))
+  if (!target) return
+  event.preventDefault()
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  target.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' })
+  history.replaceState(null, '', href)
+}
+
 // Pulsante d'azione unico del sito.
-// Link esterno (http…) → nuova scheda; link interno (/…) → navigazione senza ricaricare.
+// Link esterno (http…) → nuova scheda; link interno (/…) → navigazione senza ricaricare;
+// link a una sezione della stessa pagina (#id) → scorrimento morbido, stessa scheda.
 // Usato da Hero, FeaturedCourse, Community, pagina 404.
 export const CtaLink = ({
   href,
@@ -51,6 +63,19 @@ export const CtaLink = ({
       <MotionLink to={href} className={className} {...animation}>
         {content}
       </MotionLink>
+    )
+  }
+
+  if (href.startsWith('#')) {
+    return (
+      <motion.a
+        href={href}
+        onClick={(event) => scrollToSection(event, href)}
+        className={className}
+        {...animation}
+      >
+        {content}
+      </motion.a>
     )
   }
 
