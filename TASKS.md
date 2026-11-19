@@ -13,22 +13,28 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-T13 → T14 → T15 → T16 → T07 → T17 → T08 → T18 → T09 → T19 → T05 → T22 → T23 → T24 → T25 → T10 → T12 → T26 → T27
+T13 → T11 → T14 → T15 → T16 → T07 → T17 → T08 → T18 → T09 → T19 → T06 → T21 → T05 → T22 → T23 → T24 → T25 → T10 → T12 → T26 → T27
 
 ## In attesa dell'utente
-T02 (P.IVA) · T03 (corso scaduto) · T06 (foto galleria) · T11 (colore) · T20 (pulsante Hero) · T21 (nome marchio)
+- T03 — dati dell'evento one-shot del 12 dicembre (li fornisce l'utente).
+- T20 — comportamento del pulsante Hero: **riproporre la domanda quando tutte le sistemazioni sono finite.**
+
+## Da attenzionare (ricordarlo all'utente a ogni resoconto)
+- ⚠️ **T02 — Partita IVA del titolare** da inserire nella Privacy Policy.
 
 ## Aperti
 
 ### T02 🟠 Inserire la Partita IVA del titolare — utente, poi agente
 - **Problema:** nella Privacy Policy il titolare ha `vat: "[DA INSERIRE]"`, mostrato così sul sito.
+- **Stato:** l'utente non l'ha ancora fornita; segnalarlo sempre (vedi "Da attenzionare"). Il nome del titolare diventa "GL!TCH Society" in T21.
 - **File:** `src/content/privacy.ts`
 - **Fatto quando:** `grep "DA INSERIRE" src` non trova nulla.
 
-### T03 🟠 Decidere cosa mostrare dopo il corso di febbraio 2026 — utente
+### T03 🟠 Sezione corso → evento one-shot del 12 dicembre — utente, poi agente
 - **Problema:** "Corso in partenza" annuncia il 21/02/2026 con "Early bird attivo" e "Ultimi posti": scaduto.
-- **File:** `src/content/featuredCourse.ts`, `src/pages/Index.tsx`
-- **Fatto quando:** decisione scritta sotto "Decisioni" e compito di esecuzione aperto.
+- **Decisione:** la sezione resta; diventerà l'incontro one-shot del 12 dicembre. I dati arrivano dall'utente più avanti.
+- **File:** `src/content/featuredCourse.ts`, `src/components/sections/FeaturedCourseSection.tsx`
+- **Fatto quando:** la sezione mostra i dati dell'evento forniti dall'utente; nessun riferimento al corso di febbraio.
 - **Nota:** da controllare a schermo da telefono: il bollino "EARLY BIRD" (posizione assoluta in alto a destra) potrebbe coprire la prima scheda dei dettagli.
 
 ### T04 ⚪ Aggiornare date legali e copyright — agente
@@ -41,10 +47,11 @@ T02 (P.IVA) · T03 (corso scaduto) · T06 (foto galleria) · T11 (colore) · T20
 - **File:** `src/content/hero.ts`, `src/components/sections/HeroSection.tsx`
 - **Fatto quando:** `grep -n "https://" src/components/sections/HeroSection.tsx` è vuoto; link invariati a schermo.
 
-### T06 🟡 Galleria "Momenti Glitch": usarla o toglierla — utente, poi agente
+### T06 ⚪ Togliere la galleria "Momenti Glitch" — agente
 - **Problema:** `community.ts` cita 4 foto in `/gallery/`; la cartella non esiste e la sezione non le usa.
-- **File:** `src/content/community.ts`, `src/components/sections/CommunitySection.tsx`, `public/gallery/`
-- **Fatto quando:** galleria visibile con foto reali, oppure blocco `gallery` rimosso.
+- **Decisione:** togliere per ora; si rimette quando ci saranno le foto.
+- **File:** `src/content/community.ts`
+- **Fatto quando:** `grep -rn "gallery" src` è vuoto; build passa.
 
 ### T07 🟡 Rimuovere componenti shadcn/ui non usati — agente
 - **Problema:** ~50 file in `src/components/ui/`, nessuno importato da pagine o sezioni; importano `@/lib/utils` e `@/hooks/*` che **non esistono** (causa dei 58 errori di T17).
@@ -67,9 +74,10 @@ T02 (P.IVA) · T03 (corso scaduto) · T06 (foto galleria) · T11 (colore) · T20
 - **Fatto quando:** nome `glitch-society`; struttura e descrizione nel README uguali al progetto reale.
 - **Dipende da:** T21 (nome ufficiale).
 
-### T11 ⚪ Colore `theme-color` incoerente — utente, poi agente
+### T11 ⚪ Colore `theme-color` incoerente — agente
 - **Problema:** `index.html` usa `#00ff00` (verde); il primario del sito è arancione (`hsl(15 100% 61%)`).
-- **File:** `index.html` · **Fatto quando:** `theme-color` = colore scelto.
+- **Decisione:** usare l'arancione `#FF6A38`.
+- **File:** `index.html` · **Fatto quando:** `theme-color` = `#FF6A38`.
 
 ### T12 ⚪ Aggiungere sitemap — agente
 - **Problema:** manca `sitemap.xml` (sul sito vero risponde 404).
@@ -121,13 +129,15 @@ T02 (P.IVA) · T03 (corso scaduto) · T06 (foto galleria) · T11 (colore) · T20
 
 ### T20 🟠 Pulsante Hero "Esplora gli Eventi" porta al corso — utente
 - **Problema:** l'etichetta parla di eventi, il link apre `academy.glitchsociety.dev` (sito del corso, uguale al pulsante del corso).
+- **Stato:** l'utente ha già un'idea; **non toccare**. Riproporre la domanda quando le altre sistemazioni sono finite.
 - **File:** `src/content/hero.ts`
 - **Fatto quando:** etichetta e destinazione coincidono (decisione scritta sotto).
 
-### T21 🟡 Nome del marchio scritto in 6 modi — utente, poi agente
+### T21 🟡 Nome del marchio scritto in 6 modi — agente
 - **Problema:** "GL!TCH Society", "Gl!tch Society", "GL!TCH SOCIETY", "Glitch Society", "Glitch Academy" (alt del logo in Header), "GL!TCH ACADEMY" (titolare privacy).
+- **Decisione:** grafia ufficiale **GL!TCH Society**, anche come titolare della Privacy Policy.
 - **File:** `src/content/*`, `Header.tsx`, `Footer.tsx`, `index.html`, `README.md`
-- **Fatto quando:** grafia ufficiale decisa (sotto) e usata ovunque (maiuscolo solo come stile CSS).
+- **Fatto quando:** "GL!TCH Society" ovunque nei testi (maiuscolo intero solo via CSS); nessun "Academy" come nome del marchio (resta solo nell'indirizzo `academy.glitchsociety.dev`).
 
 ### T22 🟡 Intestazione di sezione unica (badge + titolo + testo) — agente
 - **Problema:** la "pillola" badge è scritta 6 volte in 3 varianti (padding, peso, bordo diversi); titoli h2 con taglie diverse.
@@ -162,6 +172,12 @@ T02 (P.IVA) · T03 (corso scaduto) · T06 (foto galleria) · T11 (colore) · T20
 
 ## Decisioni prese sui compiti
 - 2026-11-19 — Il dominio del sito è `glitchsociety.dev` (Vercel): tutti gli indirizzi assoluti usano questo (T13).
+- 2026-11-19 — Nome ufficiale: **GL!TCH Society**; è anche il titolare in Privacy Policy (non "GL!TCH Academy").
+- 2026-11-19 — `theme-color` = arancione `#FF6A38`.
+- 2026-11-19 — Galleria "Momenti Glitch": tolta per ora (niente foto).
+- 2026-11-19 — Sezione corso: resta, diventerà l'evento one-shot del 12 dicembre (dati dall'utente).
+- 2026-11-19 — Pulsante Hero (T20): rinviato; riproporre la domanda a fine sistemazioni.
+- 2026-11-19 — P.IVA (T02): non ancora fornita; segnalarla sempre tra le cose da attenzionare.
 
 ## Fatti
 - 2026-11-19 — **T01** Dipendenze installate; `npm run build` passa. Lint non parte → T16; controllo tipi fallisce → T17; vulnerabilità → T18.
