@@ -2,7 +2,7 @@
 // Usati da: components/sections/ManifestoSection.tsx. Icone: nomi in components/icons.ts.
 // Due colonne (T33): Consulenza e Formazione.
 // L'ordine di `columns` è l'ordine a schermo (prima colonna = sinistra, o in alto su telefono).
-// `cta` (facoltativo): pulsante sotto le schede della colonna.
+// `cta`: pulsante sotto le due colonne, al centro della sezione (T37, spostato in T38).
 
 export const manifestoContent = {
   mission: {
@@ -36,13 +36,7 @@ export const manifestoContent = {
           title: "Team Autonomo",
           description: "Accompagniamo le persone nell'uso dei nuovi strumenti, così l'AI resta in azienda anche dopo di noi."
         }
-      ],
-      // Pulsante sotto le schede (T37). Email provvisoria: quando ci sarà un indirizzo dedicato si cambia solo qui.
-      cta: {
-        label: "Raccontaci il tuo progetto",
-        url: "mailto:glitchacademycrew@gmail.com",
-        icon: "mail"
-      }
+      ]
     },
     {
       icon: "graduationCap",
@@ -71,5 +65,12 @@ export const manifestoContent = {
         }
       ]
     }
-  ]
+  ],
+  // Pulsante sotto le due colonne (T37, al centro da T38).
+  // Email provvisoria: quando ci sarà un indirizzo dedicato si cambia solo qui.
+  cta: {
+    label: "Raccontaci il tuo progetto",
+    url: "mailto:glitchacademycrew@gmail.com",
+    icon: "mail"
+  }
 };

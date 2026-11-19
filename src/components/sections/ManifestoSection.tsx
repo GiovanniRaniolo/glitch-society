@@ -94,24 +94,26 @@ export const ManifestoSection = () => {
                   })}
                 </motion.div>
 
-                {/* Pulsante della colonna, se c'è (T37: contatto per le aziende) */}
-                {column.cta && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5 }}
-                    className="mt-8 text-center"
-                  >
-                    <CtaLink href={column.cta.url} icon={getIcon(column.cta.icon) ?? undefined}>
-                      {column.cta.label}
-                    </CtaLink>
-                  </motion.div>
-                )}
               </div>
             );
           })}
         </div>
+
+        {/* Pulsante al centro, sotto le due colonne (T37; centrato in T38) */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mt-12 text-center"
+        >
+          <CtaLink
+            href={manifestoContent.cta.url}
+            icon={getIcon(manifestoContent.cta.icon) ?? undefined}
+          >
+            {manifestoContent.cta.label}
+          </CtaLink>
+        </motion.div>
       </div>
     </section>
   );

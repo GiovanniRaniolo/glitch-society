@@ -11,13 +11,13 @@ export const communityContent = {
     description:
       'Discussioni tech, supporto reciproco, opportunità condivise. È qui che nascono collaborazioni, si propongono talk e si creano legami che durano.',
     features: [
-      { icon: 'messageCircle', text: 'Discussioni tech real-time' },
+      { icon: 'messageCircle', text: 'Discussioni tech live' },
       { icon: 'lightbulb', text: 'Proponi il tuo talk' },
       { icon: 'users', text: 'Networking autentico' },
-      { icon: 'calendar', text: 'Primi a sapere degli eventi' },
+      { icon: 'calendar', text: 'Eventi in anteprima' },
     ],
     cta: 'Unisciti su Telegram',
     url: 'https://t.me/glitchsociety_dev',
-    tagline: "Hai un'idea glitch? Entra e proponila alla community!",
+    tagline: 'Il canale è aperto a tutti. Per un progetto della tua azienda, scrivici direttamente.',
   },
 }
