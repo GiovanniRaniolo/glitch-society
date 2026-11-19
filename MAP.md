@@ -18,7 +18,7 @@ Collegamenti: compiti aperti in [TASKS.md](TASKS.md); istruzioni d'avvio in [REA
 | La nostra essenza, valori (Codice Aperto, Tribe Ibrida, Build Together), ex "Chi siamo" | `sections/EssenceCard.tsx` (dentro la Hero) | `content/hero.ts` (`heroContent.essence`) | sezione Chi siamo unita alla Hero (T29) |
 | Finto browser, terminale `init_revolution.sh` | `sections/BrowserMockup.tsx` | `content/hero.ts` (`browserText`) | |
 | Separatore tra sezioni | `sections/SectionDivider.tsx` | — | |
-| Manifesto, mission, principi | `sections/ManifestoSection.tsx` | `content/manifesto.ts` (`manifestoContent`) | prima del Corso (T32) |
+| Manifesto, mission, principi, colonne Consulenza e Formazione | `sections/ManifestoSection.tsx` | `content/manifesto.ts` (`manifestoContent`, `columns`) | prima del Corso (T32); due colonne (T33) |
 | Corso in evidenza, prossimo evento, `#next-event`, date, sede ERETICO, posti, early bird | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`, id in `anchor`) | scaduto → T03 |
 | Community, Telegram | `sections/CommunitySection.tsx` | `content/community.ts` (`communityContent`) | galleria tolta (T06) |
 | Footer, social, email, link legali, copyright | `sections/Footer.tsx` | `content/footer.ts` (`footerContent`) | copyright = anno corrente, calcolato (T04) |
@@ -34,7 +34,7 @@ Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `sr
 | Pulsante d’azione, CTA, link esterno in nuova scheda, link `#sezione` con scorrimento morbido | `components/CtaLink.tsx` | Hero, FeaturedCourse, Community, `pages/NotFound.tsx` |
 | Titolo della scheda, canonical, noindex della 404 | `components/PageMeta.tsx` (dati in `content/site.ts`) | tutte le pagine in `src/pages/` |
 | Logo (webp leggero + png di riserva) | `components/Logo.tsx` | Header, Footer |
-| Icone scelte nei testi (campo `icon`), `icons`, `getIcon`, nome icona nuovo | `components/icons.ts` | FeaturedCourse, Manifesto, EssenceCard, Community, Footer |
+| Icone scelte nei testi (campo `icon`), `icons`, `getIcon`, nome icona nuovo | `components/icons.ts` | FeaturedCourse, Manifesto (schede e colonne), EssenceCard, Community, Footer |
 
 ## Pagine e rotte
 
