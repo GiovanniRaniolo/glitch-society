@@ -13,20 +13,20 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-T13 → T11 → T14 → T15 → T16 → T07 → T17 → T08 → T18 → T09 → T19 → T06 → T21 → T05 → T22 → T23 → T24 → T25 → T10 → T12 → T26 → T27
+T14 (verifica dopo deploy) → T08 → T18 → T09 → T19 → T06 → T21 → T05 → T22 → T23 → T24 → T25 → T10 → T12 → T26 → T27
 
 ## In attesa dell'utente
 - T03 — dati dell'evento one-shot del 12 dicembre (li fornisce l'utente).
 - T20 — comportamento del pulsante Hero: **riproporre la domanda quando tutte le sistemazioni sono finite.**
 
-## Da attenzionare (ricordarlo all'utente a ogni resoconto)
+## Da attenzionare (ricordarlo all'utente a fine blocchi grandi o sessioni lunghe)
 - ⚠️ **T02 — Partita IVA del titolare** da inserire nella Privacy Policy.
 
 ## Aperti
 
 ### T02 🟠 Inserire la Partita IVA del titolare — utente, poi agente
 - **Problema:** nella Privacy Policy il titolare ha `vat: "[DA INSERIRE]"`, mostrato così sul sito.
-- **Stato:** l'utente non l'ha ancora fornita; segnalarlo sempre (vedi "Da attenzionare"). Il nome del titolare diventa "GL!TCH Society" in T21.
+- **Stato:** l'utente non l'ha ancora fornita; ricordarlo a fine blocchi grandi o sessioni lunghe (vedi "Da attenzionare"). Il nome del titolare diventa "GL!TCH Society" in T21.
 - **File:** `src/content/privacy.ts`
 - **Fatto quando:** `grep "DA INSERIRE" src` non trova nulla.
 
@@ -53,17 +53,11 @@ T13 → T11 → T14 → T15 → T16 → T07 → T17 → T08 → T18 → T09 → 
 - **File:** `src/content/community.ts`
 - **Fatto quando:** `grep -rn "gallery" src` è vuoto; build passa.
 
-### T07 🟡 Rimuovere componenti shadcn/ui non usati — agente
-- **Problema:** ~50 file in `src/components/ui/`, nessuno importato da pagine o sezioni; importano `@/lib/utils` e `@/hooks/*` che **non esistono** (causa dei 58 errori di T17).
-- **File:** `src/components/ui/*`, `tailwind.config.ts` (colori `sidebar`, animazioni `accordion`, percorsi `./pages`, `./components`, `./app` inesistenti)
-- **Fatto quando:** cartella `ui/` rimossa, config Tailwind ripulita, `npm run build` passa.
-- **Blocca:** T08, T17.
-
 ### T08 🟡 Rimuovere dipendenze npm non usate — agente
 - **Problema:** librerie installate ma non usate (Radix, `@tanstack/react-query`, `recharts`, `next-themes`, `zod`, `react-hook-form`…) e doppio plugin `@vitejs/plugin-react-swc`.
 - **File:** `package.json`, `package-lock.json`
 - **Fatto quando:** ogni dipendenza è importata da `src/` o da un file di config; build passa.
-- **Dipende da:** T07. **Blocca:** T18.
+- **Blocca:** T18. (T07 fatto: `ui/` non c'è più, quindi Radix & co. non sono più importati da nessuna parte.)
 
 ### T09 ⚪ Eliminare `src/App.css` non usato — agente
 - **File:** `src/App.css` · **Fatto quando:** file rimosso, build passa.
@@ -74,47 +68,17 @@ T13 → T11 → T14 → T15 → T16 → T07 → T17 → T08 → T18 → T09 → 
 - **Fatto quando:** nome `glitch-society`; struttura e descrizione nel README uguali al progetto reale.
 - **Dipende da:** T21 (nome ufficiale).
 
-### T11 ⚪ Colore `theme-color` incoerente — agente
-- **Problema:** `index.html` usa `#00ff00` (verde); il primario del sito è arancione (`hsl(15 100% 61%)`).
-- **Decisione:** usare l'arancione `#FF6A38`.
-- **File:** `index.html` · **Fatto quando:** `theme-color` = `#FF6A38`.
-
 ### T12 ⚪ Aggiungere sitemap — agente
 - **Problema:** manca `sitemap.xml` (sul sito vero risponde 404).
 - **File:** `public/sitemap.xml`, `public/robots.txt`
 - **Fatto quando:** sitemap con le 3 pagine sul dominio corretto; `robots.txt` la cita con `Sitemap:`.
 - **Dipende da:** T13.
 
-### T13 🔴 Dominio sbagliato in tutti i metadati — agente
-- **Problema:** `index.html` indica `glitch-society.com` in canonical, Open Graph, Twitter e JSON-LD. Il sito vero è `glitchsociety.dev` (Vercel). Effetti: Google e le anteprime social puntano al dominio sbagliato.
-- **File:** `index.html`
-- **Fatto quando:** `grep -c "glitch-society.com" index.html` = 0; tutti gli URL usano `https://glitchsociety.dev`.
-
 ### T14 🔴 Privacy e Cookie Policy danno 404 se aperte direttamente — agente
 - **Problema:** su Vercel manca la regola che rimanda tutte le rotte a `index.html`. `/privacy-policy` e `/cookie-policy` funzionano solo cliccando dal footer; link diretto, ricarica o Google → 404 (verificato 2026-11-19).
 - **File:** `vercel.json` (nuovo)
+- **Stato (2026-11-19):** `vercel.json` creato con riscrittura di tutte le rotte su `/index.html` (i file statici in `public/` hanno la precedenza). Manca solo la verifica col curl **dopo il deploy da master**.
 - **Fatto quando:** dopo il deploy, `curl -o /dev/null -w "%{http_code}" https://glitchsociety.dev/privacy-policy` = 200 (idem cookie-policy).
-
-### T15 🟠 Pagine legali: un solo componente, testi solo dal contenuto — agente
-- **Problema:** `PrivacyPolicy.tsx` e `CookiePolicy.tsx` sono quasi copie; riconoscono i paragrafi con `text.includes(...)` e li **sostituiscono** con frasi scritte nel componente. Bug visibili:
-  - Privacy §3: il paragrafo "Il processo di iscrizione…" appare **due volte**; "Quando clicchi… Lu.ma" non appare mai.
-  - Cookie §4: "**Nota: Nota:** Disabilitare…" (prefisso doppio).
-  - Modificare il testo in `src/content/` può non avere effetto.
-  - Classi `prose prose-invert` inerti (plugin typography non attivo).
-  - Link a Cookie Policy con `<a href>` → ricarica intera pagina.
-- **File:** `src/pages/PrivacyPolicy.tsx`, `src/pages/CookiePolicy.tsx`, nuovo `src/components/LegalPage.tsx`, `src/content/privacy.ts`, `src/content/cookies.ts`
-- **Fatto quando:** nessun `includes(` nelle pagine legali; grassetti definiti nel contenuto; i due bug sopra non compaiono a schermo; link interni con `<Link>`.
-
-### T16 🟠 ESLint non parte — agente
-- **Problema:** `npm run lint` si blocca: `eslint.config.js` usa `reactHooks.configs.flat.recommended`, che nella versione installata (5.2) non esiste (ci sono `recommended`, `recommended-latest`).
-- **File:** `eslint.config.js` (+ file con errori di lint trovati dopo)
-- **Fatto quando:** `npm run lint` termina con 0 errori.
-
-### T17 🟠 Controllo dei tipi: 58 errori e build che non lo esegue — agente
-- **Problema:** `tsc -p tsconfig.app.json` dà 58 errori (tutti in `src/components/ui/`); `npm run build` lancia solo `vite build`, quindi gli errori di tipo non bloccano mai.
-- **File:** `package.json` (script `build` → `tsc -b && vite build`)
-- **Fatto quando:** `npm run build` include il controllo tipi e passa.
-- **Dipende da:** T07.
 
 ### T18 🟠 Vulnerabilità npm — agente
 - **Problema:** `npm audit` 22 avvisi (10 in produzione, 9 alti: `@remix-run/router` di react-router, `zod`, `lodash`, `nanoid`, `postcss`…).
@@ -177,7 +141,15 @@ T13 → T11 → T14 → T15 → T16 → T07 → T17 → T08 → T18 → T09 → 
 - 2026-11-19 — Galleria "Momenti Glitch": tolta per ora (niente foto).
 - 2026-11-19 — Sezione corso: resta, diventerà l'evento one-shot del 12 dicembre (dati dall'utente).
 - 2026-11-19 — Pulsante Hero (T20): rinviato; riproporre la domanda a fine sistemazioni.
-- 2026-11-19 — P.IVA (T02): non ancora fornita; segnalarla sempre tra le cose da attenzionare.
+- 2026-11-19 — P.IVA (T02): non ancora fornita; ricordarla solo a fine blocchi grandi o sessioni lunghe (correzione dell'utente: non a ogni resoconto).
+- 2026-11-19 — Commit e merge su master li fa l'utente; il deploy (e quindi la verifica di T14) si fa a sviluppo finito.
+- 2026-11-19 — Pagine legali: grassetti e link si scrivono nel testo del contenuto (`**…**`, `[testo](indirizzo)`), letti da `RichText`.
 
 ## Fatti
 - 2026-11-19 — **T01** Dipendenze installate; `npm run build` passa. Lint non parte → T16; controllo tipi fallisce → T17; vulnerabilità → T18.
+- 2026-11-19 — **T13** `index.html`: canonical, Open Graph, Twitter e JSON-LD ora su `https://glitchsociety.dev` (9 URL); `ascii-art.png` e `glitch_logo.png` rispondono 200 sul dominio vero; build passa. Visibile online dopo il deploy da master.
+- 2026-11-19 — **T11** `theme-color` in `index.html` = `#FF6A38`.
+- 2026-11-19 — **T15** Privacy e Cookie usano un solo componente `src/components/LegalPage.tsx`; grassetti e link scritti in `content/privacy.ts` e `content/cookies.ts` (formato in `content/legalTypes.ts`, lettura in `components/RichText.tsx`). Nessun `includes(`; controllato nel browser: "Il processo di iscrizione…" una volta, "Quando clicchi…" visibile, un solo "Nota:", link interno senza ricarica, link esterni in nuova scheda. Cambi visivi minimi: in Cookie §3 il grassetto copre solo il nome della categoria; email del titolare cliccabile.
+- 2026-11-19 — **T16** `eslint.config.js` usa `reactHooks.configs['recommended-latest']`; `tailwind.config.ts` importa `tailwindcss-animate` invece di `require` (CSS generato identico). `npm run lint` = 0 errori (dopo T07).
+- 2026-11-19 — **T07** Rimossa `src/components/ui/` (49 file, nessuno importato). `tailwind.config.ts`: tolti colori `sidebar`, animazioni `accordion`, percorsi inesistenti; `content` = `index.html` + `src/`. CSS da 67 a 22 kB; controllato che nessuna classe tolta sia usata dal sito; home a schermo invariata, console senza errori.
+- 2026-11-19 — **T17** Script `build` = `tsc -b && vite build`; `tsc` 0 errori; provato che un errore di tipo blocca la build.

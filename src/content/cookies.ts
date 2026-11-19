@@ -1,4 +1,6 @@
-export const cookiesContent = {
+import type { LegalContent } from "./legalTypes";
+
+export const cookiesContent: LegalContent = {
   title: "Cookie Policy",
   lastUpdate: "Novembre 2025",
   sections: [
@@ -18,10 +20,10 @@ export const cookiesContent = {
       content: [
         {
           type: "text",
-          text: "Questo sito utilizza esclusivamente cookie tecnici necessari al corretto funzionamento del sito."
+          text: "Questo sito utilizza **esclusivamente cookie tecnici** necessari al corretto funzionamento del sito."
         }
       ],
-      technicalCookie: {
+      detailBox: {
         title: "Cookie Tecnici",
         description: "Questi cookie sono essenziali per il funzionamento del sito e non possono essere disabilitati. Includono cookie di sessione che permettono la navigazione tra le pagine.",
         details: [
@@ -38,15 +40,15 @@ export const cookiesContent = {
       content: [
         {
           type: "text",
-          text: "Questo sito NON utilizza:"
+          text: "Questo sito **NON utilizza**:"
         },
         {
           type: "list",
           items: [
-            "Cookie Analytics (es. Google Analytics, Vercel Analytics)",
-            "Cookie di Marketing (es. Facebook Pixel, Google Ads)",
-            "Cookie di Profilazione per pubblicità personalizzata",
-            "Cookie di Terze Parti per tracciamento utenti"
+            "**Cookie Analytics** (es. Google Analytics, Vercel Analytics)",
+            "**Cookie di Marketing** (es. Facebook Pixel, Google Ads)",
+            "**Cookie di Profilazione** per pubblicità personalizzata",
+            "**Cookie di Terze Parti** per tracciamento utenti"
           ]
         }
       ]
@@ -66,16 +68,16 @@ export const cookiesContent = {
         {
           type: "list",
           items: [
-            "Chrome: Impostazioni → Privacy e sicurezza → Cookie",
-            "Firefox: Preferenze → Privacy e sicurezza → Cookie",
-            "Safari: Preferenze → Privacy → Cookie",
-            "Edge: Impostazioni → Cookie e autorizzazioni sito"
+            "**Chrome**: Impostazioni → Privacy e sicurezza → Cookie",
+            "**Firefox**: Preferenze → Privacy e sicurezza → Cookie",
+            "**Safari**: Preferenze → Privacy → Cookie",
+            "**Edge**: Impostazioni → Cookie e autorizzazioni sito"
           ]
         },
         {
           type: "text",
           text: "Nota: Disabilitare i cookie tecnici potrebbe compromettere la funzionalità del sito.",
-          isNote: true
+          note: true
         }
       ]
     },
@@ -85,13 +87,11 @@ export const cookiesContent = {
       content: [
         {
           type: "text",
-          text: "Quando clicchi sul pulsante di iscrizione e vieni reindirizzato alla piattaforma Lu.ma, potrebbero essere impostati cookie da Lu.ma secondo la loro Cookie Policy."
+          text: "Quando clicchi sul pulsante di iscrizione e vieni reindirizzato alla piattaforma **Lu.ma**, potrebbero essere impostati cookie da Lu.ma secondo la loro Cookie Policy."
         },
         {
-          type: "link",
-          text: "Per informazioni sui cookie utilizzati da Lu.ma, consulta:",
-          url: "https://luma.com/privacy-policy",
-          urlText: "https://luma.com/privacy-policy"
+          type: "text",
+          text: "Per informazioni sui cookie utilizzati da Lu.ma, consulta: [https://luma.com/privacy-policy](https://luma.com/privacy-policy)"
         }
       ]
     },

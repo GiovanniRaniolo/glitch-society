@@ -30,16 +30,17 @@ Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `sr
 | Rotta | Pagina | Testi |
 |---|---|---|
 | `/` | `src/pages/Index.tsx` | vedi tabella sopra |
-| `/privacy-policy` | `src/pages/PrivacyPolicy.tsx` | `content/privacy.ts` (P.IVA → T02) |
-| `/cookie-policy` | `src/pages/CookiePolicy.tsx` | `content/cookies.ts` |
+| `/privacy-policy` | `src/pages/PrivacyPolicy.tsx` → `components/LegalPage.tsx` | `content/privacy.ts` (P.IVA → T02) |
+| `/cookie-policy` | `src/pages/CookiePolicy.tsx` → `components/LegalPage.tsx` | `content/cookies.ts` |
 | `*` (404) | `src/pages/NotFound.tsx` | testo nel componente |
 
+Pagine legali: un solo componente `src/components/LegalPage.tsx`; tipi e formato dei testi (`**grassetto**`, `[link](indirizzo)`) in `src/content/legalTypes.ts`, letti da `src/components/RichText.tsx`.
 Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/components/ScrollToTop.tsx`.
 
 ## Dominio e hosting
 - Sito pubblicato: `https://glitchsociety.dev` su **Vercel** (deploy da `master`).
 - Tutti gli indirizzi assoluti (metadati, sitemap, canonical) usano `glitchsociety.dev` (T13).
-- Regole di routing Vercel: `vercel.json` (da creare → T14).
+- Regole di routing Vercel: `vercel.json` (tutte le rotte → `index.html`; verifica online → T14).
 
 ## Link esterni (dove sono scritti)
 
@@ -57,14 +58,13 @@ Se cambia un link, aggiornare **tutte** le righe della tabella.
 - Colori, variabili CSS (`--primary`, `--background`…): `src/index.css`
 - Tema Tailwind, font, animazioni: `tailwind.config.ts`
 - Logo, favicon, immagine social: `public/` (`glitch_logo.*`, `favicon.png`, `ascii-art.png`)
-- Componenti shadcn/ui: `src/components/ui/` — oggi **nessuno usato** → T07
 
 ## SEO e condivisione
-- Titolo, descrizione, keyword, Open Graph, Twitter, JSON-LD, `theme-color`: `index.html` (colore → T11)
+- Titolo, descrizione, keyword, Open Graph, Twitter, JSON-LD, `theme-color`: `index.html` (`theme-color` arancione `#FF6A38`)
 - Robot: `public/robots.txt`; sitemap mancante → T12
 
 ## Configurazione e strumenti
-- Dipendenze e script (`dev`, `build`, `lint`, `preview`): `package.json` → T08, T10
+- Dipendenze e script (`dev`, `build` = controllo tipi + vite, `lint`, `preview`): `package.json` → T08, T10
 - Build e alias `@` → `src/`: `vite.config.ts`
 - TypeScript: `tsconfig.json`, `tsconfig.app.json`, `tsconfig.node.json`
 - Lint: `eslint.config.js`; PostCSS: `postcss.config.js`

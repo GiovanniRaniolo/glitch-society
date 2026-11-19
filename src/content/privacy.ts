@@ -1,4 +1,6 @@
-export const privacyContent = {
+import type { LegalContent } from "./legalTypes";
+
+export const privacyContent: LegalContent = {
   title: "Privacy Policy",
   lastUpdate: "Novembre 2025",
   sections: [
@@ -20,7 +22,7 @@ export const privacyContent = {
       content: [
         {
           type: "text",
-          text: "Questo sito web non raccoglie direttamente dati personali degli utenti."
+          text: "Questo sito web **non raccoglie direttamente dati personali** degli utenti."
         },
         {
           type: "text",
@@ -34,17 +36,15 @@ export const privacyContent = {
       content: [
         {
           type: "text",
-          text: "Il processo di iscrizione e pagamento al corso è gestito interamente dalla piattaforma esterna Lu.ma."
+          text: "Il processo di iscrizione e pagamento al corso è gestito interamente dalla piattaforma esterna **Lu.ma**."
         },
         {
           type: "text",
           text: "Quando clicchi sul pulsante di iscrizione, verrai reindirizzato al sito di Lu.ma, che è un servizio di terze parti indipendente."
         },
         {
-          type: "link",
-          text: "Per informazioni su come Lu.ma tratta i tuoi dati personali, consulta la loro Privacy Policy:",
-          url: "https://luma.com/privacy-policy",
-          urlText: "https://luma.com/privacy-policy"
+          type: "text",
+          text: "Per informazioni su come Lu.ma tratta i tuoi dati personali, consulta la loro Privacy Policy: [https://luma.com/privacy-policy](https://luma.com/privacy-policy)"
         }
       ]
     },
@@ -54,12 +54,11 @@ export const privacyContent = {
       content: [
         {
           type: "text",
-          text: "Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento del sito stesso."
+          text: "Questo sito utilizza esclusivamente **cookie tecnici** necessari al funzionamento del sito stesso."
         },
         {
           type: "text",
-          text: "Non vengono utilizzati cookie di profilazione, marketing o analytics. Per maggiori dettagli consulta la nostra Cookie Policy.",
-          linkTo: "/cookie-policy"
+          text: "Non vengono utilizzati cookie di profilazione, marketing o analytics. Per maggiori dettagli consulta la nostra [Cookie Policy](/cookie-policy)."
         }
       ]
     },
@@ -84,8 +83,7 @@ export const privacyContent = {
         },
         {
           type: "text",
-          text: "Per esercitare i tuoi diritti, contattaci all'indirizzo: glitchacademycrew@gmail.com",
-          emailLink: "glitchacademycrew@gmail.com"
+          text: "Per esercitare i tuoi diritti, contattaci all'indirizzo: [glitchacademycrew@gmail.com](mailto:glitchacademycrew@gmail.com)"
         }
       ]
     },
