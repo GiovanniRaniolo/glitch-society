@@ -46,7 +46,7 @@ Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `sr
 | `/cookie-policy` | `src/pages/CookiePolicy.tsx` → `components/LegalPage.tsx` | `content/cookies.ts` |
 | `*` (404) | `src/pages/NotFound.tsx` | `content/notFound.ts` (`notFoundContent`) |
 
-Pagine legali: un solo componente `src/components/LegalPage.tsx`; tipi e formato dei testi (`**grassetto**`, `[link](indirizzo)`) in `src/content/legalTypes.ts`, letti da `src/components/RichText.tsx`.
+Pagine legali: un solo componente `src/components/LegalPage.tsx`; tipi e formato dei testi (`**grassetto**`, `[link](indirizzo)`) in `src/content/legalTypes.ts`, letti da `src/components/RichText.tsx`. `RichText` legge anche la frase sotto il pulsante Telegram (`content/community.ts`, T43).
 Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/components/ScrollToTop.tsx`.
 
 ## Dominio e hosting
@@ -61,7 +61,7 @@ Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/componen
 | Academy `academy.glitchsociety.dev` | `content/featuredCourse.ts` |
 | Telegram `t.me/glitchsociety_dev` | `content/community.ts`, `content/footer.ts`, `content/hero.ts`, `index.html` |
 | Instagram, Linktree | `content/footer.ts`, `index.html` |
-| Email `glitchacademycrew@...` | `content/footer.ts`, `content/privacy.ts`, `content/cookies.ts`, `content/manifesto.ts` (pulsante Consulenza, T37) |
+| Email `glitchacademycrew@...` | `content/footer.ts`, `content/privacy.ts`, `content/cookies.ts`, `content/manifesto.ts` (pulsante "Raccontaci il tuo progetto", T37; lo stesso indirizzo è riusato dal link "scrivici direttamente" in `content/community.ts`, T43) |
 | Lu.ma (iscrizioni, pagamenti) | `content/privacy.ts`, `content/cookies.ts` |
 
 Se cambia un link, aggiornare **tutte** le righe della tabella.

@@ -1,3 +1,5 @@
+import { manifestoContent } from "./manifesto";
+
 export const communityContent = {
   hero: {
     badge: 'COMMUNITY',
@@ -18,6 +20,7 @@ export const communityContent = {
     ],
     cta: 'Unisciti su Telegram',
     url: 'https://t.me/glitchsociety_dev',
-    tagline: 'Il canale è aperto a tutti. Per un progetto della tua azienda, scrivici direttamente.',
+    // Frase sotto il pulsante (T40). Il link usa lo stesso indirizzo del pulsante "Raccontaci il tuo progetto" (T43).
+    tagline: `Il canale è aperto a tutti. Per un progetto della tua azienda, [scrivici direttamente](${manifestoContent.cta.url}).`,
   },
 }

@@ -1,5 +1,5 @@
 // Mostra un testo con **grassetto** e [link](indirizzo) scritti nel contenuto.
-// Usato da: components/LegalPage.tsx. Formato descritto in content/legalTypes.ts.
+// Usato da: components/LegalPage.tsx, sections/CommunitySection.tsx (frase sotto Telegram). Formato descritto in content/legalTypes.ts.
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
 

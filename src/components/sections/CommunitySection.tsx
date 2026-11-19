@@ -4,6 +4,7 @@ import { SectionHeader } from "@/components/SectionHeader";
 import { CtaLink } from "@/components/CtaLink";
 import { Send } from "lucide-react";
 import { getIcon } from "@/components/icons";
+import { RichText } from "@/components/RichText";
 
 export const CommunitySection = () => {
   return (
@@ -74,7 +75,7 @@ export const CommunitySection = () => {
                 {communityContent.telegram.cta}
               </CtaLink>
               <p className="mt-3 text-sm text-muted-foreground italic">
-                {communityContent.telegram.tagline}
+                <RichText text={communityContent.telegram.tagline} />
               </p>
             </div>
           </div>
