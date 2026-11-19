@@ -9,7 +9,7 @@ export const communityContent = {
     title: 'Entra nel Canale',
     subtitle: 'Il nostro hub digitale',
     description:
-      'Discussioni tech, supporto reciproco, opportunità condivise. È qui che nascono collaborazioni, si propongono talk e si creano legami che durano.',
+      'Discussioni tech, supporto reciproco, novità sugli eventi. È lo spazio della community: qui si propongono talk e si creano legami che durano.',
     features: [
       { icon: 'messageCircle', text: 'Discussioni tech live' },
       { icon: 'lightbulb', text: 'Proponi il tuo talk' },

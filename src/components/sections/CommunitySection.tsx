@@ -48,8 +48,8 @@ export const CommunitySection = () => {
               {communityContent.telegram.description}
             </p>
 
-            {/* Features Grid */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            {/* Voci: caselle di larghezza fissa (13rem) e centrate, così il testo non ha troppo margine (T42) */}
+            <div className="grid grid-cols-[13rem] sm:grid-cols-[repeat(2,13rem)] lg:grid-cols-[repeat(4,13rem)] justify-center gap-4 mb-6">
               {communityContent.telegram.features.map((feature, idx) => {
                 const Icon = getIcon(feature.icon);
                 return (
