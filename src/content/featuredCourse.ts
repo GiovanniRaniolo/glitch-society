@@ -59,7 +59,7 @@ export const featuredCourseContent = {
       icon: 'ticket',
       label: 'Ingresso',
       value: 'Gratuito',
-      subvalue: 'RSVP gradito',
+      subvalue: 'Senza prenotazione',
     },
   },
 

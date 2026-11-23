@@ -32,7 +32,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Fatto quando:** `grep "DA INSERIRE" src` non trova nulla.
 
 ### T45 🟠 Pulsante RSVP dell'evento del 12 dicembre — utente, poi agente
-- **Problema:** la scheda "Ingresso" dice "RSVP gradito", ma nel box non c'è un pulsante per farlo.
+- **Problema:** nessun modo per dire "ci sarò". Per ora la scheda "Ingresso" dice "Senza prenotazione" (prima "RSVP gradito", cambiato il 2026-11-23).
 - **Stato (2026-11-23):** rinviato dall'utente. Opzioni discusse negli appunti locali.
 - **File:** `src/content/featuredCourse.ts` (`cta`, oggi `null`: il pulsante non compare)
 - **Fatto quando:** `cta = { label, url }` con il link dato dall'utente; il pulsante compare sotto il motto e apre il link in nuova scheda.
@@ -63,7 +63,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - 2026-11-19 — Sezione corso: resta, diventerà l'evento one-shot del 12 dicembre (dati dall'utente).
 - 2026-11-23 — Box dell'evento in stile terminale cyberpunk con i colori della locandina (fucsia e verde, `neon` in `tailwind.config.ts`), **solo in quel box**; il resto del sito resta arancione (T03).
 - 2026-11-23 — Evento: niente relatori nominati, solo "con lo staff GL!TCH"; pulsante RSVP in standby (T45).
-- 2026-11-23 — RSVP (T45): rinviato; dettagli negli appunti locali.
+- 2026-11-23 — RSVP (T45): rinviato; dettagli negli appunti locali. Scheda "Ingresso": "Gratuito" / "Senza prenotazione" (decisione dell'utente).
 - 2026-11-19 — Pulsante Hero (T20): rinviato; riproporre la domanda a fine sistemazioni.
 - 2026-11-19 — Pulsante Hero (T20), decisione dell'utente: diventa "Prossimo Evento" e porta alla sezione del corso/evento nella stessa pagina, non più all'Academy.
 - 2026-11-19 — Riorganizzazione home (T29–T32), decisioni dell'utente: "Chi siamo" unito alla Hero; tolti dalla Hero pillola "GL!TCH Society" e numeri 0/404/∞; Manifesto prima del Corso. Le pillole delle altre sezioni restano ("le altre chip vanno bene").
