@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles } from 'lucide-react'
+import { ArrowRight, Instagram, Sparkles } from 'lucide-react'
 import { featuredCourseContent } from '@/content/featuredCourse'
 import { SectionHeader } from '@/components/SectionHeader'
 import { CtaLink } from '@/components/CtaLink'
@@ -21,6 +21,7 @@ export const FeaturedCourseSection = () => {
     details,
     poster,
     cta,
+    socials,
   } = featuredCourseContent
 
   return (
@@ -135,7 +136,7 @@ export const FeaturedCourseSection = () => {
                 })}
               </div>
 
-              {/* Motto e pulsante (il pulsante compare solo se c'è il link) */}
+              {/* Motto, pulsante RSVP (compare solo se c'è il link) e Instagram */}
               <div className="text-center">
                 <p className="font-mono text-sm md:text-base uppercase tracking-wider text-neon-green">
                   {'> '}
@@ -149,6 +150,18 @@ export const FeaturedCourseSection = () => {
                     </CtaLink>
                   </div>
                 )}
+                <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
+                  {socials.map((social) => (
+                    <CtaLink
+                      key={social.url}
+                      href={social.url}
+                      icon={Instagram}
+                      variant={social.tone === 'pink' ? 'neonPink' : 'neonGreen'}
+                    >
+                      {social.label}
+                    </CtaLink>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.div>

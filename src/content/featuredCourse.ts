@@ -3,6 +3,8 @@
 // perché è citato da MAP.md e da content/hero.ts.
 // Evento attuale (T03): pub talk one-shot del 12 dicembre 2026, testi dalla locandina.
 
+import { siteContent } from './site'
+
 // Pulsante d'azione: per ora non c'è (link RSVP in attesa, T45).
 // Quando arriva: cta = { label: 'Prenota il tuo posto', url: 'https://…' }
 type EventCta = { label: string; url: string } | null
@@ -73,4 +75,18 @@ export const featuredCourseContent = {
   },
 
   cta,
+
+  // Pulsanti Instagram sotto il motto (T47). `tone` sceglie il colore: green o pink.
+  socials: [
+    {
+      label: '@glitchsociety_dev',
+      url: siteContent.instagramUrl,
+      tone: 'green',
+    },
+    {
+      label: '@primaclasseragusa',
+      url: 'https://www.instagram.com/primaclasseragusa',
+      tone: 'pink',
+    },
+  ] as const,
 }

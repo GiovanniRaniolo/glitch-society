@@ -13,10 +13,10 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-**T03 finito** (evento del 12 dicembre). **Primo compito: T45** (pulsante RSVP), appena l'utente dà il link. Rebrand T33–T37 e ritocchi T38–T44 finiti. T14 dopo il deploy, insieme all'utente. T28 in roadmap, da valutare con il team.
+**T03 e T47 finiti** (evento del 12 dicembre). Prossimo: merge di web-rebrand su master (lo fa l'utente), poi T14. T45 (RSVP) rinviato. Rebrand T33–T37 e ritocchi T38–T44 finiti. T14 dopo il deploy, insieme all'utente. T28 in roadmap, da valutare con il team.
 
 ## In attesa dell'utente
-- T45 — link per l'RSVP dell'evento del 12 dicembre (pulsante in standby).
+- T45 — RSVP dell'evento del 12 dicembre: rinviato dall'utente (2026-11-23).
 - T02 — Partita IVA (l'utente farà sapere).
 - T14 — deploy su master fatto dall'utente, poi verifica insieme.
 
@@ -33,7 +33,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 
 ### T45 🟠 Pulsante RSVP dell'evento del 12 dicembre — utente, poi agente
 - **Problema:** la scheda "Ingresso" dice "RSVP gradito", ma nel box non c'è un pulsante per farlo.
-- **Stato (2026-11-23):** in standby per decisione dell'utente; manca il link (es. pagina Lu.ma).
+- **Stato (2026-11-23):** rinviato dall'utente. Opzioni discusse negli appunti locali.
 - **File:** `src/content/featuredCourse.ts` (`cta`, oggi `null`: il pulsante non compare)
 - **Fatto quando:** `cta = { label, url }` con il link dato dall'utente; il pulsante compare sotto il motto e apre il link in nuova scheda.
 
@@ -63,6 +63,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - 2026-11-19 — Sezione corso: resta, diventerà l'evento one-shot del 12 dicembre (dati dall'utente).
 - 2026-11-23 — Box dell'evento in stile terminale cyberpunk con i colori della locandina (fucsia e verde, `neon` in `tailwind.config.ts`), **solo in quel box**; il resto del sito resta arancione (T03).
 - 2026-11-23 — Evento: niente relatori nominati, solo "con lo staff GL!TCH"; pulsante RSVP in standby (T45).
+- 2026-11-23 — RSVP (T45): rinviato; dettagli negli appunti locali.
 - 2026-11-19 — Pulsante Hero (T20): rinviato; riproporre la domanda a fine sistemazioni.
 - 2026-11-19 — Pulsante Hero (T20), decisione dell'utente: diventa "Prossimo Evento" e porta alla sezione del corso/evento nella stessa pagina, non più all'Academy.
 - 2026-11-19 — Riorganizzazione home (T29–T32), decisioni dell'utente: "Chi siamo" unito alla Hero; tolti dalla Hero pillola "GL!TCH Society" e numeri 0/404/∞; Manifesto prima del Corso. Le pillole delle altre sezioni restano ("le altre chip vanno bene").
@@ -79,6 +80,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - 2026-11-19 — **Canale Telegram: resta** (decisione dell'utente). I testi della community non devono invitare le aziende a proporre progetti nel canale (T40).
 
 ## Fatti
+- 2026-11-23 — **T47** Nel box dell'evento, sotto il motto, due pulsanti Instagram: **@glitchsociety_dev** (verde) e **@primaclasseragusa** (fucsia), in nuova scheda; su telefono uno sotto l'altro. Indirizzo di GL!TCH scritto una volta sola in `content/site.ts` (`instagramUrl`), letto anche dal footer; Prima Classe in `content/featuredCourse.ts` (`socials`). Nuove varianti `neonGreen`/`neonPink` in `components/CtaLink.tsx`. Controllato nel browser (build di produzione): link giusti, footer invariato, a 375 px niente scorrimento laterale; console senza errori. Build e lint passano.
 - 2026-11-23 — **T03** La sezione `#next-event` ora annuncia il **pub talk one-shot "Terminator è già qui. Ma è noioso."**: sabato 12 dicembre 2026, 17:00–19:00 circa, Prima Classe, Via Ercolano 7, 97100 Ragusa (RG); talk + birra con lo staff GL!TCH; ingresso gratuito, RSVP gradito. Testi dalla locandina e dall'utente, descrizione proposta dall'agente e approvata. Box in stile terminale (barra finestra, righe da monitor, titolo su 3 righe bianco/fucsia/verde con leggero effetto glitch, fermo per chi chiede meno animazioni). **Locandina** piccola a lato (sopra su telefono): al clic si apre grande, si chiude con X, Esc o clic fuori; la versione grande si scarica solo al primo clic. Nuovo `components/ImageLightbox.tsx`; immagini in `public/event-poster-2026-12-12.webp` (182 KB) e `-thumb.webp` (38 KB); icone nuove `beer`, `ticket`; colori e animazioni in `src/index.css`. Pillola: "PROSSIMO EVENTO · ONE SHOT". Pulsante nascosto finché manca il link (T45). Controllato nel browser (build di produzione): a 1440 px locandina a destra e 4 schede in riga; a 375 px locandina sopra, niente scorrimento laterale; console senza errori. Build e lint passano. **Testi tolti** (corso di febbraio): pillola "CORSO IN PARTENZA"; titolo "Full-Stack AI Development"; sottotitolo "Da Zero Coding a Primo MVP Deployato"; descrizione "7 settimane intensive per imparare React, Next.js, Node.js e database con metodologia AI-first. Codifica 10x più veloce con GitHub Copilot e Cursor AI."; schede Quando "Dal 21 Febbraio 2026" / "Ogni Sabato • 15:00 - 18:00", Durata "7 Settimane" / "21 ore totali di formazione", Dove "Marina di Ragusa" / "ERETICO • Via Benedetto Brin, 13", Posti "Max 12 Partecipanti" / "Supporto 1-to-1 garantito"; voci "Zero esperienza richiesta", "7 progetti live nel portfolio", "MVP personalizzato deployato", "Community lifetime"; tecnologie React, Next.js, Node.js, MongoDB, Tailwind, AI Tools; pulsante "Scopri il Corso" → `https://academy.glitchsociety.dev`; "Ultimi posti disponibili"; bollino "EARLY BIRD ATTIVO".
 - 2026-11-19 — **T44** Footer, decisioni dell'utente. (1) Frase sotto il titolo: **"Consulenza e formazione sull'AI per imprese, persone e istituzioni. Dove le idee diventano strumenti."** (proposta A; scartate B "Un collettivo di sviluppatori, creativi e consulenti che porta l'AI nelle aziende e tra le persone." e C "Imprese, persone e istituzioni: costruiamo insieme l'AI che serve davvero."). (2) Titolo "Costruiamo il Futuro, Insieme" resta. (3) Email di contatto scritta una volta sola in `content/site.ts` (`contactEmail`): la leggono il pulsante "Raccontaci il tuo progetto" (`content/manifesto.ts`), il link "scrivici direttamente" e il footer; le pagine legali tengono il loro indirizzo del titolare. (4) Footer largo come le sezioni (`max-w-6xl` sul contenitore, `sections/Footer.tsx`): bordi allineati al pixel con le sezioni sopra. Controllato nel browser (build di produzione): frase nuova, i 3 link email con lo stesso indirizzo, nessuno scorrimento laterale anche a 375 px; console senza errori. Build e lint passano. **Testo tolto**: "Community di innovatori, sviluppatori e creativi. Dove le idee prendono forma."
 - 2026-11-19 — **T43** Nella frase sotto il pulsante Telegram, **"scrivici direttamente"** è un link che apre l'email, come il pulsante "Raccontaci il tuo progetto" (richiesta dell'utente). L'indirizzo non è ripetuto: `content/community.ts` lo prende da `manifestoContent.cta.url`, quindi si cambia solo in `content/manifesto.ts`. La frase è letta da `RichText` (lo stesso dei link delle pagine legali: `mailto:` nella stessa scheda). Controllato nel browser (build di produzione): link arancione su "scrivici direttamente", stesso indirizzo del pulsante, stessa scheda; console senza errori. Build e lint passano.

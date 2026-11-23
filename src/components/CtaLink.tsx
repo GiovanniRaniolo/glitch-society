@@ -5,7 +5,7 @@ import type { LucideIcon } from 'lucide-react'
 type CtaLinkProps = {
   href: string
   children: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'telegram'
+  variant?: 'primary' | 'secondary' | 'telegram' | 'neonGreen' | 'neonPink'
   icon?: LucideIcon
   // true = icona dopo il testo (es. freccia)
   iconEnd?: boolean
@@ -19,6 +19,11 @@ const variantClass = {
     'bg-secondary hover:bg-secondary/80 text-foreground border border-primary/20 hover:border-primary/40',
   telegram:
     'bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40',
+  // Solo nel box dell'evento (colori della locandina, T03/T47)
+  neonGreen:
+    'bg-black text-neon-green border border-neon-green/60 hover:bg-neon-green hover:text-black font-mono',
+  neonPink:
+    'bg-black text-neon-pink border border-neon-pink/60 hover:bg-neon-pink hover:text-black font-mono',
 }
 
 const baseClass =

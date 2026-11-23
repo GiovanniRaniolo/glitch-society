@@ -15,7 +15,7 @@ export const footerContent = {
     {
       icon: 'instagram',
       label: 'Instagram',
-      url: 'https://www.instagram.com/glitchsociety_dev',
+      url: siteContent.instagramUrl,
     },
     {
       icon: 'telegram',

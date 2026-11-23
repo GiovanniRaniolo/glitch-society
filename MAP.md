@@ -20,7 +20,7 @@ Collegamenti: compiti aperti in [TASKS.md](TASKS.md); istruzioni d'avvio in [REA
 | Separatore tra sezioni | `sections/SectionDivider.tsx` | — | |
 | Manifesto, mission, principi, colonne Consulenza e Formazione, "Raccontaci il tuo progetto" | `sections/ManifestoSection.tsx` | `content/manifesto.ts` (`manifestoContent`, `columns`) | prima del Corso (T32); due colonne (T33) |
 | Etica, codice etico, Sempre / Mai, finestre terminale | `sections/EthicsSection.tsx` | `content/ethics.ts` (`ethicsContent`, `blocks`, `tone`) | dopo la Mission (T36) |
-| Prossimo evento, ex corso in evidenza, `#next-event`, pub talk Terminator, 12 dicembre, Prima Classe, locandina, RSVP, stile cyberpunk | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`, id in `anchor`, pulsante in `cta`) | evento T03; RSVP → T45; dopo il 12/12 → T46 |
+| Prossimo evento, ex corso in evidenza, `#next-event`, pub talk Terminator, 12 dicembre, Prima Classe, locandina, RSVP, pulsanti Instagram, stile cyberpunk | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`, id in `anchor`, pulsante in `cta`) | evento T03; RSVP → T45; dopo il 12/12 → T46 |
 | Community, Telegram | `sections/CommunitySection.tsx` | `content/community.ts` (`communityContent`) | galleria tolta (T06) |
 | Footer, social, email, link legali, copyright | `sections/Footer.tsx` | `content/footer.ts` (`footerContent`) | copyright = anno corrente, calcolato (T04); email da `content/site.ts` (T44) |
 
@@ -62,7 +62,9 @@ Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/componen
 | Academy `academy.glitchsociety.dev` | nessuno: tolto con il corso di febbraio (T03) |
 | RSVP dell'evento (in attesa, T45) | `content/featuredCourse.ts` (`cta`) |
 | Telegram `t.me/glitchsociety_dev` | `content/community.ts`, `content/footer.ts`, `content/hero.ts`, `index.html` |
-| Instagram, Linktree | `content/footer.ts`, `index.html` |
+| Instagram GL!TCH `instagram.com/glitchsociety_dev` | **solo** `content/site.ts` (`instagramUrl`, letto da footer e box evento) + `index.html` (JSON-LD) |
+| Instagram Prima Classe `instagram.com/primaclasseragusa` | `content/featuredCourse.ts` (`socials`, T47) |
+| Linktree | `content/footer.ts`, `index.html` |
 | Email di contatto `glitchacademycrew@...` (pulsante "Raccontaci il tuo progetto", link "scrivici direttamente", footer) | **solo** `content/site.ts` (`contactEmail`, T44) |
 | Email del titolare nelle pagine legali | `content/privacy.ts`, `content/cookies.ts` |
 | Lu.ma (iscrizioni, pagamenti) | `content/privacy.ts`, `content/cookies.ts` |
