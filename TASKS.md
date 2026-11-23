@@ -13,12 +13,11 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-**T03 e T47 finiti** (evento del 12 dicembre). Prossimo: merge di web-rebrand su master (lo fa l'utente), poi T14. T45 (RSVP) rinviato. Rebrand T33–T37 e ritocchi T38–T44 finiti. T14 dopo il deploy, insieme all'utente. T28 in roadmap, da valutare con il team.
+Rebrand, evento del 12 dicembre (T03, T47) e verifica online (T14) finiti: tutto su master e online dal 2026-11-23. Aperti: T02 (P.IVA), T45 (RSVP, rinviato), T46 (dopo il 12/12), T28 (da valutare con il team).
 
 ## In attesa dell'utente
 - T45 — RSVP dell'evento del 12 dicembre: rinviato dall'utente (2026-11-23).
 - T02 — Partita IVA (l'utente farà sapere).
-- T14 — deploy su master fatto dall'utente, poi verifica insieme.
 
 ## Da attenzionare (ricordarlo all'utente a fine blocchi grandi o sessioni lunghe)
 - ⚠️ **T02 — Partita IVA del titolare** da inserire nella Privacy Policy.
@@ -41,13 +40,6 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Problema:** dal 13 dicembre 2026 il box annuncia un evento passato.
 - **File:** `src/content/featuredCourse.ts`, `public/event-poster-2026-12-12*.webp`
 - **Fatto quando:** l'utente decide (nuovo evento, resoconto della serata o sezione nascosta) e il box non annuncia più il 12 dicembre come futuro.
-
-### T14 🔴 Privacy e Cookie Policy danno 404 se aperte direttamente — agente
-- **Problema:** su Vercel manca la regola che rimanda tutte le rotte a `index.html`. `/privacy-policy` e `/cookie-policy` funzionano solo cliccando dal footer; link diretto, ricarica o Google → 404 (verificato 2026-11-19).
-- **File:** `vercel.json` (nuovo)
-- **Stato (2026-11-19):** `vercel.json` creato con riscrittura di tutte le rotte su `/index.html` (i file statici in `public/` hanno la precedenza). Manca solo la verifica col curl **dopo il deploy da master**, da fare insieme all'utente (confermato il 2026-11-19).
-- **Fatto quando:** dopo il deploy, `curl -o /dev/null -w "%{http_code}" https://glitchsociety.dev/privacy-policy` = 200 (idem cookie-policy).
-- **Nello stesso controllo (T12):** `curl -s https://glitchsociety.dev/sitemap.xml` deve mostrare l'XML (non la pagina del sito) e `robots.txt` deve avere la riga `Sitemap:`.
 
 ### T28 ⚪ Passare a React Router v7
 - **Stato (2026-11-19):** in roadmap; da rivedere con il team prima di farlo.
@@ -80,6 +72,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - 2026-11-19 — **Canale Telegram: resta** (decisione dell'utente). I testi della community non devono invitare le aziende a proporre progetti nel canale (T40).
 
 ## Fatti
+- 2026-11-23 — **T14** (e verifica di T12) Dopo il deploy da master: `/privacy-policy` e `/cookie-policy` aperte direttamente = 200; `/sitemap.xml` = 200 come XML; `robots.txt` ha la riga `Sitemap:`. Online anche l'evento del 12 dicembre (locandina, pulsanti Instagram, "Senza prenotazione", colori fucsia e verde nel CSS). La storia di web-rebrand è stata riscritta prima del merge per togliere 3 righe interne da TASKS.md (spostate negli appunti locali); master non le contiene.
 - 2026-11-23 — **T47** Nel box dell'evento, sotto il motto, due pulsanti Instagram: **@glitchsociety_dev** (verde) e **@primaclasseragusa** (fucsia), in nuova scheda; su telefono uno sotto l'altro. Indirizzo di GL!TCH scritto una volta sola in `content/site.ts` (`instagramUrl`), letto anche dal footer; Prima Classe in `content/featuredCourse.ts` (`socials`). Nuove varianti `neonGreen`/`neonPink` in `components/CtaLink.tsx`. Controllato nel browser (build di produzione): link giusti, footer invariato, a 375 px niente scorrimento laterale; console senza errori. Build e lint passano.
 - 2026-11-23 — **T03** La sezione `#next-event` ora annuncia il **pub talk one-shot "Terminator è già qui. Ma è noioso."**: sabato 12 dicembre 2026, 17:00–19:00 circa, Prima Classe, Via Ercolano 7, 97100 Ragusa (RG); talk + birra con lo staff GL!TCH; ingresso gratuito, RSVP gradito. Testi dalla locandina e dall'utente, descrizione proposta dall'agente e approvata. Box in stile terminale (barra finestra, righe da monitor, titolo su 3 righe bianco/fucsia/verde con leggero effetto glitch, fermo per chi chiede meno animazioni). **Locandina** piccola a lato (sopra su telefono): al clic si apre grande, si chiude con X, Esc o clic fuori; la versione grande si scarica solo al primo clic. Nuovo `components/ImageLightbox.tsx`; immagini in `public/event-poster-2026-12-12.webp` (182 KB) e `-thumb.webp` (38 KB); icone nuove `beer`, `ticket`; colori e animazioni in `src/index.css`. Pillola: "PROSSIMO EVENTO · ONE SHOT". Pulsante nascosto finché manca il link (T45). Controllato nel browser (build di produzione): a 1440 px locandina a destra e 4 schede in riga; a 375 px locandina sopra, niente scorrimento laterale; console senza errori. Build e lint passano. **Testi tolti** (corso di febbraio): pillola "CORSO IN PARTENZA"; titolo "Full-Stack AI Development"; sottotitolo "Da Zero Coding a Primo MVP Deployato"; descrizione "7 settimane intensive per imparare React, Next.js, Node.js e database con metodologia AI-first. Codifica 10x più veloce con GitHub Copilot e Cursor AI."; schede Quando "Dal 21 Febbraio 2026" / "Ogni Sabato • 15:00 - 18:00", Durata "7 Settimane" / "21 ore totali di formazione", Dove "Marina di Ragusa" / "ERETICO • Via Benedetto Brin, 13", Posti "Max 12 Partecipanti" / "Supporto 1-to-1 garantito"; voci "Zero esperienza richiesta", "7 progetti live nel portfolio", "MVP personalizzato deployato", "Community lifetime"; tecnologie React, Next.js, Node.js, MongoDB, Tailwind, AI Tools; pulsante "Scopri il Corso" → `https://academy.glitchsociety.dev`; "Ultimi posti disponibili"; bollino "EARLY BIRD ATTIVO".
 - 2026-11-19 — **T44** Footer, decisioni dell'utente. (1) Frase sotto il titolo: **"Consulenza e formazione sull'AI per imprese, persone e istituzioni. Dove le idee diventano strumenti."** (proposta A; scartate B "Un collettivo di sviluppatori, creativi e consulenti che porta l'AI nelle aziende e tra le persone." e C "Imprese, persone e istituzioni: costruiamo insieme l'AI che serve davvero."). (2) Titolo "Costruiamo il Futuro, Insieme" resta. (3) Email di contatto scritta una volta sola in `content/site.ts` (`contactEmail`): la leggono il pulsante "Raccontaci il tuo progetto" (`content/manifesto.ts`), il link "scrivici direttamente" e il footer; le pagine legali tengono il loro indirizzo del titolare. (4) Footer largo come le sezioni (`max-w-6xl` sul contenitore, `sections/Footer.tsx`): bordi allineati al pixel con le sezioni sopra. Controllato nel browser (build di produzione): frase nuova, i 3 link email con lo stesso indirizzo, nessuno scorrimento laterale anche a 375 px; console senza errori. Build e lint passano. **Testo tolto**: "Community di innovatori, sviluppatori e creativi. Dove le idee prendono forma."

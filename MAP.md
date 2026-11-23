@@ -53,7 +53,7 @@ Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/componen
 ## Dominio e hosting
 - Sito pubblicato: `https://glitchsociety.dev` su **Vercel** (deploy da `master`).
 - Tutti gli indirizzi assoluti (metadati, sitemap, canonical) usano `glitchsociety.dev` (T13).
-- Regole di routing Vercel: `vercel.json` (tutte le rotte → `index.html`; verifica online → T14).
+- Regole di routing Vercel: `vercel.json` (tutte le rotte → `index.html`; verificato online il 2026-11-23, T14).
 
 ## Link esterni (dove sono scritti)
 
