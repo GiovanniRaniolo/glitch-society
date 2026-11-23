@@ -39,3 +39,65 @@ All colors MUST be HSL.
     --radius: 0.5rem;
   }
 }
+/* Evento del 12 dicembre (T03): colori della locandina, usati solo nel box dell'evento
+   (sections/FeaturedCourseSection.tsx). Il resto del sito resta arancione. */
+@layer base {
+  :root {
+    --neon-pink: 322 100% 58%;
+    --neon-green: 112 100% 54%;
+  }
+}
+
+@layer components {
+  /* Righe orizzontali leggere, come un vecchio monitor */
+  .scanlines {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      hsl(0 0% 100% / 0.03) 0,
+      hsl(0 0% 100% / 0.03) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+  }
+
+  /* Titolo che "salta" ogni tanto, con ombre fucsia e verdi */
+  .glitch-text {
+    animation: glitch-jump 4s steps(1) infinite;
+  }
+
+  /* Cursore del terminale che lampeggia */
+  .terminal-cursor {
+    animation: cursor-blink 1s steps(1) infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .glitch-text,
+    .terminal-cursor {
+      animation: none;
+    }
+  }
+}
+
+@keyframes glitch-jump {
+  0%, 88%, 100% {
+    text-shadow: none;
+    transform: none;
+  }
+  90% {
+    text-shadow: -3px 0 hsl(var(--neon-pink)), 3px 0 hsl(var(--neon-green));
+    transform: translateX(2px);
+  }
+  93% {
+    text-shadow: 3px 0 hsl(var(--neon-pink)), -3px 0 hsl(var(--neon-green));
+    transform: translateX(-2px);
+  }
+  96% {
+    text-shadow: -1px 0 hsl(var(--neon-pink)), 1px 0 hsl(var(--neon-green));
+    transform: none;
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}

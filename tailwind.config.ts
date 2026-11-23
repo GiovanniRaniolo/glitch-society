@@ -48,6 +48,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Colori della locandina dell'evento (T03), solo per il box dell'evento
+        neon: {
+          pink: "hsl(var(--neon-pink))",
+          green: "hsl(var(--neon-green))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",

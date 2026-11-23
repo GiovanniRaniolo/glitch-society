@@ -13,10 +13,10 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **Priorità**: 🔴 critico (sito rotto o danno) · 🟠 bug · 🟡 pulizia/unificazione · ⚪ bassa.
 
 ## Ordine consigliato (agente, senza attese)
-**Primo compito: T03** (sezione del corso → evento del 12 dicembre), appena l'utente fornisce i testi. Rebrand T33–T37 e ritocchi T38–T44 finiti. T14 dopo il deploy, insieme all'utente. T28 in roadmap, da valutare con il team.
+**T03 finito** (evento del 12 dicembre). **Primo compito: T45** (pulsante RSVP), appena l'utente dà il link. Rebrand T33–T37 e ritocchi T38–T44 finiti. T14 dopo il deploy, insieme all'utente. T28 in roadmap, da valutare con il team.
 
 ## In attesa dell'utente
-- T03 — contenuti e testi dell'evento del 12 dicembre (luogo e data ci sono, il resto no).
+- T45 — link per l'RSVP dell'evento del 12 dicembre (pulsante in standby).
 - T02 — Partita IVA (l'utente farà sapere).
 - T14 — deploy su master fatto dall'utente, poi verifica insieme.
 
@@ -31,13 +31,16 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - **File:** `src/content/privacy.ts`
 - **Fatto quando:** `grep "DA INSERIRE" src` non trova nulla.
 
-### T03 🟠 Sezione corso → evento one-shot del 12 dicembre — utente, poi agente
-- **Problema:** "Corso in partenza" annuncia il 21/02/2026 con "Early bird attivo" e "Ultimi posti": scaduto.
-- **Decisione:** la sezione resta; diventerà l'incontro one-shot del 12 dicembre. I dati arrivano dall'utente più avanti.
-- **Stato (2026-11-19):** primo compito della roadmap. L'utente ha **luogo e data**; mancano ancora **contenuti e testi** (programma, descrizione e gli altri testi della sezione). Si parte quando li fornisce.
-- **File:** `src/content/featuredCourse.ts`, `src/components/sections/FeaturedCourseSection.tsx`
-- **Fatto quando:** la sezione mostra i dati dell'evento forniti dall'utente; nessun riferimento al corso di febbraio.
-- **Nota:** da controllare a schermo da telefono: il bollino "EARLY BIRD" (posizione assoluta in alto a destra) potrebbe coprire la prima scheda dei dettagli.
+### T45 🟠 Pulsante RSVP dell'evento del 12 dicembre — utente, poi agente
+- **Problema:** la scheda "Ingresso" dice "RSVP gradito", ma nel box non c'è un pulsante per farlo.
+- **Stato (2026-11-23):** in standby per decisione dell'utente; manca il link (es. pagina Lu.ma).
+- **File:** `src/content/featuredCourse.ts` (`cta`, oggi `null`: il pulsante non compare)
+- **Fatto quando:** `cta = { label, url }` con il link dato dall'utente; il pulsante compare sotto il motto e apre il link in nuova scheda.
+
+### T46 ⚪ Dopo il 12 dicembre la sezione evento è scaduta — utente
+- **Problema:** dal 13 dicembre 2026 il box annuncia un evento passato.
+- **File:** `src/content/featuredCourse.ts`, `public/event-poster-2026-12-12*.webp`
+- **Fatto quando:** l'utente decide (nuovo evento, resoconto della serata o sezione nascosta) e il box non annuncia più il 12 dicembre come futuro.
 
 ### T14 🔴 Privacy e Cookie Policy danno 404 se aperte direttamente — agente
 - **Problema:** su Vercel manca la regola che rimanda tutte le rotte a `index.html`. `/privacy-policy` e `/cookie-policy` funzionano solo cliccando dal footer; link diretto, ricarica o Google → 404 (verificato 2026-11-19).
@@ -58,6 +61,8 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - 2026-11-19 — `theme-color` = arancione `#FF6A38`.
 - 2026-11-19 — Galleria "Momenti Glitch": tolta per ora (niente foto).
 - 2026-11-19 — Sezione corso: resta, diventerà l'evento one-shot del 12 dicembre (dati dall'utente).
+- 2026-11-23 — Box dell'evento in stile terminale cyberpunk con i colori della locandina (fucsia e verde, `neon` in `tailwind.config.ts`), **solo in quel box**; il resto del sito resta arancione (T03).
+- 2026-11-23 — Evento: niente relatori nominati, solo "con lo staff GL!TCH"; pulsante RSVP in standby (T45).
 - 2026-11-19 — Pulsante Hero (T20): rinviato; riproporre la domanda a fine sistemazioni.
 - 2026-11-19 — Pulsante Hero (T20), decisione dell'utente: diventa "Prossimo Evento" e porta alla sezione del corso/evento nella stessa pagina, non più all'Academy.
 - 2026-11-19 — Riorganizzazione home (T29–T32), decisioni dell'utente: "Chi siamo" unito alla Hero; tolti dalla Hero pillola "GL!TCH Society" e numeri 0/404/∞; Manifesto prima del Corso. Le pillole delle altre sezioni restano ("le altre chip vanno bene").
@@ -74,6 +79,7 @@ Collegamenti: per trovare i file di un argomento vedi [MAP.md](MAP.md).
 - 2026-11-19 — **Canale Telegram: resta** (decisione dell'utente). I testi della community non devono invitare le aziende a proporre progetti nel canale (T40).
 
 ## Fatti
+- 2026-11-23 — **T03** La sezione `#next-event` ora annuncia il **pub talk one-shot "Terminator è già qui. Ma è noioso."**: sabato 12 dicembre 2026, 17:00–19:00 circa, Prima Classe, Via Ercolano 7, 97100 Ragusa (RG); talk + birra con lo staff GL!TCH; ingresso gratuito, RSVP gradito. Testi dalla locandina e dall'utente, descrizione proposta dall'agente e approvata. Box in stile terminale (barra finestra, righe da monitor, titolo su 3 righe bianco/fucsia/verde con leggero effetto glitch, fermo per chi chiede meno animazioni). **Locandina** piccola a lato (sopra su telefono): al clic si apre grande, si chiude con X, Esc o clic fuori; la versione grande si scarica solo al primo clic. Nuovo `components/ImageLightbox.tsx`; immagini in `public/event-poster-2026-12-12.webp` (182 KB) e `-thumb.webp` (38 KB); icone nuove `beer`, `ticket`; colori e animazioni in `src/index.css`. Pillola: "PROSSIMO EVENTO · ONE SHOT". Pulsante nascosto finché manca il link (T45). Controllato nel browser (build di produzione): a 1440 px locandina a destra e 4 schede in riga; a 375 px locandina sopra, niente scorrimento laterale; console senza errori. Build e lint passano. **Testi tolti** (corso di febbraio): pillola "CORSO IN PARTENZA"; titolo "Full-Stack AI Development"; sottotitolo "Da Zero Coding a Primo MVP Deployato"; descrizione "7 settimane intensive per imparare React, Next.js, Node.js e database con metodologia AI-first. Codifica 10x più veloce con GitHub Copilot e Cursor AI."; schede Quando "Dal 21 Febbraio 2026" / "Ogni Sabato • 15:00 - 18:00", Durata "7 Settimane" / "21 ore totali di formazione", Dove "Marina di Ragusa" / "ERETICO • Via Benedetto Brin, 13", Posti "Max 12 Partecipanti" / "Supporto 1-to-1 garantito"; voci "Zero esperienza richiesta", "7 progetti live nel portfolio", "MVP personalizzato deployato", "Community lifetime"; tecnologie React, Next.js, Node.js, MongoDB, Tailwind, AI Tools; pulsante "Scopri il Corso" → `https://academy.glitchsociety.dev`; "Ultimi posti disponibili"; bollino "EARLY BIRD ATTIVO".
 - 2026-11-19 — **T44** Footer, decisioni dell'utente. (1) Frase sotto il titolo: **"Consulenza e formazione sull'AI per imprese, persone e istituzioni. Dove le idee diventano strumenti."** (proposta A; scartate B "Un collettivo di sviluppatori, creativi e consulenti che porta l'AI nelle aziende e tra le persone." e C "Imprese, persone e istituzioni: costruiamo insieme l'AI che serve davvero."). (2) Titolo "Costruiamo il Futuro, Insieme" resta. (3) Email di contatto scritta una volta sola in `content/site.ts` (`contactEmail`): la leggono il pulsante "Raccontaci il tuo progetto" (`content/manifesto.ts`), il link "scrivici direttamente" e il footer; le pagine legali tengono il loro indirizzo del titolare. (4) Footer largo come le sezioni (`max-w-6xl` sul contenitore, `sections/Footer.tsx`): bordi allineati al pixel con le sezioni sopra. Controllato nel browser (build di produzione): frase nuova, i 3 link email con lo stesso indirizzo, nessuno scorrimento laterale anche a 375 px; console senza errori. Build e lint passano. **Testo tolto**: "Community di innovatori, sviluppatori e creativi. Dove le idee prendono forma."
 - 2026-11-19 — **T43** Nella frase sotto il pulsante Telegram, **"scrivici direttamente"** è un link che apre l'email, come il pulsante "Raccontaci il tuo progetto" (richiesta dell'utente). L'indirizzo non è ripetuto: `content/community.ts` lo prende da `manifestoContent.cta.url`, quindi si cambia solo in `content/manifesto.ts`. La frase è letta da `RichText` (lo stesso dei link delle pagine legali: `mailto:` nella stessa scheda). Controllato nel browser (build di produzione): link arancione su "scrivici direttamente", stesso indirizzo del pulsante, stessa scheda; console senza errori. Build e lint passano.
 - 2026-11-19 — **T42** Scheda Telegram, richieste dell'utente. (1) Descrizione senza "collaborazioni" e "opportunità condivise" (un'azienda poteva leggerle come invito a proporre progetti nel canale): ora **"Discussioni tech, supporto reciproco, novità sugli eventi. È lo spazio della community: qui si propongono talk e si creano legami che durano."** (`content/community.ts`). (2) Le 4 caselle delle voci ora hanno larghezza fissa 13rem (208 px invece di 252) e sono centrate (`sections/CommunitySection.tsx`): margine tra testo e bordo 19–32 px invece di 60–70. Controllato nel browser (build di produzione): a ~1360 px 4 in riga, a 700 px 2×2, a 375 px una sotto l'altra, sempre uguali e senza scorrimento laterale; console senza errori. Build e lint passano. **Testo tolto**: "Discussioni tech, supporto reciproco, opportunità condivise. È qui che nascono collaborazioni, si propongono talk e si creano legami che durano."

@@ -3,6 +3,7 @@
 // Usata da: FeaturedCourse, Manifesto, EssenceCard, Community, Footer (vedi MAP.md).
 // Le icone fisse dei componenti (frecce, pulsanti) si importano direttamente da lucide-react.
 import {
+  Beer,
   Brain,
   Briefcase,
   Building2,
@@ -24,6 +25,7 @@ import {
   Search,
   Send,
   Sparkles,
+  Ticket,
   Unlock,
   Users,
   Workflow,
@@ -32,6 +34,7 @@ import {
 } from 'lucide-react'
 
 export const icons = {
+  beer: Beer,
   brain: Brain,
   briefcase: Briefcase,
   building: Building2,
@@ -53,6 +56,7 @@ export const icons = {
   search: Search,
   sparkles: Sparkles,
   telegram: Send,
+  ticket: Ticket,
   unlock: Unlock,
   users: Users,
   workflow: Workflow,

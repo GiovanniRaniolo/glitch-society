@@ -20,7 +20,7 @@ Collegamenti: compiti aperti in [TASKS.md](TASKS.md); istruzioni d'avvio in [REA
 | Separatore tra sezioni | `sections/SectionDivider.tsx` | — | |
 | Manifesto, mission, principi, colonne Consulenza e Formazione, "Raccontaci il tuo progetto" | `sections/ManifestoSection.tsx` | `content/manifesto.ts` (`manifestoContent`, `columns`) | prima del Corso (T32); due colonne (T33) |
 | Etica, codice etico, Sempre / Mai, finestre terminale | `sections/EthicsSection.tsx` | `content/ethics.ts` (`ethicsContent`, `blocks`, `tone`) | dopo la Mission (T36) |
-| Corso in evidenza, prossimo evento, `#next-event`, date, sede ERETICO, posti, early bird | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`, id in `anchor`) | scaduto → T03 |
+| Prossimo evento, ex corso in evidenza, `#next-event`, pub talk Terminator, 12 dicembre, Prima Classe, locandina, RSVP, stile cyberpunk | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`, id in `anchor`, pulsante in `cta`) | evento T03; RSVP → T45; dopo il 12/12 → T46 |
 | Community, Telegram | `sections/CommunitySection.tsx` | `content/community.ts` (`communityContent`) | galleria tolta (T06) |
 | Footer, social, email, link legali, copyright | `sections/Footer.tsx` | `content/footer.ts` (`footerContent`) | copyright = anno corrente, calcolato (T04); email da `content/site.ts` (T44) |
 
@@ -35,6 +35,7 @@ Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `sr
 | Pulsante d’azione, CTA, link esterno in nuova scheda, link `#sezione` con scorrimento morbido | `components/CtaLink.tsx` (web → nuova scheda; `/`, `#`, `mailto:` → stessa scheda) | Hero, Manifesto, FeaturedCourse, Community, `pages/NotFound.tsx` |
 | Titolo della scheda, canonical, noindex della 404 | `components/PageMeta.tsx` (dati in `content/site.ts`) | tutte le pagine in `src/pages/` |
 | Logo (webp leggero + png di riserva) | `components/Logo.tsx` | Header, Footer |
+| Immagine che si ingrandisce al clic, lightbox, locandina grande | `components/ImageLightbox.tsx` | FeaturedCourse (T03) |
 | Icone scelte nei testi (campo `icon`), `icons`, `getIcon`, nome icona nuovo | `components/icons.ts` | FeaturedCourse, Manifesto (schede e colonne), EssenceCard, Community, Footer |
 
 ## Pagine e rotte
@@ -58,7 +59,8 @@ Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/componen
 
 | Link | Dove |
 |---|---|
-| Academy `academy.glitchsociety.dev` | `content/featuredCourse.ts` |
+| Academy `academy.glitchsociety.dev` | nessuno: tolto con il corso di febbraio (T03) |
+| RSVP dell'evento (in attesa, T45) | `content/featuredCourse.ts` (`cta`) |
 | Telegram `t.me/glitchsociety_dev` | `content/community.ts`, `content/footer.ts`, `content/hero.ts`, `index.html` |
 | Instagram, Linktree | `content/footer.ts`, `index.html` |
 | Email di contatto `glitchacademycrew@...` (pulsante "Raccontaci il tuo progetto", link "scrivici direttamente", footer) | **solo** `content/site.ts` (`contactEmail`, T44) |
@@ -69,8 +71,9 @@ Se cambia un link, aggiornare **tutte** le righe della tabella.
 
 ## Stile e grafica
 - Colori, variabili CSS (`--primary`, `--background`…): `src/index.css`
+- Fucsia e verde della locandina (`--neon-pink`, `--neon-green`, classi `neon-*`), righe da monitor (`scanlines`), titolo glitch (`glitch-text`), cursore (`terminal-cursor`): `src/index.css` + `tailwind.config.ts`; solo nel box dell'evento (T03)
 - Tema Tailwind, font, animazioni: `tailwind.config.ts`
-- Logo, favicon, immagine social: `public/` (`glitch_logo-425.webp` usato dal sito, `glitch_logo.png` riserva e metadati, `favicon.png`, `ascii-art.png`)
+- Logo, favicon, immagine social: `public/` (`glitch_logo-425.webp` usato dal sito, `glitch_logo.png` riserva e metadati, `favicon.png`, `ascii-art.png`, locandina `event-poster-2026-12-12.webp` + `-thumb.webp`)
 
 ## SEO e condivisione
 - Titolo, descrizione, keyword, Open Graph, Twitter, JSON-LD, `theme-color`: `index.html` (`theme-color` arancione `#FF6A38`)
