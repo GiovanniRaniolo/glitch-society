@@ -1,5 +1,5 @@
 // Testi della modalità nerd: il terminale a schermo intero nascosto nel sito (easter egg).
-// Usati da: components/nerd/NerdMode.tsx. I contenuti di mission, etica, evento e community
+// Usati da: components/nerd/NerdMode.tsx. I contenuti di mission, etica, evento, community e partner
 // arrivano dai rispettivi file in content/, così il terminale resta allineato alla pagina.
 //
 // Come si apre: codice Konami (↑ ↑ ↓ ↓ ← → ← → B A), scrivendo «nerd» sulla pagina,
@@ -29,10 +29,11 @@ export const nerdContent = {
     { cmd: 'etica', text: 'cosa facciamo sempre e cosa mai' },
     { cmd: 'evento', text: 'il prossimo evento' },
     { cmd: 'community', text: 'il canale Telegram' },
+    { cmd: 'partner', text: 'chi costruisce con noi' },
     { cmd: 'contatti', text: 'come scriverci' },
     { cmd: 'entra', text: 'apre il canale Telegram' },
     { cmd: 'mail', text: 'apre una mail per noi' },
-    { cmd: 'vai', text: 'vai evento, mission, etica, community o home: esce dal terminale e scorre lì' },
+    { cmd: 'vai', text: 'vai evento, mission, etica, community, partner o home: esce dal terminale e scorre lì' },
     { cmd: 'ls', text: 'elenca i file; cat <file> li legge' },
     { cmd: 'glitch', text: 'rompe lo schermo, per un attimo' },
     { cmd: 'matrix', text: 'pioggia di codice; un tocco o un tasto la ferma' },
@@ -49,7 +50,7 @@ export const nerdContent = {
   rm: 'Niente da cancellare: il codice etico è in sola lettura.',
   catMissing: (file: string) => `cat: ${file}: file non trovato. Prova ls.`,
   catUsage: 'uso: cat <file>. Prova ls.',
-  gotoUsage: 'uso: vai <evento|mission|etica|community|home>',
+  gotoUsage: 'uso: vai <evento|mission|etica|community|partner|home>',
   gotoMissing: (where: string) => `vai: ${where}: sezione non trovata.`,
   opening: (what: string) => `apro ${what} in una nuova scheda…`,
   reducedMotion: 'Animazioni ridotte dal sistema: niente effetti, solo testo.',

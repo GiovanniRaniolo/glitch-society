@@ -6,3 +6,4 @@ export { EthicsSection } from './EthicsSection';
 export { CommunitySection } from './CommunitySection';
 export { SectionDivider } from './SectionDivider';
 export { FeaturedCourseSection } from './FeaturedCourseSection';
+export { PartnersSection } from './PartnersSection';

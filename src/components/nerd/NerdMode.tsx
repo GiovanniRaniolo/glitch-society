@@ -8,6 +8,7 @@ import { manifestoContent } from '@/content/manifesto'
 import { ethicsContent } from '@/content/ethics'
 import { featuredCourseContent as ev } from '@/content/featuredCourse'
 import { communityContent } from '@/content/community'
+import { partnersContent } from '@/content/partners'
 import { siteContent } from '@/content/site'
 import { NERD_EVENT } from './openNerdMode'
 import { MatrixRain } from './MatrixRain'
@@ -23,6 +24,8 @@ const SECTIONS: Record<string, string> = {
   etica: 'etica',
   ethics: 'etica',
   community: 'community',
+  partner: partnersContent.anchor,
+  partners: partnersContent.anchor,
   home: '',
 }
 
@@ -32,6 +35,7 @@ const FILES: Record<string, string> = {
   'etica.txt': 'etica',
   'evento.txt': 'evento',
   'community.txt': 'community',
+  'partner.txt': 'partner',
   'contatti.txt': 'contatti',
   '.birra': 'birra',
 }
@@ -43,6 +47,7 @@ const ALIASES: Record<string, string> = {
   ethics: 'etica',
   event: 'evento',
   contact: 'contatti',
+  partners: 'partner',
   join: 'entra',
   goto: 'vai',
   cd: 'vai',
@@ -60,6 +65,7 @@ const COMMANDS = [
   'etica',
   'evento',
   'community',
+  'partner',
   'contatti',
   'entra',
   'mail',
@@ -351,6 +357,23 @@ export const NerdMode = () => {
             </span>,
           )
           break
+        case 'partner':
+          print(
+            <Title>{partnersContent.title}</Title>,
+            <span className="text-muted-foreground">{partnersContent.description}</span>,
+            ...partnersContent.partners.flatMap((p) => [
+              <span className="text-neon-green mt-2 block">
+                {'> '}
+                {p.name} <span className="text-muted-foreground">({p.place})</span>
+              </span>,
+              <span className="text-muted-foreground">{p.description}</span>,
+              <a className="text-primary underline underline-offset-4" href={p.url} target="_blank" rel="noopener noreferrer">
+                {new URL(p.url).hostname}
+              </a>,
+            ]),
+            <span>Vuoi vederli nella pagina? {cmd('vai partner')}</span>,
+          )
+          break
         case 'contatti':
           print(
             <span>
@@ -477,7 +500,7 @@ export const NerdMode = () => {
       options = COMMANDS.filter((c) => c.startsWith(parts[0].toLowerCase()))
     } else {
       const head = ALIASES[parts[0].toLowerCase()] ?? parts[0].toLowerCase()
-      const pool = head === 'cat' ? Object.keys(FILES) : head === 'vai' ? ['evento', 'mission', 'etica', 'community', 'home'] : []
+      const pool = head === 'cat' ? Object.keys(FILES) : head === 'vai' ? ['evento', 'mission', 'etica', 'community', 'partner', 'home'] : []
       prefix = parts.slice(0, -1).join(' ') + ' '
       options = pool.filter((p) => p.startsWith(parts[parts.length - 1]))
     }

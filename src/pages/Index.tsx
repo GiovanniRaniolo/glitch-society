@@ -6,7 +6,8 @@ import {
   EthicsSection,
   CommunitySection,
   SectionDivider,
-  FeaturedCourseSection
+  FeaturedCourseSection,
+  PartnersSection
 } from "@/components/sections";
 import { PageMeta } from "@/components/PageMeta";
 
@@ -36,6 +37,11 @@ const Index = () => {
 
       {/* Community */}
       <CommunitySection />
+
+      <SectionDivider />
+
+      {/* Partner */}
+      <PartnersSection />
       
       <Footer />
     </div>
