@@ -4,6 +4,7 @@ import NotFound from './pages/NotFound'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import CookiePolicy from './pages/CookiePolicy'
 import { ScrollToTop } from './components/ScrollToTop'
+import { NerdMode } from './components/nerd/NerdMode'
 import './index.css'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/cookie-policy" element={<CookiePolicy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <NerdMode />
     </BrowserRouter>
   )
 }

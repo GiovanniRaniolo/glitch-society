@@ -3,6 +3,8 @@ import { heroContent } from '@/content/hero'
 import { CtaLink } from '@/components/CtaLink'
 import { EssenceCard } from './EssenceCard'
 import { Users, Code2 } from 'lucide-react'
+import { openNerdMode } from '@/components/nerd/openNerdMode'
+import { nerdContent } from '@/content/nerd'
 
 export const HeroSection = () => {
   return (
@@ -19,9 +21,13 @@ export const HeroSection = () => {
         <br />
         <span className="text-muted-foreground whitespace-nowrap">
           {heroContent.title.part2}
-          <span
-            aria-hidden="true"
-            className="terminal-cursor inline-block w-[0.5em] h-[0.85em] ml-2 -mb-[0.05em] bg-primary align-baseline"
+          {/* Easter egg: il cursore apre la modalità nerd */}
+          <button
+            type="button"
+            onClick={openNerdMode}
+            aria-label={nerdContent.openLabel}
+            title=">_"
+            className="terminal-cursor inline-block w-[0.5em] h-[0.85em] ml-2 -mb-[0.05em] bg-primary align-baseline cursor-text focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           />
         </span>
       </motion.h1>

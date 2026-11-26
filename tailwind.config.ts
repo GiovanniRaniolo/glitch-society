@@ -18,7 +18,7 @@ export default {
         display: ['"Departure Mono"', '"IBM Plex Mono"', "monospace"],
         sans: ['"Chakra Petch"', "system-ui", "sans-serif"],
         mono: ['"IBM Plex Mono"', "ui-monospace", "monospace"],
-        // Solo per l'ASCII art del terminale (BrowserMockup)
+        // Solo per l'ASCII art della modalità nerd (components/nerd/NerdMode.tsx)
         ascii: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", '"Liberation Mono"', '"Courier New"', "monospace"],
       },
       colors: {

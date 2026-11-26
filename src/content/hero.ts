@@ -42,6 +42,5 @@ export const heroContent = {
       label: "Unisciti alla Community",
       url: "https://t.me/glitchsociety_dev"
     }
-  },
-  browserText: "gl!tch@society:~$ ./init_revolution.sh"
+  }
 };

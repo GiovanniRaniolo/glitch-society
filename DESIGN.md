@@ -14,7 +14,7 @@ A developer collective's site that reads like a terminal session, not a SaaS tem
 | `--card` / `--secondary` | `#0F0F0F` / `#1A1A1A` | panels, window bars |
 | `--muted-foreground` | `#A6A6A6` | secondary text |
 | `--border` | `#333333` | panel borders |
-| `--neon-pink` / `--neon-green` | `#FF29B8` / `#3BFF14` | only inside terminal windows (event box, ethics, ASCII mockup) |
+| `--neon-pink` / `--neon-green` | `#FF29B8` / `#3BFF14` | only inside terminal windows (event box, ethics, nerd mode) |
 
 ## Typography
 - **Display**: Departure Mono (pixel monospace, OFL, self-hosted in `public/fonts/departure-mono/`). Only one weight: headings use it at weight 400 with `font-synthesis: none`, so `font-bold` never fakes a bold.
@@ -33,4 +33,5 @@ A developer collective's site that reads like a terminal session, not a SaaS tem
 - `Badge`: `[ label ]` tag in orange, square.
 - `SectionDivider`: an ASCII rule (`// ----`), not a plain line.
 - Hero: pixel headline with the `glitch-text` jump on the highlighted word and a blinking block cursor.
+- Nerd mode (`components/nerd/`): hidden full-screen terminal, the old ASCII mockup turned into an easter egg. Opens with the Konami code, typing `nerd`, the backtick key, `#nerd` or a tap on the hero's blinking cursor. Window: black, 1 px neon-green border, IBM Plex Mono 13/14 px, prompt `ospite@gl!tch:~$` in neon green, commands in orange with a dotted underline (clickable), quick-command chips at the bottom for phones. ASCII banner (system mono) from `sm` up, Departure Mono wordmark below. `glitch` and `matrix` are the only effects and are replaced by text under reduced motion.
 - Motion: only the hero entrance, the glitch jump and the cursor; all respect `prefers-reduced-motion`.

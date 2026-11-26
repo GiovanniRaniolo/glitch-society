@@ -14,7 +14,7 @@ const toneStyle: Record<EthicsTone, { sign: string; text: string; border: string
 
 export const EthicsSection = () => {
   return (
-    <section className="py-20">
+    <section id="etica" className="py-20 scroll-mt-8">
       <div className="container mx-auto px-4 max-w-5xl">
         <SectionHeader
           badge={ethicsContent.badge}

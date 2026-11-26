@@ -19,7 +19,7 @@ const staggerContainer = {
 
 export const ManifestoSection = () => {
   return (
-    <section className="py-20">
+    <section id="mission" className="py-20 scroll-mt-8">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Mission */}
         <SectionHeader

@@ -2,7 +2,6 @@ import {
   Header,
   Footer,
   HeroSection,
-  BrowserMockup,
   ManifestoSection,
   EthicsSection,
   CommunitySection,
@@ -23,8 +22,6 @@ const Index = () => {
       {/* Prossimo evento: subito dopo le CTA della Hero */}
       <FeaturedCourseSection />
 
-      <BrowserMockup />
-      
       <SectionDivider />
       
       {/* Manifesto (La nostra mission) */}

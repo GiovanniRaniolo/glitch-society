@@ -16,7 +16,7 @@ Collegamenti: compiti aperti in [TASKS.md](TASKS.md); istruzioni d'avvio in [REA
 | Barra in alto, logo | `sections/Header.tsx` | — | link a `/` |
 | Hero, "Break the Code", sottotitolo, descrizione, pulsanti | `sections/HeroSection.tsx` | `content/hero.ts` (`heroContent`) | link pulsanti in `cta.*.url`; "Prossimo Evento" → `#next-event` (T20) |
 | Con chi costruiamo (Istituzioni, Imprese, Persone), ex "La nostra essenza", ex "Chi siamo" | `sections/EssenceCard.tsx` (dentro la Hero) | `content/hero.ts` (`heroContent.essence`) | unita alla Hero (T29); testi nuovi (T34) |
-| Finto browser, terminale `init_revolution.sh` | `sections/BrowserMockup.tsx` | `content/hero.ts` (`browserText`) | |
+| Modalità nerd (easter egg): terminale a schermo intero, si apre con il codice Konami, scrivendo «nerd», col tasto `, con `#nerd` o toccando il cursore del titolo | `nerd/NerdMode.tsx`, `nerd/MatrixRain.tsx`, `nerd/openNerdMode.ts` | `content/nerd.ts` (+ mission, etica, evento, community) | |
 | Separatore tra sezioni | `sections/SectionDivider.tsx` | — | |
 | Manifesto, mission, principi, colonne Consulenza e Formazione, "Raccontaci il tuo progetto" | `sections/ManifestoSection.tsx` | `content/manifesto.ts` (`manifestoContent`, `columns`) | prima del Corso (T32); due colonne (T33) |
 | Etica, codice etico, Sempre / Mai, finestre terminale | `sections/EthicsSection.tsx` | `content/ethics.ts` (`ethicsContent`, `blocks`, `tone`) | dopo la Mission (T36) |
