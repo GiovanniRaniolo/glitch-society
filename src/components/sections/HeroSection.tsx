@@ -31,7 +31,7 @@ export const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.3 }}
-        className="text-lg md:text-2xl text-foreground mb-5 max-w-3xl mx-auto leading-snug"
+        className="text-lg md:text-2xl text-foreground mb-5 max-w-2xl mx-auto leading-snug text-balance"
       >
         {heroContent.subtitle}
       </motion.p>
@@ -41,7 +41,7 @@ export const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.4, delay: 0.4 }}
-        className="text-base md:text-lg text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed"
+        className="text-base md:text-lg text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
       >
         {heroContent.description}
       </motion.p>

@@ -3,7 +3,7 @@
 Source of truth for the visual system. Tokens live in `src/index.css` (CSS variables, HSL) and `tailwind.config.ts`.
 
 ## Direction
-A developer collective's site that reads like a terminal session, not a SaaS template: pixel type for headings, monospace for everything else, square corners, hard edges, no blurred glows.
+A developer collective's site that reads like a terminal session, not a SaaS template: pixel type for headings, a squared techno sans for reading text, monospace only where it is code (labels, buttons, terminal windows), square corners, hard edges, no blurred glows.
 
 ## Colors (HSL variables in `src/index.css`)
 | Token | Value | Use |
@@ -18,8 +18,10 @@ A developer collective's site that reads like a terminal session, not a SaaS tem
 
 ## Typography
 - **Display**: Departure Mono (pixel monospace, OFL, self-hosted in `public/fonts/departure-mono/`). Only one weight: headings use it at weight 400 with `font-synthesis: none`, so `font-bold` never fakes a bold.
-- **Text**: IBM Plex Mono 400/500/600/700 (`@fontsource/ibm-plex-mono`), for body, buttons and labels.
-- Tailwind: `font-display` = Departure Mono, `font-sans` and `font-mono` = IBM Plex Mono.
+- **Text**: Chakra Petch 400/500/600/700 (`@fontsource/chakra-petch`), a squared, proportional sans for body copy and paragraphs. Monospace body text was rejected (26/11) as unreadable and "too AI".
+- **Code**: IBM Plex Mono 400/500/600/700 (`@fontsource/ibm-plex-mono`), only via `font-mono`: badges, buttons, dividers, terminal windows.
+- Tailwind: `font-display` = Departure Mono, `font-sans` = Chakra Petch, `font-mono` = IBM Plex Mono.
+- Hero subtitle and description are capped at `max-w-2xl` to keep lines under ~80 characters.
 
 ## Shape
 - Radius 0 everywhere (`rounded`, `rounded-sm` … `rounded-3xl` resolve to 0). `rounded-full` stays only for window dots.

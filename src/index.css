@@ -47,7 +47,7 @@ All colors MUST be HSL.
     --radius: 0px;
   }
 }
-/* Font: titoli in Departure Mono (pixel, un solo peso), testo in IBM Plex Mono. Vedi DESIGN.md. */
+/* Font: titoli in Departure Mono (pixel, un solo peso), testo in Chakra Petch, IBM Plex Mono solo per etichette, pulsanti e terminali. Vedi DESIGN.md. */
 @layer base {
   body {
     @apply bg-background text-foreground font-sans antialiased;
