@@ -9,6 +9,8 @@ type CtaLinkProps = {
   icon?: LucideIcon
   // true = icona dopo il testo (es. freccia)
   iconEnd?: boolean
+  // sm = pulsante compatto dell'intestazione
+  size?: 'md' | 'sm'
 }
 
 // Colori per tipo di pulsante. Forma, misure e animazione sono uguali per tutti.
@@ -24,7 +26,12 @@ const variantClass = {
 }
 
 const baseClass =
-  'inline-flex items-center justify-center gap-2 font-mono font-semibold px-7 py-3.5 transition-colors duration-150'
+  'inline-flex items-center justify-center gap-2 font-mono font-semibold transition-colors duration-150'
+
+const sizeClass = {
+  md: 'px-7 py-3.5',
+  sm: 'px-3 py-2 text-xs sm:px-4 sm:text-sm whitespace-nowrap',
+}
 
 const MotionLink = motion.create(Link)
 
@@ -50,14 +57,16 @@ export const CtaLink = ({
   variant = 'primary',
   icon: Icon,
   iconEnd = false,
+  size = 'md',
 }: CtaLinkProps) => {
-  const className = `${baseClass} ${variantClass[variant]}`
+  const className = `${baseClass} ${sizeClass[size]} ${variantClass[variant]}`
   const animation = {}
+  const iconClass = size === 'sm' ? 'hidden sm:block w-4 h-4' : 'w-5 h-5'
   const content = (
     <>
-      {Icon && !iconEnd && <Icon className="w-5 h-5" />}
+      {Icon && !iconEnd && <Icon className={iconClass} />}
       {children}
-      {Icon && iconEnd && <Icon className="w-5 h-5" />}
+      {Icon && iconEnd && <Icon className={iconClass} />}
     </>
   )
 

@@ -27,6 +27,7 @@ A developer collective's site that reads like a terminal session, not a SaaS tem
 - Radius 0 everywhere (`rounded`, `rounded-sm` … `rounded-3xl` resolve to 0). `rounded-full` stays only for window dots.
 - Borders 1 px; dashed borders for secondary panels.
 - Buttons: square, hard offset shadow (`4px 4px 0`), on hover they move up-left and the shadow grows.
+- Header: logo left, two compact buttons right (`CtaLink size="sm"`): "Contattaci" (secondary, mailto) and "Entra nella community" (primary, Telegram). Below `md` the labels shorten to "Contatti"/"Community"; below `sm` the icons are hidden so both fit at 360 px.
 
 ## Components
 - `Badge`: `[ label ]` tag in orange, square.
