@@ -19,6 +19,10 @@ const Index = () => {
       
       {/* Hero */}
       <HeroSection />
+
+      {/* Prossimo evento: subito dopo le CTA della Hero */}
+      <FeaturedCourseSection />
+
       <BrowserMockup />
       
       <SectionDivider />
@@ -33,11 +37,6 @@ const Index = () => {
 
       <SectionDivider />
 
-      {/* Corso in Evidenza */}
-      <FeaturedCourseSection />
-      
-      <SectionDivider />
-      
       {/* Community */}
       <CommunitySection />
       

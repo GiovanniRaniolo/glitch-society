@@ -25,7 +25,7 @@ export const FeaturedCourseSection = () => {
   } = featuredCourseContent
 
   return (
-    <section id={anchor} className="py-24 relative overflow-hidden">
+    <section id={anchor} className="pt-0 pb-20 relative overflow-hidden scroll-mt-24">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
