@@ -63,6 +63,37 @@ export const featuredCourseContent = {
     },
   },
 
+  // Sezione "Dettagli" nel box, sotto le schede (26/11): estratto del testo di presentazione dell'evento.
+  // Le frasi sono quelle del testo originale; `anchor` permette il link diretto (#dettagli).
+  about: {
+    anchor: 'dettagli',
+    prompt: 'cat dettagli.txt',
+    title: 'Dettagli',
+    intro:
+      'Il 12 dicembre, con GL!TCH Society, partiamo da Terminator per parlare dell’intelligenza artificiale che è già nelle nostre vite: algoritmi che selezionano ciò che vediamo, strumenti che creano contenuti e agenti a cui affidiamo compiti e decisioni. Il futuro, a quanto pare, passa anche da email, notifiche e scartoffie digitali.',
+    topics: {
+      title: 'Di cosa parliamo',
+      text: 'Tra esempi concreti, ironia e domande dal pubblico, esploreremo come queste tecnologie stanno cambiando il lavoro, le relazioni e il nostro modo di informarci.',
+      questions: [
+        'Cosa possiamo affidare a un agente AI?',
+        'Quanto controllo siamo disposti a cedere?',
+        'Come distinguiamo una possibilità concreta da una promessa da fantascienza?',
+      ],
+    },
+    ethics: {
+      title: 'Etica dell’AI',
+      text: 'Chi risponde quando un sistema sbaglia, come tutelare la privacy e cosa succede quando gli algoritmi riproducono pregiudizi e discriminazioni. Ci chiederemo quali responsabilità hanno le persone che sviluppano e usano questi strumenti, e quali decisioni vogliamo continuare a prendere in prima persona.',
+    },
+    audience: {
+      title: 'Per chi',
+      text: 'Una chiacchierata aperta anche a chi non è del settore, per capire cosa sta succedendo e come mantenere la capacità di scegliere, contestare e, quando serve, spegnere.',
+    },
+    guest: {
+      label: 'Ospite speciale prevista',
+      text: 'Un’agente AI nei panni di Sarah Connor, pronta a mettere alla prova la nostra fiducia nelle macchine.',
+    },
+  },
+
   // Locandina: miniatura nel box, si ingrandisce al clic (file in public/)
   poster: {
     thumb: '/event-poster-2026-12-12-thumb.webp',

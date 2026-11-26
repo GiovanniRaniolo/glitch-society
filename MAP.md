@@ -20,7 +20,7 @@ Collegamenti: compiti aperti in [TASKS.md](TASKS.md); istruzioni d'avvio in [REA
 | Separatore tra sezioni | `sections/SectionDivider.tsx` | — | |
 | Manifesto, mission, principi, colonne Consulenza e Formazione, "Raccontaci il tuo progetto" | `sections/ManifestoSection.tsx` | `content/manifesto.ts` (`manifestoContent`, `columns`) | prima del Corso (T32); due colonne (T33) |
 | Etica, codice etico, Sempre / Mai, finestre terminale | `sections/EthicsSection.tsx` | `content/ethics.ts` (`ethicsContent`, `blocks`, `tone`) | dopo la Mission (T36) |
-| Prossimo evento, ex corso in evidenza, `#next-event`, pub talk Terminator, 12 dicembre, Prima Classe, locandina, RSVP, pulsanti Instagram, stile cyberpunk | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`, id in `anchor`, pulsante in `cta`) | evento T03; RSVP → T45; dopo il 12/12 → T46 |
+| Prossimo evento, ex corso in evidenza, `#next-event`, pub talk Terminator, 12 dicembre, Prima Classe, locandina, RSVP, pulsanti Instagram, stile cyberpunk | `sections/FeaturedCourseSection.tsx` | `content/featuredCourse.ts` (`featuredCourseContent`, id in `anchor`, pulsante in `cta`) | evento T03; RSVP → T45; dopo il 12/12 → T46; sotto le schede il blocco «Dettagli» (`#dettagli`, testi in `about`: estratto della presentazione, temi, etica, per chi, ospite Sarah Connor) |
 | Community, Telegram | `sections/CommunitySection.tsx` | `content/community.ts` (`communityContent`) | galleria tolta (T06) |
 | Footer, social, email, link legali, copyright | `sections/Footer.tsx` | `content/footer.ts` (`footerContent`) | copyright = anno corrente, calcolato (T04); email da `content/site.ts` (T44) |
 

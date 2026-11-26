@@ -19,6 +19,7 @@ export const FeaturedCourseSection = () => {
     notices,
     tagline,
     details,
+    about,
     poster,
     cta,
     socials,
@@ -127,6 +128,53 @@ export const FeaturedCourseSection = () => {
                     </motion.div>
                   )
                 })}
+              </div>
+
+              {/* Dettagli: estratto del testo di presentazione (#dettagli) */}
+              <div
+                id={about.anchor}
+                className="scroll-mt-24 border-t border-dashed border-neon-green/30 pt-8 md:pt-10 mb-10"
+              >
+                <p aria-hidden="true" className="font-mono text-xs md:text-sm text-neon-green mb-3">
+                  gl!tch@society:~$ {about.prompt}
+                </p>
+                <h3 className="font-display text-3xl md:text-4xl text-foreground mb-6">{about.title}</h3>
+
+                <p className="text-lg md:text-xl text-foreground leading-relaxed max-w-3xl mb-10">
+                  {about.intro}
+                </p>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 mb-10">
+                  <div>
+                    <h4 className="font-display text-xl text-neon-green mb-3">{about.topics.title}</h4>
+                    <p className="text-muted-foreground leading-relaxed mb-5">{about.topics.text}</p>
+                    <ul className="space-y-3">
+                      {about.topics.questions.map((q) => (
+                        <li key={q} className="flex gap-3 text-foreground leading-snug">
+                          <span aria-hidden="true" className="font-mono text-neon-pink shrink-0">?&gt;</span>
+                          <span>{q}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-8">
+                    <div>
+                      <h4 className="font-display text-xl text-neon-green mb-3">{about.ethics.title}</h4>
+                      <p className="text-muted-foreground leading-relaxed">{about.ethics.text}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-display text-xl text-neon-green mb-3">{about.audience.title}</h4>
+                      <p className="text-muted-foreground leading-relaxed">{about.audience.text}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Ospite speciale */}
+                <div className="border border-neon-pink/60 bg-neon-pink/[0.06] p-5 md:p-6 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+                  <p className="font-mono text-sm text-neon-pink shrink-0">&gt; {about.guest.label}:</p>
+                  <p className="text-foreground text-lg leading-snug">{about.guest.text}</p>
+                </div>
               </div>
 
               {/* Motto, pulsante RSVP (compare solo se c'è il link) e Instagram */}
