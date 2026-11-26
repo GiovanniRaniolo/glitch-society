@@ -8,7 +8,7 @@ import { RichText } from "@/components/RichText";
 
 export const CommunitySection = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-secondary/20">
+    <section className="py-20">
       <div className="container mx-auto px-4 max-w-6xl">
         <SectionHeader
           badge={communityContent.hero.badge}
@@ -25,13 +25,10 @@ export const CommunitySection = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="relative group"
         >
-          {/* Animated gradient border */}
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-primary to-blue-500 rounded-2xl opacity-40 group-hover:opacity-60 blur transition duration-500" />
-          
-          <div className="relative bg-card border border-primary/20 rounded-2xl p-6 md:p-8">
+          <div className="relative bg-card border border-primary/60 p-6 md:p-8">
             {/* Header: icona a fianco del titolo, per una scheda più bassa (T39) */}
             <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="inline-flex p-3 rounded-full bg-blue-500/20 border border-blue-500/30 shrink-0">
+              <div className="inline-flex p-3 border border-[#2AABEE]/60 shrink-0">
                 <Send className="w-6 h-6 text-blue-400" />
               </div>
               <div className="text-left">

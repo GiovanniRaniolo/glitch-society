@@ -19,7 +19,7 @@ const staggerContainer = {
 
 export const ManifestoSection = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-background via-secondary/10 to-background">
+    <section className="py-20">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Mission */}
         <SectionHeader
@@ -66,21 +66,17 @@ export const ManifestoSection = () => {
                       <motion.div
                         key={principle.title}
                         variants={fadeInUp}
-                        whileHover={{ y: -5, transition: { duration: 0.2 } }}
                         className="relative group"
                       >
-                        {/* Glitch effect on hover */}
-                        <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/50 to-primary/20 rounded-xl opacity-0 group-hover:opacity-100 blur transition duration-300" />
-
-                        <div className="relative bg-card border border-primary/20 rounded-xl p-6 hover:border-primary/40 transition-all duration-300">
+                        <div className="relative bg-card border border-border p-6 hover:border-primary group-hover:shadow-[4px_4px_0_0_hsl(var(--primary))] transition-[border-color,box-shadow] duration-150">
                           <div className="flex items-start gap-4">
                             {Icon && (
-                              <div className="p-3 rounded-lg bg-primary/10 border border-primary/30">
+                              <div className="p-2.5 border border-primary/50">
                                 <Icon className="w-6 h-6 text-primary" />
                               </div>
                             )}
                             <div className="flex-1">
-                              <h4 className="text-xl font-bold mb-2 text-foreground">
+                              <h4 className="text-xl mb-2 text-foreground">
                                 {principle.title}
                               </h4>
                               <p className="text-muted-foreground leading-relaxed">

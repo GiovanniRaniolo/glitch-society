@@ -13,12 +13,9 @@ type CtaLinkProps = {
 
 // Colori per tipo di pulsante. Forma, misure e animazione sono uguali per tutti.
 const variantClass = {
-  primary:
-    'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/25 hover:shadow-primary/40',
-  secondary:
-    'bg-secondary hover:bg-secondary/80 text-foreground border border-primary/20 hover:border-primary/40',
-  telegram:
-    'bg-blue-500 hover:bg-blue-600 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40',
+  primary: 'btn-hard bg-primary text-black border border-primary',
+  secondary: 'btn-hard bg-black text-foreground border border-foreground hover:text-primary',
+  telegram: 'btn-hard bg-[#2AABEE] text-black border border-[#2AABEE]',
   // Solo nel box dell'evento (colori della locandina, T03/T47)
   neonGreen:
     'bg-black text-neon-green border border-neon-green/60 hover:bg-neon-green hover:text-black font-mono',
@@ -27,7 +24,7 @@ const variantClass = {
 }
 
 const baseClass =
-  'inline-flex items-center justify-center gap-2 font-semibold px-8 py-4 rounded-lg transition-all duration-300'
+  'inline-flex items-center justify-center gap-2 font-mono font-semibold px-7 py-3.5 transition-colors duration-150'
 
 const MotionLink = motion.create(Link)
 
@@ -55,7 +52,7 @@ export const CtaLink = ({
   iconEnd = false,
 }: CtaLinkProps) => {
   const className = `${baseClass} ${variantClass[variant]}`
-  const animation = { whileHover: { scale: 1.05 }, whileTap: { scale: 0.95 } }
+  const animation = {}
   const content = (
     <>
       {Icon && !iconEnd && <Icon className="w-5 h-5" />}

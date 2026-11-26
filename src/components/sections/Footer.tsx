@@ -50,9 +50,7 @@ export const Footer = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
-                    whileHover={{ scale: 1.1, y: -3 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-full bg-secondary border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors"
+                    className="w-10 h-10 bg-black border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary transition-colors"
                   >
                     {/* senza icona: iniziale del nome, il link resta cliccabile */}
                     {IconComponent ? <IconComponent className="w-5 h-5" /> : <span className="text-sm font-bold">{social.label.charAt(0)}</span>}

@@ -1,13 +1,10 @@
-import { motion } from "framer-motion";
-
+// Separatore tra sezioni: una riga ASCII, come un commento nel codice.
 export const SectionDivider = () => {
   return (
-    <motion.div
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      className="border-t border-primary/30 max-w-4xl mx-auto"
-    />
+    <div aria-hidden="true" className="max-w-4xl mx-auto px-4 select-none">
+      <div className="font-mono text-sm text-primary/50 whitespace-nowrap overflow-hidden">
+        {'// ' + '-'.repeat(120)}
+      </div>
+    </div>
   );
 };

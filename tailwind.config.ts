@@ -14,6 +14,13 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['"Departure Mono"', '"IBM Plex Mono"', "monospace"],
+        sans: ['"IBM Plex Mono"', "ui-monospace", "monospace"],
+        mono: ['"IBM Plex Mono"', "ui-monospace", "monospace"],
+        // Solo per l'ASCII art del terminale (BrowserMockup)
+        ascii: ["ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", '"Liberation Mono"', '"Courier New"', "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -54,10 +61,15 @@ export default {
           green: "hsl(var(--neon-green))",
         },
       },
+      // Angoli vivi ovunque (DESIGN.md); resta solo rounded-full per i pallini delle finestre
       borderRadius: {
+        DEFAULT: "var(--radius)",
+        sm: "var(--radius)",
+        md: "var(--radius)",
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        xl: "var(--radius)",
+        "2xl": "var(--radius)",
+        "3xl": "var(--radius)",
       },
     },
   },

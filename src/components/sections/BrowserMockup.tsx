@@ -9,7 +9,7 @@ export const BrowserMockup = () => {
       transition={{ duration: 0.7, delay: 0.8 }}
       className="max-w-4xl mx-auto mb-16 px-4"
     >
-      <div className="bg-secondary rounded-t-lg p-3 flex items-center gap-2">
+      <div className="bg-secondary border border-border border-b-0 p-3 flex items-center gap-2">
         <div className="flex gap-1.5">
           <motion.div
             initial={{ scale: 0 }}
@@ -38,7 +38,7 @@ export const BrowserMockup = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 1.5 }}
-        className="bg-black p-4 md:p-8 font-mono overflow-hidden rounded-b-lg"
+        className="bg-black border border-border p-4 md:p-8 font-mono overflow-hidden"
       >
         {/* Mobile Version - Immagine statica */}
         <div className="md:hidden overflow-x-hidden max-w-full">
@@ -57,8 +57,8 @@ export const BrowserMockup = () => {
           </div>
         </div>
 
-        {/* Desktop Version */}
-        <div className="hidden md:block">
+        {/* Desktop Version: font di sistema, perché IBM Plex Mono non ha i caratteri dei riquadri (█ ╗ ═ ║) */}
+        <div className="hidden md:block font-ascii">
           <div className="text-primary">
             <pre className="leading-tight text-sm whitespace-pre">
 {`   ██████╗ ██╗      ██║████████╗ ██████╗██╗  ██╗

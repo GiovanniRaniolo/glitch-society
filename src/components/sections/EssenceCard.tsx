@@ -31,11 +31,7 @@ export const EssenceCard = ({ className = "" }: { className?: string }) => {
       transition={{ duration: 0.6, delay: 0.2 }}
       className={`relative max-w-5xl mx-auto ${className}`}
     >
-      <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-primary/50 to-primary rounded-2xl opacity-30 blur" />
-      <div className="relative bg-gradient-to-br from-card to-secondary/30 border-2 border-primary/30 rounded-2xl p-8 md:p-12 overflow-hidden">
-        {/* Decorative background elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+      <div className="relative bg-card border border-primary/60 p-8 md:p-12 overflow-hidden">
 
         <div className="relative z-10">
           <SectionHeader
@@ -57,18 +53,14 @@ export const EssenceCard = ({ className = "" }: { className?: string }) => {
                 <motion.div
                   key={idx}
                   variants={fadeInUp}
-                  whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.2 } }}
-                  className="bg-card/80 backdrop-blur-sm border border-primary/20 rounded-xl p-6 text-center hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+                  className="bg-black border border-dashed border-border p-6 text-left hover:border-primary transition-colors duration-150"
                 >
                   {Icon && (
-                    <motion.div
-                      whileHover={{ rotate: [0, -10, 10, 0], transition: { duration: 0.5 } }}
-                      className="inline-flex p-4 rounded-full bg-primary/10 border border-primary/30 mb-4"
-                    >
-                      <Icon className="w-8 h-8 text-primary" />
-                    </motion.div>
+                    <div className="inline-flex p-2.5 border border-primary/50 mb-4">
+                      <Icon className="w-6 h-6 text-primary" />
+                    </div>
                   )}
-                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                  <h3 className="text-xl mb-2">{item.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     {item.description}
                   </p>

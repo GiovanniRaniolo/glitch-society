@@ -6,13 +6,15 @@ type BadgeProps = {
   className?: string
 }
 
-// La "pillola" arancione sopra i titoli. Unico stile per tutto il sito.
-// Usata da SectionHeader e dalla Hero.
+// L'etichetta sopra i titoli, scritta come un tag tra parentesi quadre: [ testo ].
+// Unico stile per tutto il sito. Usata da SectionHeader.
 export const Badge = ({ children, icon: Icon, className = '' }: BadgeProps) => (
   <span
-    className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-sm font-semibold text-primary ${className}`}
+    className={`inline-flex items-center gap-2 px-3 py-1 border border-dashed border-primary/60 font-mono text-sm font-medium text-primary ${className}`}
   >
+    <span aria-hidden="true">[</span>
     {Icon && <Icon className="w-4 h-4" />}
     {children}
+    <span aria-hidden="true">]</span>
   </span>
 )

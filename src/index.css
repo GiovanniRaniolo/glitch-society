@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Departure Mono";
+  src: url("/fonts/departure-mono/DepartureMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,19 +16,19 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 7%;
-    --foreground: 0 0% 98%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 92%;
 
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 98%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 92%;
 
-    --popover: 0 0% 10%;
+    --popover: 0 0% 6%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 15 100% 61%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 15%;
+    --secondary: 0 0% 10%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 20%;
@@ -36,9 +44,33 @@ All colors MUST be HSL.
     --input: 0 0% 20%;
     --ring: 15 100% 61%;
 
-    --radius: 0.5rem;
+    --radius: 0px;
   }
 }
+/* Font: titoli in Departure Mono (pixel, un solo peso), testo in IBM Plex Mono. Vedi DESIGN.md. */
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Departure Mono", "IBM Plex Mono", monospace;
+    font-weight: 400;
+    font-synthesis: none;
+    letter-spacing: 0;
+  }
+
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(0 0% 0%);
+  }
+
+  :focus-visible {
+    outline: 2px dashed hsl(var(--primary));
+    outline-offset: 3px;
+  }
+}
+
 /* Evento del 12 dicembre (T03): colori della locandina, usati solo nel box dell'evento
    (sections/FeaturedCourseSection.tsx). Il resto del sito resta arancione. */
 @layer base {
@@ -60,6 +92,28 @@ All colors MUST be HSL.
     );
   }
 
+  /* Griglia leggera da carta millimetrata, dietro tutta la pagina */
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(0 0% 100% / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(0 0% 100% / 0.035) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Pulsante squadrato con ombra piena, come un tasto */
+  .btn-hard {
+    box-shadow: 4px 4px 0 0 hsl(var(--foreground));
+    transition: transform 0.15s steps(2), box-shadow 0.15s steps(2), background-color 0.15s;
+  }
+  .btn-hard:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 0 hsl(var(--foreground));
+  }
+  .btn-hard:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 0 hsl(var(--foreground));
+  }
+
   /* Titolo che "salta" ogni tanto, con ombre fucsia e verdi */
   .glitch-text {
     animation: glitch-jump 4s steps(1) infinite;
@@ -74,6 +128,12 @@ All colors MUST be HSL.
     .glitch-text,
     .terminal-cursor {
       animation: none;
+    }
+    .btn-hard,
+    .btn-hard:hover,
+    .btn-hard:active {
+      transition: none;
+      transform: none;
     }
   }
 }

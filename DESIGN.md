@@ -1,0 +1,33 @@
+# DESIGN — GL!TCH Society
+
+Source of truth for the visual system. Tokens live in `src/index.css` (CSS variables, HSL) and `tailwind.config.ts`.
+
+## Direction
+A developer collective's site that reads like a terminal session, not a SaaS template: pixel type for headings, monospace for everything else, square corners, hard edges, no blurred glows.
+
+## Colors (HSL variables in `src/index.css`)
+| Token | Value | Use |
+|---|---|---|
+| `--background` | `#000000` | page background, with a faint 32 px grid (`.bg-grid`) |
+| `--foreground` | `#EBEBEB` | main text |
+| `--primary` | `#FF6A38` (15 100% 61%) | brand orange: highlights, buttons, prompts, borders on hover |
+| `--card` / `--secondary` | `#0F0F0F` / `#1A1A1A` | panels, window bars |
+| `--muted-foreground` | `#A6A6A6` | secondary text |
+| `--border` | `#333333` | panel borders |
+| `--neon-pink` / `--neon-green` | `#FF29B8` / `#3BFF14` | only inside terminal windows (event box, ethics, ASCII mockup) |
+
+## Typography
+- **Display**: Departure Mono (pixel monospace, OFL, self-hosted in `public/fonts/departure-mono/`). Only one weight: headings use it at weight 400 with `font-synthesis: none`, so `font-bold` never fakes a bold.
+- **Text**: IBM Plex Mono 400/500/600/700 (`@fontsource/ibm-plex-mono`), for body, buttons and labels.
+- Tailwind: `font-display` = Departure Mono, `font-sans` and `font-mono` = IBM Plex Mono.
+
+## Shape
+- Radius 0 everywhere (`rounded`, `rounded-sm` … `rounded-3xl` resolve to 0). `rounded-full` stays only for window dots.
+- Borders 1 px; dashed borders for secondary panels.
+- Buttons: square, hard offset shadow (`4px 4px 0`), on hover they move up-left and the shadow grows.
+
+## Components
+- `Badge`: `[ label ]` tag in orange, square.
+- `SectionDivider`: an ASCII rule (`// ----`), not a plain line.
+- Hero: pixel headline with the `glitch-text` jump on the highlighted word and a blinking block cursor.
+- Motion: only the hero entrance, the glitch jump and the cursor; all respect `prefers-reduced-motion`.

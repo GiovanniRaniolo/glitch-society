@@ -71,7 +71,7 @@ export function LegalPage({ content, icon: Icon }: { content: LegalContent; icon
           transition={{ duration: 0.6 }}
         >
           <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 border-2 border-primary/30 mb-6">
+            <div className="inline-flex items-center justify-center w-16 h-16 border border-primary/60 mb-6">
               <Icon className="w-8 h-8 text-primary" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">{content.title}</h1>

@@ -6,33 +6,32 @@ import { Users, Code2 } from 'lucide-react'
 
 export const HeroSection = () => {
   return (
-    <section className="container mx-auto px-4 pt-12 pb-20 text-center">
-      {/* Main Title */}
+    <section className="container mx-auto px-4 pt-16 pb-20 text-center">
+      {/* Main Title: font pixel, la parola evidenziata "salta" come un glitch, cursore a blocco */}
       <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.2 }}
-        className="text-5xl md:text-7xl font-black mb-6 leading-tight"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.1 }}
+        className="font-display text-[8.2vw] leading-[1.1] sm:text-5xl lg:text-7xl xl:text-8xl mb-8"
       >
         {heroContent.title.part1}{' '}
-        <span className="text-primary relative">
-          {heroContent.title.highlight}
-          <motion.span
-            className="absolute -inset-1 bg-primary/20 blur-xl rounded-full"
-            animate={{ opacity: [0.5, 0.8, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
+        <span className="glitch-text inline-block text-primary">{heroContent.title.highlight}</span>
+        <br />
+        <span className="text-muted-foreground whitespace-nowrap">
+          {heroContent.title.part2}
+          <span
+            aria-hidden="true"
+            className="terminal-cursor inline-block w-[0.5em] h-[0.85em] ml-2 -mb-[0.05em] bg-primary align-baseline"
           />
         </span>
-        <br />
-        <span className="text-muted-foreground">{heroContent.title.part2}</span>
       </motion.h1>
 
       {/* Subtitle */}
       <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
-        className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.3 }}
+        className="text-lg md:text-2xl text-foreground mb-5 max-w-3xl mx-auto leading-snug"
       >
         {heroContent.subtitle}
       </motion.p>
@@ -41,8 +40,8 @@ export const HeroSection = () => {
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.5 }}
-        className="text-lg text-muted-foreground/80 mb-10 max-w-4xl mx-auto leading-relaxed"
+        transition={{ duration: 0.4, delay: 0.4 }}
+        className="text-base md:text-lg text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed"
       >
         {heroContent.description}
       </motion.p>
@@ -52,10 +51,10 @@ export const HeroSection = () => {
 
       {/* CTA Buttons */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.7 }}
-        className="flex flex-col sm:flex-row gap-4 justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, delay: 0.5 }}
+        className="flex flex-col sm:flex-row gap-6 justify-center"
       >
         <CtaLink href={heroContent.cta.primary.url} icon={Code2}>
           {heroContent.cta.primary.label}

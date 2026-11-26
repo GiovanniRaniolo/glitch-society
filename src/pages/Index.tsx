@@ -13,7 +13,7 @@ import { PageMeta } from "@/components/PageMeta";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background bg-grid text-foreground overflow-x-hidden">
       <PageMeta />
       <Header />
       

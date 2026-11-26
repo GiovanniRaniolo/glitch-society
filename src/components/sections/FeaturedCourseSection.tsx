@@ -26,13 +26,6 @@ export const FeaturedCourseSection = () => {
 
   return (
     <section id={anchor} className="py-24 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-neon-pink/5 via-background to-neon-green/5" />
-
-      {/* Decorative elements */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-neon-pink/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-neon-green/5 rounded-full blur-3xl" />
-
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -74,7 +67,7 @@ export const FeaturedCourseSection = () => {
                     ))}
                   </div>
 
-                  <h2 className="glitch-text font-black uppercase leading-[0.95] tracking-tight text-4xl sm:text-5xl md:text-6xl mb-6">
+                  <h2 className="glitch-text font-display uppercase leading-[1.08] text-4xl sm:text-5xl md:text-6xl mb-6">
                     <span className="block text-foreground">{title.line1}</span>
                     <span className="block text-neon-pink">{title.line2}</span>
                     <span className="block text-neon-green">{title.line3}</span>
