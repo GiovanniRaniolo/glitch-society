@@ -75,7 +75,7 @@ Se cambia un link, aggiornare **tutte** le righe della tabella.
 - Colori, variabili CSS (`--primary`, `--background`…): `src/index.css`
 - Fucsia e verde della locandina (`--neon-pink`, `--neon-green`, classi `neon-*`), righe da monitor (`scanlines`), titolo glitch (`glitch-text`), cursore (`terminal-cursor`): `src/index.css` + `tailwind.config.ts`; solo nel box dell'evento (T03)
 - Tema Tailwind, font, animazioni: `tailwind.config.ts`
-- Logo, favicon, immagine social: `public/` (`glitch_logo-425.webp` usato dal sito, `glitch_logo.png` riserva e metadati, `favicon.png`, `ascii-art.png`, locandina `event-poster-2026-12-12.webp` + `-thumb.webp`)
+- Logo, favicon, immagine social: `public/` (`glitch_logo-425.webp` usato dal sito, `glitch_logo.png` riserva e metadati, `favicon.ico` + `favicon-16.png`/`favicon-32.png`/`favicon.png` (192) + `apple-touch-icon.png` (simbolo nero su quadrato arancione), immagine social `og-image.png` 1200×630 (base assoluta da `OG_BASE_URL` in `vite.config.ts`, default glitchsociety.dev), locandina `event-poster-2026-12-12.webp` + `-thumb.webp`)
 
 ## SEO e condivisione
 - Titolo, descrizione, keyword, Open Graph, Twitter, JSON-LD, `theme-color`: `index.html` (`theme-color` arancione `#FF6A38`)
