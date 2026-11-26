@@ -15,8 +15,12 @@ function Block({ block }: { block: LegalBlock }) {
         <p>
           <strong>{block.name}</strong>
           <br />
-          P.IVA: {block.vat}
-          <br />
+          {block.description && (
+            <>
+              {block.description}
+              <br />
+            </>
+          )}
           Email:{" "}
           <a href={`mailto:${block.email}`} className="text-primary hover:underline">
             {block.email}

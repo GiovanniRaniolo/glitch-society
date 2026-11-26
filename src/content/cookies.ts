@@ -1,107 +1,18 @@
 import type { LegalContent } from "./legalTypes";
+import { siteContent } from "./site";
 
+// Il sito non imposta cookie e non salva dati nel browser (verificato il 26/11): niente banner.
 export const cookiesContent: LegalContent = {
   title: "Cookie Policy",
-  lastUpdate: "Novembre 2025",
+  lastUpdate: "Novembre 2026",
   sections: [
     {
       id: 1,
-      title: "Cosa sono i Cookie",
+      title: "Cookie",
       content: [
         {
           type: "text",
-          text: "I cookie sono piccoli file di testo che vengono memorizzati sul tuo dispositivo quando visiti un sito web. Vengono utilizzati per ricordare le tue preferenze e migliorare l'esperienza di navigazione."
-        }
-      ]
-    },
-    {
-      id: 2,
-      title: "Cookie Utilizzati da Questo Sito",
-      content: [
-        {
-          type: "text",
-          text: "Questo sito utilizza **esclusivamente cookie tecnici** necessari al corretto funzionamento del sito."
-        }
-      ],
-      detailBox: {
-        title: "Cookie Tecnici",
-        description: "Questi cookie sono essenziali per il funzionamento del sito e non possono essere disabilitati. Includono cookie di sessione che permettono la navigazione tra le pagine.",
-        details: [
-          { label: "Tipologia", value: "Cookie di sessione" },
-          { label: "Durata", value: "Sessione browser" },
-          { label: "Consenso richiesto", value: "No (tecnici)" },
-          { label: "Finalità", value: "Navigazione sito" }
-        ]
-      }
-    },
-    {
-      id: 3,
-      title: "Cookie NON Utilizzati",
-      content: [
-        {
-          type: "text",
-          text: "Questo sito **NON utilizza**:"
-        },
-        {
-          type: "list",
-          items: [
-            "**Cookie Analytics** (es. Google Analytics, Vercel Analytics)",
-            "**Cookie di Marketing** (es. Facebook Pixel, Google Ads)",
-            "**Cookie di Profilazione** per pubblicità personalizzata",
-            "**Cookie di Terze Parti** per tracciamento utenti"
-          ]
-        }
-      ]
-    },
-    {
-      id: 4,
-      title: "Gestione dei Cookie",
-      content: [
-        {
-          type: "text",
-          text: "Poiché utilizziamo solo cookie tecnici necessari, non è richiesto il tuo consenso esplicito ai sensi della normativa vigente."
-        },
-        {
-          type: "text",
-          text: "Tuttavia, puoi sempre gestire o disabilitare i cookie attraverso le impostazioni del tuo browser:"
-        },
-        {
-          type: "list",
-          items: [
-            "**Chrome**: Impostazioni → Privacy e sicurezza → Cookie",
-            "**Firefox**: Preferenze → Privacy e sicurezza → Cookie",
-            "**Safari**: Preferenze → Privacy → Cookie",
-            "**Edge**: Impostazioni → Cookie e autorizzazioni sito"
-          ]
-        },
-        {
-          type: "text",
-          text: "Nota: Disabilitare i cookie tecnici potrebbe compromettere la funzionalità del sito.",
-          note: true
-        }
-      ]
-    },
-    {
-      id: 5,
-      title: "Cookie di Terze Parti (Lu.ma)",
-      content: [
-        {
-          type: "text",
-          text: "Quando clicchi sul pulsante di iscrizione e vieni reindirizzato alla piattaforma **Lu.ma**, potrebbero essere impostati cookie da Lu.ma secondo la loro Cookie Policy."
-        },
-        {
-          type: "text",
-          text: "Per informazioni sui cookie utilizzati da Lu.ma, consulta: [https://luma.com/privacy-policy](https://luma.com/privacy-policy)"
-        }
-      ]
-    },
-    {
-      id: 6,
-      title: "Modifiche alla Cookie Policy",
-      content: [
-        {
-          type: "text",
-          text: "Ci riserviamo il diritto di modificare questa Cookie Policy in qualsiasi momento. Le modifiche saranno pubblicate su questa pagina con la data di ultimo aggiornamento."
+          text: "Questo sito **non usa cookie**, né tecnici né di terze parti, e non salva dati nel tuo browser: per questo non ti chiediamo nessun consenso."
         }
       ]
     }
@@ -109,6 +20,6 @@ export const cookiesContent: LegalContent = {
   cta: {
     title: "Hai domande?",
     text: "Per qualsiasi chiarimento sulla nostra Cookie Policy, contattaci a:",
-    email: "glitchacademycrew@gmail.com"
+    email: siteContent.contactEmail
   }
 };

@@ -8,7 +8,7 @@
 export type LegalBlock =
   | { type: "text"; text: string; note?: boolean }
   | { type: "list"; items: string[] }
-  | { type: "contact"; name: string; vat: string; email: string };
+  | { type: "contact"; name: string; description?: string; email: string };
 
 export type LegalDetailBox = {
   title: string;

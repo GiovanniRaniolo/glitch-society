@@ -1,4 +1,9 @@
 import type { LegalContent } from "./legalTypes";
+import { siteContent } from "./site";
+
+// GL!TCH Society è un collettivo senza partita IVA (26/11): il titolare è il collettivo, con la sua email.
+// Il sito non raccoglie dati e non usa cookie; l'unico trattamento sono i log tecnici dell'hosting (Vercel).
+const email = siteContent.contactEmail;
 
 export const privacyContent: LegalContent = {
   title: "Privacy Policy",
@@ -11,8 +16,8 @@ export const privacyContent: LegalContent = {
         {
           type: "contact",
           name: "GL!TCH Society",
-          vat: "[DA INSERIRE]",
-          email: "glitchacademycrew@gmail.com"
+          description: "Collettivo informale",
+          email
         }
       ]
     },
@@ -22,43 +27,35 @@ export const privacyContent: LegalContent = {
       content: [
         {
           type: "text",
-          text: "Questo sito web **non raccoglie direttamente dati personali** degli utenti."
+          text: "Questo sito **non raccoglie dati personali**: non ci sono form, registrazioni, analytics o strumenti di tracciamento, e non usa cookie."
         },
         {
           type: "text",
-          text: "Non sono presenti form di contatto, sistemi di registrazione, analytics o strumenti di tracciamento."
+          text: "Font e immagini arrivano dal sito stesso, senza servizi esterni."
         }
       ]
     },
     {
       id: 3,
-      title: "Processo di Iscrizione e Pagamento",
+      title: "Hosting",
       content: [
         {
           type: "text",
-          text: "Il processo di iscrizione e pagamento al corso è gestito interamente dalla piattaforma esterna **Lu.ma**."
-        },
-        {
-          type: "text",
-          text: "Quando clicchi sul pulsante di iscrizione, verrai reindirizzato al sito di Lu.ma, che è un servizio di terze parti indipendente."
-        },
-        {
-          type: "text",
-          text: "Per informazioni su come Lu.ma tratta i tuoi dati personali, consulta la loro Privacy Policy: [https://luma.com/privacy-policy](https://luma.com/privacy-policy)"
+          text: "Il sito è ospitato da **Vercel**, che registra nei suoi log tecnici l'indirizzo IP e i dati della richiesta per far funzionare e proteggere il servizio. Come li tratta: [vercel.com/legal/privacy-policy](https://vercel.com/legal/privacy-policy)"
         }
       ]
     },
     {
       id: 4,
-      title: "Cookie",
+      title: "Se ci scrivi",
       content: [
         {
           type: "text",
-          text: "Questo sito utilizza esclusivamente **cookie tecnici** necessari al funzionamento del sito stesso."
+          text: "Se ci scrivi per email usiamo il tuo indirizzo e quello che ci racconti solo per risponderti, e non li passiamo a nessuno."
         },
         {
           type: "text",
-          text: "Non vengono utilizzati cookie di profilazione, marketing o analytics. Per maggiori dettagli consulta la nostra [Cookie Policy](/cookie-policy)."
+          text: "Telegram, Instagram e Linktree, raggiungibili dai link del sito, trattano i dati secondo le loro regole."
         }
       ]
     },
@@ -83,7 +80,7 @@ export const privacyContent: LegalContent = {
         },
         {
           type: "text",
-          text: "Per esercitare i tuoi diritti, contattaci all'indirizzo: [glitchacademycrew@gmail.com](mailto:glitchacademycrew@gmail.com)"
+          text: `Per esercitare i tuoi diritti, contattaci all'indirizzo: [${email}](mailto:${email})`
         }
       ]
     },
@@ -93,7 +90,7 @@ export const privacyContent: LegalContent = {
       content: [
         {
           type: "text",
-          text: "Ci riserviamo il diritto di modificare questa Privacy Policy in qualsiasi momento. Le modifiche saranno pubblicate su questa pagina con la data di ultimo aggiornamento."
+          text: "Se cambia qualcosa aggiorniamo questa pagina e la data in alto."
         }
       ]
     }
@@ -101,6 +98,6 @@ export const privacyContent: LegalContent = {
   cta: {
     title: "Hai domande?",
     text: "Per qualsiasi chiarimento sulla nostra Privacy Policy, contattaci a:",
-    email: "glitchacademycrew@gmail.com"
+    email
   }
 };
