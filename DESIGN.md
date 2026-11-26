@@ -8,7 +8,7 @@ A developer collective's site that reads like a terminal session, not a SaaS tem
 ## Colors (HSL variables in `src/index.css`)
 | Token | Value | Use |
 |---|---|---|
-| `--background` | `#000000` | page background, with a faint 32 px grid (`.bg-grid`) |
+| `--background` | `#000000` | page background; `.bg-grid` adds a 32 px minor grid, a 128 px major grid and a 384 px tile of near-transparent binary/hex fragments (no gradients, scrolls with the page) |
 | `--foreground` | `#EBEBEB` | main text |
 | `--primary` | `#FF6A38` (15 100% 61%) | brand orange: highlights, buttons, prompts, borders on hover |
 | `--card` / `--secondary` | `#0F0F0F` / `#1A1A1A` | panels, window bars |
