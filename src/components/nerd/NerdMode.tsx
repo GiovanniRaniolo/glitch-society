@@ -109,6 +109,11 @@ export const NerdMode = () => {
     setLines((prev) => [...prev, ...nodes.map(line)])
   }, [])
 
+  const stopMatrix = useCallback(() => {
+    setMatrix(false)
+    print(<span className="text-muted-foreground">{t.matrixStop}</span>)
+  }, [print])
+
   const close = useCallback(() => {
     timers.current.forEach(clearTimeout)
     timers.current = []
@@ -525,8 +530,7 @@ export const NerdMode = () => {
     const onKey = (e: KeyboardEvent) => {
       if (matrix) {
         e.preventDefault()
-        setMatrix(false)
-        print(<span className="text-muted-foreground">{t.matrixStop}</span>)
+        stopMatrix()
         return
       }
       if (e.key === 'Escape') close()
@@ -534,7 +538,7 @@ export const NerdMode = () => {
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [open, matrix, close, print])
+  }, [open, matrix, close, stopMatrix])
 
   if (!open) return null
 
@@ -591,14 +595,7 @@ export const NerdMode = () => {
               />
             </label>
           </div>
-          {matrix && (
-            <MatrixRain
-              onStop={() => {
-                setMatrix(false)
-                print(<span className="text-muted-foreground">{t.matrixStop}</span>)
-              }}
-            />
-          )}
+          {matrix && <MatrixRain onStop={stopMatrix} hint={t.matrixHint} />}
         </div>
 
         <div className="flex gap-2 overflow-x-auto border-t border-border bg-card px-3 py-2 font-mono text-xs">
@@ -608,6 +605,8 @@ export const NerdMode = () => {
               type="button"
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => {
+                // un comando toccato durante matrix la ferma e poi parte, visibile
+                if (matrix) stopMatrix()
                 run(q)
                 setInput('')
               }}

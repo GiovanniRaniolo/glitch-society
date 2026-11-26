@@ -35,7 +35,7 @@ export const nerdContent = {
     { cmd: 'vai', text: 'vai evento, mission, etica, community o home: esce dal terminale e scorre lì' },
     { cmd: 'ls', text: 'elenca i file; cat <file> li legge' },
     { cmd: 'glitch', text: 'rompe lo schermo, per un attimo' },
-    { cmd: 'matrix', text: 'pioggia di codice; un tasto la ferma' },
+    { cmd: 'matrix', text: 'pioggia di codice; un tocco o un tasto la ferma' },
     { cmd: 'birra', text: 'indovina' },
     { cmd: 'clear', text: 'pulisce lo schermo (anche Ctrl+L)' },
     { cmd: 'history', text: 'i comandi già scritti (↑ e ↓ per richiamarli)' },
@@ -54,6 +54,7 @@ export const nerdContent = {
   opening: (what: string) => `apro ${what} in una nuova scheda…`,
   reducedMotion: 'Animazioni ridotte dal sistema: niente effetti, solo testo.',
   matrixStop: 'matrix: fermata.',
+  matrixHint: 'tocca o premi un tasto per fermarla',
   beer: ['   .~~~~.', '   i====i_', '   |cccc|_)', '   |cccc|', "   `-==-'"],
   // seguito dal comando cliccabile «evento»
   beerText: 'La prossima si beve al pub talk del 12 dicembre. Scrivi',

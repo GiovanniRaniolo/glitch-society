@@ -48,7 +48,7 @@ Esportazioni raccolte in `src/components/sections/index.ts`; composizione in `sr
 | `*` (404) | `src/pages/NotFound.tsx` | `content/notFound.ts` (`notFoundContent`) |
 
 Pagine legali: un solo componente `src/components/LegalPage.tsx`; tipi e formato dei testi (`**grassetto**`, `[link](indirizzo)`) in `src/content/legalTypes.ts`, letti da `src/components/RichText.tsx`. `RichText` legge anche la frase sotto il pulsante Telegram (`content/community.ts`, T43).
-Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/components/ScrollToTop.tsx`.
+Rotte definite in `src/App.tsx`; ritorno in cima al cambio pagina: `src/components/ScrollToTop.tsx`. Animazioni d'ingresso solo sulla prima pagina aperta, non ai cambi pagina interni: `src/components/IntroOnce.tsx`.
 
 ## Dominio e hosting
 - Sito pubblicato: `https://glitchsociety.dev` su **Vercel** (deploy da `master`).
